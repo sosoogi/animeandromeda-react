@@ -1,4 +1,5 @@
 .App {
+  min-height: 100vh;
   text-align: center;
 }
 
@@ -13,21 +14,6 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -36,3 +22,20 @@
     transform: rotate(360deg);
   }
 }
+
+
+.App-link {
+  color: #61dafb;
+}
+
+.banner{
+  background-image: url('./assets/andromeda.jpg');
+  background-size: 140% auto;
+  background-position: 60% 50%;
+  height: 200px;
+  background-repeat: no-repeat;
+  filter: blur(10px);
+  -webkit-filter: blur(10px);
+  margin-bottom: 30px;
+}
+

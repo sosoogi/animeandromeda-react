@@ -1,0 +1,30 @@
+$color: #fff;
+$overlay: rgba(0, 0, 0, 0.589);
+
+.caption {
+    background-color: $overlay;
+    color: $color;
+    border-bottom-left-radius: 0.325em;
+    border-bottom-right-radius: 0.325em;
+    bottom: 24px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    width: 100%;
+    position: absolute;
+    z-index: 50;
+}
+
+.flyer-container{
+    position: relative;
+    text-align: center;
+}
+
+.flyer {
+    background-size: 100% auto;
+    border-bottom-left-radius: 0.325em;
+    border-bottom-right-radius: 0.325em;
+}
+
+.flyer-spacer{
+    margin-top: 20px;
+}
