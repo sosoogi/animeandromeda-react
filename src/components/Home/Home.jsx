@@ -4,11 +4,17 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import AnimeThumb from '../AnimeThumb/AnimeThumb';
 import './Home.scss';
+import AnimeSearchField from '../AnimeSearchField/AnimeSearchFiled';
 
 const Home = ({ latest, airing, random }) => {
     return (
         <div className='Home'>
             <Container>
+                <Row>
+                    <Col>
+                        <AnimeSearchField/>
+                    </Col>
+                </Row>
                 <Row>
                     {latest?.map((anime, idx) => (
                         <Col xs={6} md={3} lg={2} key={idx}>

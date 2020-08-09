@@ -1,0 +1,46 @@
+$color: #fff;
+$box: #1b1b1b;
+
+.searchQuery{
+    color: $color;
+    padding-bottom: 25px;
+}
+
+.searchBox{
+    background-color: $box;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    width: 22rem;
+}
+
+.searchLink{
+    color: #fff
+}
+
+.searchLink:hover{
+    color: rgb(178, 111, 240);
+    text-decoration: none;
+}
+
+.query{
+    background-color: $box;
+    height: 3.5rem;
+    width: 22rem;
+    color: $color;
+    font-size: 1.25rem;
+    text-align: center;
+    border: 2px;
+    border-color: rgb(178, 111, 240);
+}
+
+@media screen and (max-width: 500px) /* Mobile */ {
+    .searchBox{
+        width: 100%;
+    }    
+    .searchQuery{
+        width: 100%;
+    }
+    .query{
+        width: 100%;
+    }
+}

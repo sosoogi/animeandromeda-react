@@ -19,7 +19,7 @@ class VideoThumb extends React.Component {
 
     render() {
         return (
-            <Link to={'/anime/' + this.props.series}>
+            <Link to={'/anime/details/' + this.props.series}>
                 <div className='flyer-container'>
                     <Figure>
                         <Figure.Image

@@ -17,8 +17,8 @@ class AnimeDetails extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props.location.pathname.substring(7))
-        fetch(globals.API_URL + 'anime/get/' + this.props.location.pathname.substring(7))
+        console.log(this.props.location.pathname.substring(15))
+        fetch(globals.API_URL + 'anime/get/' + this.props.location.pathname.substring(15))
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -41,7 +41,7 @@ class AnimeDetails extends React.Component {
                     <Row>
                         <Col>
                             {this.state.animes.map((x, idx) => (
-                                <Link key={idx} to={x.url}>
+                                <Link key={idx} to= {{pathname: '/anime/view', state: {stream: x.url}}}>
                                     {x.url + '\n'}
                                 </Link>
                             ))}

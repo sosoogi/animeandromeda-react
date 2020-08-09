@@ -1,10 +1,10 @@
 import React from 'react';
-import logo from './assets/logo.svg';
 import Home from './components/Home/Home';
-import AnimeDetails from './components/AnimeDetails/AnimeDetails';
 import globals from './globals/variables';
 import { Number as Sugar } from 'sugar';
 import { BrowserRouter, Route, Switch, } from 'react-router-dom';
+import AnimeDetails from './components/AnimeDetails/AnimeDetails';
+import AnimeView from './components/AnimeView/AnimeView';
 import './App.scss';
 
 class App extends React.Component {
@@ -50,8 +50,8 @@ class App extends React.Component {
               <Route exact path='/' render={props =>
                 <Home {...props} latest={this.state.latest} airing={this.state.airing} random={this.state.random} />}
               />
-              <Route exact path='/anime/:anime' component={AnimeDetails} key={Sugar.random(255)}></Route>
-              {/* <Route path='/about' component={About}></Route> */}
+              <Route exact path='/anime/details/:anime' component={AnimeDetails} key={Sugar.random(255)}></Route>
+              <Route exact path='/anime/view' render={(props) => <AnimeView {...props}></AnimeView>} />
             </Switch>
           </div>
         </BrowserRouter>
