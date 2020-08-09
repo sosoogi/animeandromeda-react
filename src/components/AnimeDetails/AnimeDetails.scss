@@ -1,5 +1,39 @@
 $color: #fff;
+$button-bg:rgb(178, 111, 240);
+$button-bg-hover:rgb(197, 134, 255);
 
 .banner-anime{
     width: 100%;
+}
+
+.button-ep {
+    margin-bottom: 2px; 
+    margin-top: 2px;
+    width: 100%;
+    color: $color;
+    background-color: $button-bg;
+    border-color: rgba(255, 255, 255, 0);
+}
+
+.button-ep:hover {
+    color: $color;
+    background-color: $button-bg-hover;
+    border-color: rgba(255, 255, 255, 0);
+}
+
+.series-pic {
+    width: 100%; 
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.series-desc {
+    color: $color;
+    text-align: left;
+}
+
+.series-title {
+    color: $color;
+    text-align: left;
+    margin-top: 15px; 
 }

@@ -7,6 +7,7 @@ import { Button } from 'react-bootstrap';
 import './AnimeDetails.scss';
 import { render } from '@testing-library/react';
 import { Link } from 'react-router-dom';
+import AnimeBanner from '../AnimeBanner/AnimeBanner';
 
 class AnimeDetails extends React.Component {
     constructor() {
@@ -30,30 +31,42 @@ class AnimeDetails extends React.Component {
     render() {
         return (
             <div className='View'>
-                <div className='banner-anime'>
-                    <img
-                        width={window.innerWidth < globals.MOBILE_MAX_WIDTH ? window.innerWidth : window.innerWidth}
-                        src={this.state.animes[0]?.thumb}>
-                    </img>
-                </div>
+                <AnimeBanner pic={this.state.animes[0]?.thumb}></AnimeBanner>
                 <Container>
-                    ciccio
                     <Row>
-                        <Col>
-                            {this.state.animes.map((x, idx) => (
-                                <Link key={idx} to= {{pathname: '/anime/view', state: {stream: x.url}}}>
-                                    {x.url + '\n'}
-                                </Link>
-                            ))}
+                        <Col xs={6} md={6} lg={6}>
+                            <img className='series-pic' src={this.state.animes[0]?.pic}></img>
+                        </Col>
+                        <Col xs={6} md={6} lg={6}>
+                            <h3 className='series-title'>{this.state.animes[0]?.title}</h3>
                         </Col>
                     </Row>
                     <Row>
                         <Col>
-                            {/* {animes?.map((anime, idx) => (
-                            <Link to={'/anime/search/' + this.props.series} key={idx}>
-                                <Button key={idx}>{}</Button>
-                            </Link>
-                        ))} */}
+                            <p className='series-desc'>
+                                {this.state.animes[0]?.desc}
+                            </p>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <p className='series-desc'>
+                                {this.state.animes.length > 0 ? 'Genere: ' : ''}
+                                {this.state.animes[0]?.genres.map(x=>(
+                                    <span>{x + ', '}</span>
+                                ))}
+                            </p>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            {this.state.animes.map((x, idx) => (
+                                <Link key={idx} to= {
+                                        {pathname: '/anime/view', state: {stream: x.url, banner: this.state.animes[0]?.thumb}}
+                                    }>
+                                    <Button className='button-ep' key={idx}>{'Episodio ' + (idx + 1)}</Button>
+                                </Link>
+                            ))}
                         </Col>
                     </Row>
                 </Container>

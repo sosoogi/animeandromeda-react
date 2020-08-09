@@ -2,7 +2,7 @@ import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
-import globals from '../../globals/variables';
+import AnimeBanner from '../AnimeBanner/AnimeBanner';
 import './AnimeView.scss';
 
 class AnimeView extends React.Component{
@@ -18,13 +18,15 @@ class AnimeView extends React.Component{
     render(){
         return (
             <div>
+                <AnimeBanner pic={this.props.location.state.banner}></AnimeBanner>
                 <Container>
                     <Row>
                         <Col>
                             <video 
-                            controls 
-                            autoPlay 
-                            width={window.innerWidth <= globals.MOBILE_MAX_WIDTH ? window.innerWidth : 720}>
+                                className='anime-video'
+                                controls 
+                                controlsList='nodownload'
+                                autoPlay>
                                 <source src={this.props.location.state.stream}></source>
                             </video>
                         </Col>

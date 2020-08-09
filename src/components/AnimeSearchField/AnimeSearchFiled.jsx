@@ -1,4 +1,6 @@
 import React from 'react';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import globals from '../../globals/variables'
 import { Subject, fromEvent } from 'rxjs';
 import { debounceTime, filter, map, distinctUntilChanged } from 'rxjs/operators'
@@ -18,6 +20,9 @@ class AnimeSearchField extends React.Component{
     componentDidMount(){
         this.subscription = fromEvent(this.search.current, 'keyup').pipe(
             map((event) => {
+                if(event.target.value === ''){
+                    return '___';
+                }
                 return event.target.value;
             }),
             filter(x => x.length > 1),
@@ -46,11 +51,17 @@ class AnimeSearchField extends React.Component{
                 this.state.json.map((anime)=> (
                 <Link className='searchLink' to={{pathname: '/anime/details/' + anime.redundant}}>
                     <div className='searchBox'> 
-                        <div>{anime.title}</div>
-                        <div>
-                            <img width={48} src={anime.pic}></img>
-                        </div>
-                        <div>{anime.count}</div>
+                        <Row>
+                            <Col xs={3} md={3} lg={3}>
+                                <div>
+                                    <img className= 'spacer-left' width={52} src={anime.pic}></img>
+                                </div>
+                            </Col>
+                            <Col xs={9} md={9} lg={9}>
+                                <div>{anime.title}</div>
+                                <div>{anime.count}</div>
+                            </Col>
+                        </Row>
                     </div>
                 </Link>)
                 ) : null}

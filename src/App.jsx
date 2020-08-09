@@ -43,7 +43,6 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div className='banner'></div>
         <BrowserRouter>
           <div className='App'>
             <Switch>
