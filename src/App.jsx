@@ -65,12 +65,12 @@ class App extends React.Component {
           </div>
         </BrowserRouter>
         <div className='mt-3'></div>
-        <footer class='footer'>
-          <div class='container'>
-            <span class='text-muted'>AnimeAndromeda |</span>
-            <span class='text-muted'>&nbsp;per qualsiasi informazione o richiesta scrivere al gruppo Telegram</span>
+        <footer className={window.innerWidth < globals.MOBILE_MAX_WIDTH ? 'footer-mobile' : 'footer'}>
+          <div className='container'>
+            <span className='text-muted'>AnimeAndromeda |</span>
+            <span className='text-muted'>&nbsp;per qualsiasi informazione o richiesta scrivere al gruppo Telegram</span>
             <a href='https://t.me/AnimeAndromeda'>
-              <span class='text-muted'>&nbsp;
+              <span className='text-muted'>&nbsp;
                 <img alt='telegram' src={TelegramIco} height={24}></img>
               </span>
             </a>
