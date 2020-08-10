@@ -26,6 +26,7 @@ class AnimeDetails extends React.Component {
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0);
         this.subscription = fromFetch(globals.API_URL + 'anime/get/' + this.props.location.pathname.substring(15))
             .pipe(
                 switchMap(res => res.json())
@@ -35,10 +36,6 @@ class AnimeDetails extends React.Component {
 
     componentWillUnmount() {
         this.subscription.unsubscribe();
-    }
-
-    componentDidUpdate() {
-        window.scrollTo(0, 0);
     }
 
     render() {
@@ -96,7 +93,7 @@ class AnimeDetails extends React.Component {
                 <Container className={this.state.animes?.length > 0 ? 'anime-container p-3 shadow rounded' : null}>
                     <Row>
                         {currentAnimes.map((x, idx) => (
-                            <Col xs={6} md={6} lg={6} key={idx}>
+                            <Col xs={6} md={4} lg={2} key={idx}>
                                 <Link key={idx} to={
                                     {
                                         pathname: '/anime/view', state: {

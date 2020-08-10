@@ -5,6 +5,7 @@ import { Number as Sugar } from 'sugar';
 import { BrowserRouter, Route, Switch, } from 'react-router-dom';
 import AnimeDetails from './components/AnimeDetails/AnimeDetails';
 import AnimeView from './components/AnimeView/AnimeView';
+import TelegramIco from './assets/telegram.svg';
 import { Subject } from 'rxjs';
 import { fromFetch } from 'rxjs/fetch';
 import { switchMap } from 'rxjs/operators';
@@ -63,7 +64,19 @@ class App extends React.Component {
             </Switch>
           </div>
         </BrowserRouter>
-      </div>
+        <div className='mt-3'></div>
+        <footer class='footer'>
+          <div class='container'>
+            <span class='text-muted'>AnimeAndromeda |</span>
+            <span class='text-muted'>&nbsp;per qualsiasi informazione o richiesta scrivere al gruppo Telegram</span>
+            <a href='https://t.me/AnimeAndromeda'>
+              <span class='text-muted'>&nbsp;
+                <img alt='telegram' src={TelegramIco} height={24}></img>
+              </span>
+            </a>
+          </div>
+        </footer>
+      </div >
     );
   }
 }

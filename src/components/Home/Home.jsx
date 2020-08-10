@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container';
 import AnimeThumb from '../AnimeThumb/AnimeThumb';
 import AnimeBanner from '../AnimeBanner/AnimeBanner';
 import AnimeSearchField from '../AnimeSearchField/AnimeSearchField';
-import Andromeda from '../../assets/andromeda2.jpg'
+import Andromeda from '../../assets/banner.jpg';
 import './Home.scss';
 
 const Home = ({ latest, airing, random }) => {
@@ -14,7 +14,7 @@ const Home = ({ latest, airing, random }) => {
         <div className='Home'>
             <AnimeBanner text={'AnimeAndromeda'} pic={Andromeda}></AnimeBanner>
             <AnimeSearchField className='container shadow rounded bg-dark-as-box mb-3 p-3 w-100' />
-            <Container>
+            <Container className='anime-container p-3 shadow rounded'>
                 <Row>
                     <Col>
                         {latest?.length > 0 && airing?.length > 0 && random?.length > 0 ?
@@ -44,6 +44,9 @@ const Home = ({ latest, airing, random }) => {
                         </Col>
                     ))}
                 </Row>
+            </Container>
+            <div className='mt-3'></div>
+            <Container className='anime-container p-3 shadow rounded'>
                 <Row>
                     <Col>
                         <h3 className='home-section-title'>{airing?.length > 0 ? 'Anime in corso' : ''}</h3>
@@ -62,6 +65,9 @@ const Home = ({ latest, airing, random }) => {
                         </Col>
                     ))}
                 </Row>
+            </Container>
+            <div className='mt-3'></div>
+            <Container className='anime-container p-3 shadow rounded'>
                 <Row>
                     <Col>
                         <h3 className='home-section-title'>{random?.length > 0 ? 'Anime random' : ''}</h3>
@@ -80,7 +86,7 @@ const Home = ({ latest, airing, random }) => {
                     ))}
                 </Row>
             </Container>
-        </div>
+        </div >
     );
 };
 

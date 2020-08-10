@@ -14,15 +14,15 @@ export class Pagination extends React.Component {
             <nav>
                 <ul className='pagination justify-content-center d-flex flex-wrap'>
                     <li className='page-item'>
-                        <a href={null} className='page-link' onClick={() => prevPage()}>Indietro</a>
+                        <a className='page-link' onClick={() => prevPage()}>Indietro</a>
                     </li>
                     {pageNumbers.map((x, idx) => (
                         <li className={x === currentPage ? 'page-item active' : 'page-item'} key={idx}>
-                            <a href={null} onClick={() => paginate(x)} className='page-link'>{x}</a>
+                            <a onClick={() => paginate(x)} className='page-link'>{x}</a>
                         </li>
                     ))}
                     <li className='page-item'>
-                        <a href={null} className='page-link' onClick={() => nextPage()}>Avanti</a>
+                        <a className='page-link' onClick={() => nextPage()}>Avanti</a>
                     </li>
                 </ul>
             </nav>
