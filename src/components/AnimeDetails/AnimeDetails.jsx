@@ -98,7 +98,13 @@ class AnimeDetails extends React.Component {
                         {currentAnimes.map((x, idx) => (
                             <Col xs={6} md={6} lg={6} key={idx}>
                                 <Link key={idx} to={
-                                    { pathname: '/anime/view', state: { stream: x.url, banner: this.state.animes[0]?.thumb } }
+                                    {
+                                        pathname: '/anime/view', state: {
+                                            stream: x.url,
+                                            banner: this.state.animes[0]?.thumb,
+                                            title: this.state.animes[0]?.title
+                                        }
+                                    }
                                 }>
                                     <Button className='button-ep' key={idx}>
                                         {'Episodio ' + (x.ep.toLowerCase().split('ep').slice(-1).pop().split('_')[1])}

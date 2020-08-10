@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container';
 import AnimeThumb from '../AnimeThumb/AnimeThumb';
 import AnimeBanner from '../AnimeBanner/AnimeBanner';
 import AnimeSearchField from '../AnimeSearchField/AnimeSearchField';
-import Andromeda from '../../assets/andromeda.jpg'
+import Andromeda from '../../assets/andromeda2.jpg'
 import './Home.scss';
 
 const Home = ({ latest, airing, random }) => {

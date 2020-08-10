@@ -14,7 +14,7 @@ class AnimeView extends React.Component {
     render() {
         return (
             <div>
-                <AnimeBanner pic={this.props.location.state.banner}></AnimeBanner>
+                <AnimeBanner title={this.props.location.state.title} pic={this.props.location.state.banner}></AnimeBanner>
                 <Container>
                     <Row>
                         <Col>
