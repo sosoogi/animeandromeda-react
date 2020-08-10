@@ -5,6 +5,9 @@ import { Number as Sugar } from 'sugar';
 import { BrowserRouter, Route, Switch, } from 'react-router-dom';
 import AnimeDetails from './components/AnimeDetails/AnimeDetails';
 import AnimeView from './components/AnimeView/AnimeView';
+import { Subject } from 'rxjs';
+import { fromFetch } from 'rxjs/fetch';
+import { switchMap } from 'rxjs/operators';
 import './App.scss';
 
 class App extends React.Component {
@@ -15,35 +18,41 @@ class App extends React.Component {
       airing: [],
       random: []
     };
+    this.latestSub = new Subject();
+    this.aringSub = new Subject();
+    this.randomSub = new Subject();
   }
 
   componentDidMount() {
-    fetch(globals.API_URL + 'anime/latest/')
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ latest: data });
-      })
-      .catch(console.error);
+    this.latestSub = fromFetch(globals.API_URL + 'anime/latest/')
+      .pipe(
+        switchMap(res => res.json())
+      )
+      .subscribe(data => this.setState({ latest: data }), e => console.error(e));
 
-    fetch(globals.API_URL + 'anime/latest/airing')
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ airing: data });
-      })
-      .catch(console.error);
+    this.aringSub = fromFetch(globals.API_URL + 'anime/latest/airing')
+      .pipe(
+        switchMap(res => res.json())
+      )
+      .subscribe(data => this.setState({ airing: data }), e => console.error(e));
 
-    fetch(globals.API_URL + 'anime/random/')
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ random: data });
-      })
-      .catch(console.error);
+    this.randomSub = fromFetch(globals.API_URL + 'anime/random/')
+      .pipe(
+        switchMap(res => res.json())
+      )
+      .subscribe(data => this.setState({ random: data }), e => console.error(e));
+  }
+
+  componentWillUnmount() {
+    this.latestSub.unsubscribe();
+    this.randomSub.unsubscribe();
+    this.aringSub.unsubscribe();
   }
 
   render() {
     return (
       <div>
-        <BrowserRouter>
+        <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
           <div className='App'>
             <Switch>
               <Route exact path='/' render={props =>

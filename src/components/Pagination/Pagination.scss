@@ -1,0 +1,22 @@
+@import '../../globals/variables.scss';
+
+.pagination{
+    color: $color;
+    background-color: $box;
+}
+
+.page-link{
+    color: $color;
+    background-color: $pagination;
+    border-color: rgba(0, 0, 0, 0.418);
+}
+
+.page-link:hover{
+    color: $color;
+    background-color: $button-bg;
+}
+
+.page-link:active{
+    color: $color;
+    background-color: $button-bg;
+}

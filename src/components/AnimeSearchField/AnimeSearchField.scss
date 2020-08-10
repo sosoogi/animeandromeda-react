@@ -1,17 +1,17 @@
-$color: #fff;
-$box: #1b1b1b;
+@import '../../globals/variables.scss';
 
-.searchQuery{
+.search-container{
     color: $color;
     padding-bottom: 25px;
 }
 
-.searchBox{
-    background-color: $box;
-    width: 22rem;
+.results{
+    background-color: $search;
+    width: 100%;
+    z-index: 50;
 }
 
-.searchLink{
+.results-wrapper{
     color: #fff
 }
 
@@ -20,25 +20,28 @@ $box: #1b1b1b;
     text-decoration: none;
 }
 
-.query{
-    background-color: $box;
+.search-input{
+    background-color: $search;
     height: 3.5rem;
-    width: 22rem;
+    width: 100%;
     color: $color;
     font-size: 1.25rem;
     text-align: center;
-    border: 2px;
-    border-color: rgb(178, 111, 240);
+    border-color: rgba(178, 111, 240, 0);
+}
+
+.search-input:focus{
+    outline: none;
 }
 
 @media screen and (max-width: 500px) /* Mobile */ {
-    .searchBox{
+    .results{
         width: 100%;
     }    
-    .searchQuery{
+    .search-container{
         width: 100%;
     }
-    .query{
+    .search-input{
         width: 100%;
     }
 }

@@ -1,6 +1,4 @@
-$color: #fff;
-$button-bg:rgb(178, 111, 240);
-$button-bg-hover:rgb(197, 134, 255);
+@import '../../globals/variables.scss';
 
 .banner-anime{
     width: 100%;
@@ -16,15 +14,18 @@ $button-bg-hover:rgb(197, 134, 255);
 }
 
 .button-ep:hover {
-    color: $color;
     background-color: $button-bg-hover;
-    border-color: rgba(255, 255, 255, 0);
+}
+
+.button-ep:active {
+    background-color: $button-bg-hover;
 }
 
 .series-pic {
-    width: 100%; 
-    margin-top: 15px;
+    float: left;
+    margin-top: 10px;
     margin-bottom: 10px;
+    height: 250px;
 }
 
 .series-desc {
@@ -35,5 +36,9 @@ $button-bg-hover:rgb(197, 134, 255);
 .series-title {
     color: $color;
     text-align: left;
-    margin-top: 15px; 
+    margin-top: 10px; 
+}
+
+.anime-container{
+  background-color: $box;
 }

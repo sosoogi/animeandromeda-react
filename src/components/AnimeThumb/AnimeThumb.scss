@@ -1,11 +1,8 @@
-$color: #fff;
-$overlay: rgba(0, 0, 0, 0.589);
+@import '../../globals/variables.scss';
 
 .caption {
     background-color: $overlay;
     color: $color;
-    border-bottom-left-radius: 0.325em;
-    border-bottom-right-radius: 0.325em;
     bottom: 24px;
     padding-bottom: 5px;
     padding-top: 5px;
@@ -20,9 +17,7 @@ $overlay: rgba(0, 0, 0, 0.589);
 }
 
 .flyer {
-    background-size: 100% auto;
-    border-bottom-left-radius: 0.325em;
-    border-bottom-right-radius: 0.325em;
+    bottom: 0;
 }
 
 .flyer-spacer{

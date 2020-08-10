@@ -5,26 +5,18 @@ import Container from 'react-bootstrap/Container';
 import AnimeBanner from '../AnimeBanner/AnimeBanner';
 import './AnimeView.scss';
 
-class AnimeView extends React.Component{
+class AnimeView extends React.Component {
 
-    constructor(props){
-        super(props);
-    }
-
-    componentDidMount(){
-        console.log(this.props)
-    }
-
-    render(){
+    render() {
         return (
             <div>
                 <AnimeBanner pic={this.props.location.state.banner}></AnimeBanner>
                 <Container>
                     <Row>
                         <Col>
-                            <video 
+                            <video
                                 className='anime-video'
-                                controls 
+                                controls
                                 controlsList='nodownload'
                                 autoPlay>
                                 <source src={this.props.location.state.stream}></source>

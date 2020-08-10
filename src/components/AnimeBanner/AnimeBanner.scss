@@ -1,10 +1,87 @@
+@import '../../globals/variables.scss';
+
 .banner{
-    background-size: 140% auto;
-    background-position: 60% 50%;
-    height: 200px;
-    background-repeat: no-repeat;
-    filter: blur(10px);
-    -webkit-filter: blur(10px);
-    margin-bottom: 30px;
+  position: relative;
+  width: 100%;
+  height: 300px;
+  opacity: .7;
+  background-position-x: 50% !important;
+  background-position-y: 40% !important;
+  background-size: cover !important;
+  border: none;
+  box-shadow: inset 5px -40px 38px -28px #000;
+}
+
+
+.banner-text{
+  position: absolute;
+  color: $color;
+  text-align: left;
+  padding-top:125px;
+  z-index: 2;
+  top:30%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+}
+
+.banner-title{
+  position: absolute;
+  color: $color;
+  text-align: left;
+  padding-top:125px;
+  z-index: 2;
+  top:30%;
+  left: 35%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+}
+
+
+@media screen and (max-width: 438px){
+  .banner-text{
+    left: 47%;
   }
   
+  .banner-title{
+    top:25%;
+  }
+}
+
+@media screen and (max-width: 330px){
+  .banner-text{
+    font-size: 2em;
+    left: 45%;
+  }
+}
+
+@media screen and (min-width: 750px){
+  .banner-text{
+    left: 28.75%;
+    top:20%;
+  }
+
+  .banner-title{
+    top:20%;
+  }
+}
+
+@media screen and (min-height: 1000px){
+  .banner-text{
+    top:20%;
+  }
+
+  .banner-title{
+    top:20%;
+  }
+}
+
+@media screen and (min-height: 1200px){
+  .banner-text{
+    top:17%;
+  }
+
+  .banner-title{
+    top:17%;
+  }
+}
