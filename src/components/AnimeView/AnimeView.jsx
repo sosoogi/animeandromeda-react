@@ -7,6 +7,10 @@ import './AnimeView.scss';
 
 class AnimeView extends React.Component {
 
+    componentDidUpdate() {
+        window.scrollTo(0, 0);
+    }
+
     render() {
         return (
             <div>

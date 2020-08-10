@@ -37,6 +37,10 @@ class AnimeDetails extends React.Component {
         this.subscription.unsubscribe();
     }
 
+    componentDidUpdate() {
+        window.scrollTo(0, 0);
+    }
+
     render() {
         const { currentPage, episodesPerPage, animes } = this.state;
         const indexOfLastPost = currentPage * episodesPerPage;
