@@ -14,9 +14,11 @@
 .page-link:hover{
     color: $color;
     background-color: $button-bg;
+    border-color: rgba(0, 0, 0, 0.418);
 }
 
 .page-link:active{
     color: $color;
     background-color: $button-bg;
+    border-color: rgba(0, 0, 0, 0.418);
 }

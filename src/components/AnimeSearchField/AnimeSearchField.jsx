@@ -1,4 +1,5 @@
 import React from 'react';
+import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import globals from '../../globals/variables'
@@ -45,19 +46,21 @@ class AnimeSearchField extends React.Component {
                 <input className='search-input' type='text' ref={this.search} placeholder='Cerca' />
                 {this.state.json.length > 0 ?
                     this.state.json.map((anime, idx) => (
-                        <Link key={idx} className='results-wrapper' to={{ pathname: '/anime/details/' + anime.redundant }}>
+                        <Link key={idx} className='results-wrapper search-link' to={{ pathname: '/anime/details/' + anime.redundant }}>
                             <div className='results'>
-                                <Row>
-                                    <Col xs={3} md={3} lg={3}>
-                                        <div>
-                                            <img alt={anime.redundant} className='spacer-left' width={96} src={anime.pic}></img>
-                                        </div>
-                                    </Col>
-                                    <Col xs={9} md={9} lg={9}>
-                                        <div className='pt-4 font-weight-bold'>{anime.title}</div>
-                                        <div>episodi:&nbsp;{anime.count}</div>
-                                    </Col>
-                                </Row>
+                                <Container>
+                                    <Row>
+                                        <Col xs={3} md={3} lg={3}>
+                                            <div>
+                                                <img alt={anime.redundant} className='spacer-left' width={96} src={anime.pic}></img>
+                                            </div>
+                                        </Col>
+                                        <Col xs={9} md={9} lg={9}>
+                                            <div className='pt-4 font-weight-bold'>{anime.title}</div>
+                                            <div>episodi:&nbsp;{anime.count}</div>
+                                        </Col>
+                                    </Row>
+                                </Container>
                             </div>
                         </Link>)
                     ) : null}

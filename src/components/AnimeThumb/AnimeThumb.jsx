@@ -5,17 +5,7 @@ import { Link } from 'react-router-dom';
 import globals from '../../globals/variables';
 import './AnimeThumb.scss';
 
-class VideoThumb extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            pic: ''
-        }
-    }
-
-    componentDidMount() {
-        this.setState({ pic: this.props.pic });
-    }
+class AnimeThumb extends React.Component {
 
     render() {
         return (
@@ -24,7 +14,7 @@ class VideoThumb extends React.Component {
                     <Figure>
                         <Figure.Image
                             width={window.innerWidth < globals.MOBILE_MAX_WIDTH ? window.innerWidth : 240}
-                            src={this.state.pic}
+                            src={this.props.pic}
                             className='flyer'
                         />
                         <div className='caption'>{this.props.title ? Sugar.capitalize(this.props.title) : this.props.title}</div>
@@ -36,4 +26,4 @@ class VideoThumb extends React.Component {
     }
 }
 
-export default VideoThumb;
+export default AnimeThumb;

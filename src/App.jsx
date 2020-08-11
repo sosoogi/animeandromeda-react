@@ -64,6 +64,7 @@ class App extends React.Component {
             </Switch>
           </div>
         </BrowserRouter>
+
         <div className='mt-3'></div>
         <footer className={window.innerWidth < globals.MOBILE_MAX_WIDTH ? 'footer-mobile' : 'footer'}>
           <div className='container'>

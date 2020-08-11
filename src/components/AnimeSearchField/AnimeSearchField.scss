@@ -8,15 +8,14 @@
 .results{
     background-color: $search;
     width: 100%;
-    z-index: 50;
 }
 
 .results-wrapper{
     color: #fff
 }
 
-.searchLink:hover{
-    color: rgb(178, 111, 240);
+.search-link:hover{
+    color: rgb(111, 135, 240);
     text-decoration: none;
 }
 
@@ -44,10 +43,4 @@
     .search-input{
         width: 100%;
     }
-}
-
-.spacer-left {
-    padding-left: 8px;
-    padding-bottom: 2px;
-    padding-top: 2px;
 }
