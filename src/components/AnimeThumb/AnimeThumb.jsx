@@ -14,6 +14,7 @@ class AnimeThumb extends React.Component {
                     <Figure>
                         <Figure.Image
                             width={window.innerWidth < globals.MOBILE_MAX_WIDTH ? window.innerWidth : 240}
+                            height={300}
                             src={this.props.pic}
                             className='flyer'
                         />

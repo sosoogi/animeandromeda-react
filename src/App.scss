@@ -46,11 +46,13 @@
   background-color: $box;
 }
 
-.footer-mobile {
-  color: $color;
-  bottom: 0;
-  width: 100%;
-  height: 90px;
-  line-height: 30px; 
-  background-color: $box;
+@media screen and (max-width: 1200px){
+  .footer {
+    color: $color;
+    bottom: 0;
+    width: 100%;
+    height: 90px;
+    line-height: 30px; 
+    background-color: $box;
+  }
 }

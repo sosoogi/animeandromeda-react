@@ -66,15 +66,17 @@ class App extends React.Component {
         </BrowserRouter>
 
         <div className='mt-3'></div>
-        <footer className={window.innerWidth < globals.MOBILE_MAX_WIDTH ? 'footer-mobile' : 'footer'}>
+        <footer className='footer'>
           <div className='container'>
             <span className='text-muted'>AnimeAndromeda |</span>
-            <span className='text-muted'>&nbsp;per qualsiasi informazione o richiesta scrivere al gruppo Telegram</span>
+            <span className='text-muted'>&nbsp;per qualsiasi informazione o richiesta scrivere al</span>
             <a href='https://t.me/AnimeAndromeda'>
-              <span className='text-muted'>&nbsp;
+              <span className='text-muted'>&nbsp;gruppo Telegram&nbsp;
                 <img alt='telegram' src={TelegramIco} height={24}></img>
+                &nbsp;|
               </span>
             </a>
+            <span className='text-muted font-weight-light'>&nbsp;this site acts as an index, nothing is stored</span>
           </div>
         </footer>
       </div >
