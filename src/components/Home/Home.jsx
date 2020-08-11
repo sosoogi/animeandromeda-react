@@ -11,7 +11,7 @@ import Andromeda from '../../assets/banner.jpg';
 import globals from '../../globals/variables';
 import { Subject } from 'rxjs';
 import { fromFetch } from 'rxjs/fetch';
-import { switchMap, debounceTime } from 'rxjs/operators';
+import { switchMap, debounceTime, take } from 'rxjs/operators';
 import './Home.scss';
 
 class Home extends React.Component {
@@ -27,7 +27,8 @@ class Home extends React.Component {
         this.refetchSub = fromFetch(globals.API_URL + 'anime/random/')
             .pipe(
                 switchMap(res => res.json()),
-                debounceTime(250)
+                debounceTime(250),
+                take(1)
             )
             .subscribe(data => this.setState({ random: data }), e => console.error(e))
     }
