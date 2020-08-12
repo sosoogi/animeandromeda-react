@@ -18,7 +18,7 @@ class App extends React.Component {
       latest: [],
       airing: [],
       random: [],
-      light: false
+      theme: localStorage.getItem('theme') || true
     };
     this.changeTheme = this.changeTheme.bind(this);
 
@@ -56,7 +56,13 @@ class App extends React.Component {
   }
 
   changeTheme() {
-    this.setState({ light: !this.state.light });
+    if (this.state.theme === 'dark') {
+      this.setState({ theme: 'light' });
+      localStorage.setItem('theme', 'light');
+    } else {
+      this.setState({ theme: 'dark' });
+      localStorage.setItem('theme', 'dark');
+    }
   }
 
   componentWillUnmount() {
@@ -67,7 +73,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className={'theme ' + (this.state.light ? 'theme--light' : 'theme--dark')}>
+      <div className={'theme ' + (this.state.theme === 'dark' ? 'theme--dark' : 'theme--light')}>
         <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
           <div className='App'>
             <Switch>
@@ -90,9 +96,9 @@ class App extends React.Component {
                 &nbsp;|
               </span>
             </a>
-            <span className='text-muted font-weight-light'>&nbsp;this site acts as an index, nothing is stored |</span>
-            <span className='text-muted font-weight-light' onClick={this.changeTheme}>
-              {this.state.light ? ' Passa al tema scuro' : ' Passa al tema chiaro'}
+            <span className='text-muted font-weight-light'>&nbsp;this site acts as an index, nothing is stored |&nbsp;</span>
+            <span className='text-muted font-weight-light underlined' onClick={this.changeTheme}>
+              {this.state.light === 'light' ? 'Passa al tema scuro' : 'Passa al tema chiaro'}
             </span>
           </div>
         </footer>

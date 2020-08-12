@@ -149,7 +149,7 @@ class Home extends React.Component {
                     <Row>
                         <Col>
                             {this.props.random.length > 0 ?
-                                <Button className='' onClick={this.handleRandomRefetch}>Randomizza</Button> : null}
+                                <Button className='button-random' onClick={this.handleRandomRefetch}>Randomizza</Button> : null}
                         </Col>
                     </Row>
                 </Container>

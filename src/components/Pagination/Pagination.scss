@@ -7,6 +7,13 @@
     }
 }
 
+.active{
+    @include themed() {
+        color: t($color);
+        background-color: t($button-bg);
+    }
+}
+
 .page-link{
     @include themed() {
         color: t($color);

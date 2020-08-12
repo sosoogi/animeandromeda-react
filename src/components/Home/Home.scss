@@ -7,3 +7,11 @@
     text-align: left;
     padding-bottom: 8px;
 }
+
+.button-random {
+    @include themed() {
+        color: t($color);
+        background-color: t($button-bg);
+    }
+    border-color: rgba(255, 255, 255, 0);
+}
