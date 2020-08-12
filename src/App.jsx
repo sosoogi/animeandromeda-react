@@ -47,12 +47,12 @@ class App extends React.Component {
       .subscribe(data => this.setState({ random: data }), e => console.error(e));
 
     //prevent white bar in dark theme
-    !this.state.light ? document.body.style.backgroundColor = '#141414' : document.body.style.backgroundColor = '#eaf4fd'
+    this.state.theme === 'dark' ? document.body.style.backgroundColor = '#141414' : document.body.style.backgroundColor = '#eaf4fd'
   }
 
   componentDidUpdate() {
     //actually change the body
-    !this.state.light ? document.body.style.backgroundColor = '#141414' : document.body.style.backgroundColor = '#eaf4fd'
+    this.state.theme === 'dark' ? document.body.style.backgroundColor = '#141414' : document.body.style.backgroundColor = '#eaf4fd'
   }
 
   changeTheme() {
