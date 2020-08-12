@@ -98,7 +98,7 @@ class App extends React.Component {
             </a>
             <span className='text-muted font-weight-light'>&nbsp;this site acts as an index, nothing is stored |&nbsp;</span>
             <span className='text-muted font-weight-light underlined' onClick={this.changeTheme}>
-              {this.state.light === 'light' ? 'Passa al tema scuro' : 'Passa al tema chiaro'}
+              {this.state.theme === 'light' ? 'Passa al tema scuro' : 'Passa al tema chiaro'}
             </span>
           </div>
         </footer>
