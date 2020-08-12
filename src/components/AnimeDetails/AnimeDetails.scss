@@ -1,4 +1,4 @@
-@import '../../globals/variables.scss';
+@import '../../themes/themes.scss';
 
 .banner-anime{
     width: 100%;
@@ -8,17 +8,23 @@
     margin-bottom: 2px; 
     margin-top: 2px;
     width: 100%;
-    color: $color;
-    background-color: $button-bg;
+    @include themed() {
+        color: t($color);
+        background-color: t($button-bg);
+    }
     border-color: rgba(255, 255, 255, 0);
 }
 
 .button-ep:hover {
-    background-color: $button-bg-hover;
+    @include themed() {
+        background-color: t($button-bg-hover);
+    }
 }
 
 .button-ep:active {
-    background-color: $button-bg-hover;
+    @include themed() {
+        background-color: t($button-bg-hover);
+    }
 }
 
 .series-pic {
@@ -29,12 +35,16 @@
 }
 
 .series-desc {
-    color: $color;
+    @include themed() {
+        color: t($color);
+    }
     text-align: left;
 }
 
 .series-title {
-    color: $color;
+    @include themed() {
+        color: t($color);
+    }
     text-align: left;
     margin-top: 10px; 
 }

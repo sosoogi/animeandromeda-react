@@ -38,7 +38,6 @@ class Home extends React.Component {
     }
 
     render() {
-        console.log(this.state.random)
         return (
             <div className='Home'>
                 <AnimeBanner text={'AnimeAndromeda'} pic={Andromeda}></AnimeBanner>
@@ -149,7 +148,8 @@ class Home extends React.Component {
                     </Row>
                     <Row>
                         <Col>
-                            {this.props.random.length > 0 ? <Button onClick={this.handleRandomRefetch}>Randomizza</Button> : null}
+                            {this.props.random.length > 0 ?
+                                <Button className='' onClick={this.handleRandomRefetch}>Randomizza</Button> : null}
                         </Col>
                     </Row>
                 </Container>

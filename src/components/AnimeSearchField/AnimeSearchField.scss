@@ -1,17 +1,23 @@
-@import '../../globals/variables.scss';
+@import '../../themes/themes.scss';
 
 .search-container{
-    color: $color;
+    @include themed() {
+        color: t($color);
+    }
     padding-bottom: 25px;
 }
 
 .results{
-    background-color: $search;
+    @include themed() {
+        background-color: t($search);
+    }
     width: 100%;
 }
 
 .results-wrapper{
-    color: #fff
+    @include themed() {
+        color: t($color);
+    }
 }
 
 .search-link:hover{
@@ -20,10 +26,12 @@
 }
 
 .search-input{
-    background-color: $search;
+    @include themed() {
+        color: t($color);
+        background-color: t($search);
+    }
     height: 3.5rem;
     width: 100%;
-    color: $color;
     font-size: 1.25rem;
     text-align: center;
     border-color: rgba(178, 111, 240, 0);

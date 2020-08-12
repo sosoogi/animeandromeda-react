@@ -1,27 +1,11 @@
-@import './globals/variables.scss';
+@import './themes/themes.scss';
 
 .App {
   min-height: 100vh;
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+  @include themed() {
+    background-color: t($body-bg);
+    color: t($color);
   }
 }
 
@@ -29,30 +13,63 @@
   padding-bottom: 10px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
 .anime-container{
-  background-color: $box;
+  @include themed() {
+    background-color: t($box);
+  }
 }
 
 .footer {
-  color: $color;
+  @include themed() {
+    color: t($color);
+    background-color: t($box);
+  }
+  font-size: 0.9em;
   bottom: 0;
   width: 100%;
   height: 60px;
   line-height: 60px; 
-  background-color: $box;
 }
 
-@media screen and (max-width: 1200px){
+
+@media screen and (max-width: 400px){
   .footer {
-    color: $color;
+    @include themed() {
+      color: t($color);
+      background-color: t($box);
+    }
+    font-size: 0.90em;
     bottom: 0;
     width: 100%;
-    height: 90px;
+    height: 120px;
     line-height: 30px; 
-    background-color: $box;
+  }
+}
+
+@media screen and (min-width: 400px) and (max-width: 800px){
+  .footer {
+    @include themed() {
+      color: t($color);
+      background-color: t($box);
+    }
+    font-size: 0.90em;
+    bottom: 0;
+    width: 100%;
+    height: 120px;
+    line-height: 40px; 
+  }
+}
+
+@media screen and (min-width: 800px) and (max-width: 1200px){
+  .footer {
+    @include themed() {
+      color: t($color);
+      background-color: t($box);
+    }
+    font-size: 0.90em;
+    bottom: 0;
+    width: 100%;
+    height: 90;
+    line-height: 30px; 
   }
 }

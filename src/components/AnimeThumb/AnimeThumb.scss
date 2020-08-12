@@ -1,8 +1,10 @@
-@import '../../globals/variables.scss';
+@import '../../themes/themes.scss';
 
 .caption {
-    background-color: $overlay;
-    color: $color;
+    @include themed() {
+        color: t($color);
+        background-color: t($overlay);
+    }
     bottom: 24px;
     padding-bottom: 5px;
     padding-top: 5px;

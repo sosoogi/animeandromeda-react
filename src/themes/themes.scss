@@ -1,21 +1,27 @@
-@import './color-themes';
+@import './_color-themes.scss';
 
 $themes: (
-    default: (
-        bg: $body-bg--dark,
+    dark: (
+        body-bg: $body-bg--dark,
         overlay: $overlay--dark,
+        color: $color--dark,
         text: $color--dark,
         box: $box--dark,
-        button: $button-bg--dark,
-        buttonHover: $button-bg-hover--dark
+        search: $search--dark,
+        pagination: $pagination--dark,
+        button-bg: $button-bg--dark,
+        button-bg-hover: $button-bg-hover--dark
     ),
     light: (
-        bg: $body-bg--light,
+        body-bg: $body-bg--light,
         overlay: $overlay--light,
+        color: $color--light,
         text: $color--light,
         box: $box--light,
-        button: $button-bg--light,
-        buttonHover: $button-bg-hover--light
+        search: $search--light,
+        pagination: $pagination--light,
+        button-bg: $button-bg--light,
+        button-bg-hover: $button-bg-hover--light
     ),
 );
 

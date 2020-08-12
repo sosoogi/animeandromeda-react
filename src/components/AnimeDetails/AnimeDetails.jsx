@@ -3,8 +3,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import globals from '../../globals/variables'
 import Button from 'react-bootstrap/Button';
-// import Pagination from 'react-bootstrap/Pagination';
-import './AnimeDetails.scss';
 import Container from 'react-bootstrap/Container';
 import Spinner from 'react-bootstrap/Spinner';
 import { Link } from 'react-router-dom';
@@ -13,6 +11,7 @@ import Pagination from '../Pagination/Pagination';
 import { Subject } from 'rxjs';
 import { fromFetch } from 'rxjs/fetch';
 import { switchMap } from 'rxjs/operators';
+import './AnimeDetails.scss';
 
 class AnimeDetails extends React.Component {
     constructor() {

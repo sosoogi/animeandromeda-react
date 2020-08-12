@@ -1,24 +1,32 @@
-@import '../../globals/variables.scss';
+@import '../../themes/themes.scss';
 
 .pagination{
-    color: $color;
-    background-color: $box;
+    @include themed() {
+        color: t($color);
+        background-color: t($box);
+    }
 }
 
 .page-link{
-    color: $color;
-    background-color: $pagination;
+    @include themed() {
+        color: t($color);
+        background-color: t($pagination);
+    }
     border-color: rgba(0, 0, 0, 0.418);
 }
 
 .page-link:hover{
-    color: $color;
-    background-color: $button-bg;
+    @include themed() {
+        color: t($color);
+        background-color: t($button-bg);
+    }
     border-color: rgba(0, 0, 0, 0.418);
 }
 
 .page-link:active{
-    color: $color;
-    background-color: $button-bg;
+    @include themed() {
+        color: t($color);
+        background-color: t($button-bg);
+    }
     border-color: rgba(0, 0, 0, 0.418);
 }

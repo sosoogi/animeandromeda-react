@@ -1,13 +1,29 @@
+$color: 'color';
+$body-bg: 'body-bg';
+$box: 'box';
+$search:'search';
+$pagination:'pagination';
+$footer:'footer';
+$overlay: 'overlay';
+$button-bg:'button-bg';
+$button-bg-hover:'button-bg-hover';
+
 $color--dark: #fff;
 $body-bg--dark: #141414;
-$box--dark: #1b1b1b;
+$box--dark: #202020;
+$search--dark:#202020c5;
+$pagination--dark:#313131;
+$footer--dark:#2c2c2c;
 $overlay--dark: rgba(0, 0, 0, 0.589);
-$button-bg--dark:#005da0;
+$button-bg--dark:#005DA0;
 $button-bg-hover--dark:#0078ce;
 
+
 $color--light: #000;
-$body-bg--light: #ffffff;
-$box--light: #8CD9F4;
-$overlay--light: #8cd8f47c;
-$button-bg--light:#005da0;
-$button-bg-hover--light:#0078ce;
+$body-bg--light: #eaf4fd;
+$box--light: #f0f7fc;
+$search--light:#d9ecfc;
+$pagination--light:#d9ecfc;
+$overlay--light: #d9ecfca8;
+$button-bg--light:#82c7ff;
+$button-bg-hover--light:#66baff;

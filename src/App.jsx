@@ -17,10 +17,13 @@ class App extends React.Component {
     this.state = {
       latest: [],
       airing: [],
-      random: []
+      random: [],
+      light: false
     };
+    this.changeTheme = this.changeTheme.bind(this);
+
     this.latestSub = new Subject();
-    this.aringSub = new Subject();
+    this.airingSub = new Subject();
     this.randomSub = new Subject();
   }
 
@@ -31,7 +34,7 @@ class App extends React.Component {
       )
       .subscribe(data => this.setState({ latest: data }), e => console.error(e));
 
-    this.aringSub = fromFetch(globals.API_URL + 'anime/latest/airing')
+    this.airingSub = fromFetch(globals.API_URL + 'anime/latest/airing')
       .pipe(
         switchMap(res => res.json())
       )
@@ -42,17 +45,29 @@ class App extends React.Component {
         switchMap(res => res.json())
       )
       .subscribe(data => this.setState({ random: data }), e => console.error(e));
+
+    //prevent white bar in dark theme
+    !this.state.light ? document.body.style.backgroundColor = '#141414' : document.body.style.backgroundColor = '#eaf4fd'
+  }
+
+  componentDidUpdate() {
+    //actually change the body
+    !this.state.light ? document.body.style.backgroundColor = '#141414' : document.body.style.backgroundColor = '#eaf4fd'
+  }
+
+  changeTheme() {
+    this.setState({ light: !this.state.light });
   }
 
   componentWillUnmount() {
     this.latestSub.unsubscribe();
     this.randomSub.unsubscribe();
-    this.aringSub.unsubscribe();
+    this.airingSub.unsubscribe();
   }
 
   render() {
     return (
-      <div>
+      <div className={'theme ' + (this.state.light ? 'theme--light' : 'theme--dark')}>
         <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
           <div className='App'>
             <Switch>
@@ -64,7 +79,6 @@ class App extends React.Component {
             </Switch>
           </div>
         </BrowserRouter>
-
         <div className='mt-3'></div>
         <footer className='footer'>
           <div className='container'>
@@ -72,11 +86,14 @@ class App extends React.Component {
             <span className='text-muted'>&nbsp;per qualsiasi informazione o richiesta scrivere al</span>
             <a href='https://t.me/AnimeAndromeda'>
               <span className='text-muted'>&nbsp;gruppo Telegram&nbsp;
-                <img alt='telegram' src={TelegramIco} height={24}></img>
+                <img alt='telegram' src={TelegramIco} height={18}></img>
                 &nbsp;|
               </span>
             </a>
-            <span className='text-muted font-weight-light'>&nbsp;this site acts as an index, nothing is stored</span>
+            <span className='text-muted font-weight-light'>&nbsp;this site acts as an index, nothing is stored |</span>
+            <span className='text-muted font-weight-light' onClick={this.changeTheme}>
+              {this.state.light ? ' Passa al tema scuro' : ' Passa al tema chiaro'}
+            </span>
           </div>
         </footer>
       </div >
