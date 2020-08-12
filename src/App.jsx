@@ -18,7 +18,7 @@ class App extends React.Component {
       latest: [],
       airing: [],
       random: [],
-      theme: localStorage.getItem('theme') || true
+      theme: localStorage.getItem('theme') || 'dark'
     };
     this.changeTheme = this.changeTheme.bind(this);
 
