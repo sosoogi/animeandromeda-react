@@ -14,7 +14,8 @@ class AnimeView extends React.Component {
     render() {
         return (
             <div>
-                <AnimeBanner title={this.props.location.state.title} pic={this.props.location.state.banner}></AnimeBanner>
+                {this.props.location.state ? null : 'Non aprire la pagina in una nuova scheda :/'}
+                <AnimeBanner title={this.props.location.state?.title} pic={this.props.location.state?.banner}></AnimeBanner>
                 <Container>
                     <Row>
                         <Col>
@@ -23,7 +24,7 @@ class AnimeView extends React.Component {
                                 controls
                                 controlsList='nodownload'
                                 autoPlay>
-                                <source src={this.props.location.state.stream}></source>
+                                <source src={this.props.location.state?.stream}></source>
                             </video>
                         </Col>
                     </Row>

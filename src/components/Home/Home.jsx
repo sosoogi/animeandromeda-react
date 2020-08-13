@@ -7,7 +7,8 @@ import Container from 'react-bootstrap/Container';
 import AnimeThumb from '../AnimeThumb/AnimeThumb';
 import AnimeBanner from '../AnimeBanner/AnimeBanner';
 import AnimeSearchField from '../AnimeSearchField/AnimeSearchField';
-import Andromeda from '../../assets/banner.jpg';
+import AndromedaDark from '../../assets/banner.jpg';
+import AndromedaLight from '../../assets/banner-light.jpg';
 import globals from '../../globals/variables';
 import { Subject } from 'rxjs';
 import { fromFetch } from 'rxjs/fetch';
@@ -19,6 +20,7 @@ class Home extends React.Component {
         super(props);
         this.state = {
             random: this.props.random,
+            banner: (localStorage.getItem('theme') || 'dark') === 'dark' ? AndromedaDark : AndromedaLight
         }
         this.refetchSub = new Subject();
     }
@@ -40,8 +42,8 @@ class Home extends React.Component {
     render() {
         return (
             <div className='Home'>
-                <AnimeBanner text={'AnimeAndromeda'} pic={Andromeda}></AnimeBanner>
-                <AnimeSearchField className='container shadow rounded bg-dark-as-box mb-3 p-3 w-100' />
+                <AnimeBanner text={'AnimeAndromeda'} pic={this.state.banner}></AnimeBanner>
+                <AnimeSearchField className='container shadow rounded bg-dark-as-box mb-3 p-3 w-100'></AnimeSearchField>
                 <Container className='anime-container p-3 shadow rounded'>
                     <Row>
                         <Col>
