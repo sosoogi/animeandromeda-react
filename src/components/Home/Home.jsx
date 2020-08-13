@@ -49,7 +49,7 @@ class Home extends React.Component {
                                 null :
                                 <div>
                                     <br></br>
-                                    <Spinner animation="grow" variant="light" />
+                                    <Spinner animation="grow" className='loader-themed' />
                                 </div>
                             }
                         </Col>
@@ -81,7 +81,7 @@ class Home extends React.Component {
                                 null :
                                 <div>
                                     <br></br>
-                                    <Spinner animation="grow" variant="light" />
+                                    <Spinner animation="grow" className='loader-themed' />
                                 </div>
                             }
                         </Col>
@@ -113,7 +113,7 @@ class Home extends React.Component {
                                 null :
                                 <div>
                                     <br></br>
-                                    <Spinner animation="grow" variant="light" />
+                                    <Spinner animation="grow" className='loader-themed' />
                                 </div>
                             }
                         </Col>

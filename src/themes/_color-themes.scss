@@ -7,6 +7,7 @@ $footer:'footer';
 $overlay: 'overlay';
 $button-bg:'button-bg';
 $button-bg-hover:'button-bg-hover';
+$loader: 'loader';
 
 $color--dark: #fff;
 $body-bg--dark: #141414;
@@ -15,8 +16,9 @@ $search--dark:#202020c5;
 $pagination--dark:#313131;
 $footer--dark:#2c2c2c;
 $overlay--dark: rgba(0, 0, 0, 0.589);
-$button-bg--dark:#005DA0;
-$button-bg-hover--dark:#0078ce;
+$button-bg--dark:#304886;
+$button-bg-hover--dark:#3f5385;
+$loader--dark: #f8f9fa!important;
 
 
 $color--light: #000;
@@ -27,3 +29,15 @@ $pagination--light:#d9ecfc;
 $overlay--light: #d9ecfca8;
 $button-bg--light:#82c7ff;
 $button-bg-hover--light:#66baff;
+$loader--light: #343a40!important;
+
+$color--amoled: #fff;
+$body-bg--amoled: #000000;
+$box--amoled: #0f0f0f;
+$search--amoled:#0f0f0f;
+$pagination--amoled:#292929;
+$footer--amoled:#2c2c2c;
+$overlay--amoled: rgba(0, 0, 0, 0.589);
+$button-bg--amoled:#2c2c2c;
+$button-bg-hover--amoled:#3f3f3f;
+$loader--amoled: #f8f9fa!important;

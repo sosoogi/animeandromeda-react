@@ -2,11 +2,12 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import globals from '../../globals/variables'
+// import Spinner from 'react-bootstrap/Spinner';
+import globals from '../../globals/variables';
 import { Subject, fromEvent } from 'rxjs';
 import { debounceTime, map, distinctUntilChanged } from 'rxjs/operators'
-import './AnimeSearchField.scss';
 import { Link } from 'react-router-dom';
+import './AnimeSearchField.scss';
 
 class AnimeSearchField extends React.Component {
     constructor(props) {
@@ -26,7 +27,6 @@ class AnimeSearchField extends React.Component {
             debounceTime(500),
             distinctUntilChanged()
         ).subscribe(res => {
-            // console.log(res);
             fetch(globals.API_URL + 'anime/search/' + res)
                 .then(res => res.json())
                 .then(data => {

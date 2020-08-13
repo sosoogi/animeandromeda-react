@@ -21,10 +21,11 @@
     }
 }
 
-.button-ep:active {
+.button-ep:active:focus {
     @include themed() {
         background-color: t($button-bg-hover);
     }
+    border-color: rgba(255, 255, 255, 0);
 }
 
 .series-pic {

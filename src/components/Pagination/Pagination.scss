@@ -7,19 +7,22 @@
     }
 }
 
-.active{
+.pagination>li.active>a{
     @include themed() {
         color: t($color);
         background-color: t($button-bg);
     }
+    border-color: rgba(0, 0, 0, 0.418);
+    z-index: 3;
 }
+
 
 .page-link{
     @include themed() {
         color: t($color);
         background-color: t($pagination);
     }
-    border-color: rgba(0, 0, 0, 0.418);
+    
 }
 
 .page-link:hover{

@@ -78,3 +78,9 @@
   text-decoration: underline;
   cursor: pointer;
 }
+
+.loader-themed{
+  @include themed() {
+    color: t($loader);
+  }
+}

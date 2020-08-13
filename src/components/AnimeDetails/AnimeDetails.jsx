@@ -11,6 +11,7 @@ import Pagination from '../Pagination/Pagination';
 import { Subject } from 'rxjs';
 import { fromFetch } from 'rxjs/fetch';
 import { switchMap } from 'rxjs/operators';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import './AnimeDetails.scss';
 
 class AnimeDetails extends React.Component {
@@ -38,6 +39,7 @@ class AnimeDetails extends React.Component {
     }
 
     render() {
+        const helmetContext = {};
         const { currentPage, episodesPerPage, animes } = this.state;
         const indexOfLastPost = currentPage * episodesPerPage;
         const indexOfFirstPost = indexOfLastPost - episodesPerPage;
@@ -48,6 +50,14 @@ class AnimeDetails extends React.Component {
 
         return (
             <div className='View'>
+                <HelmetProvider context={helmetContext}>
+                    <Helmet>
+                        <meta name='language' content='it' />
+                        <meta name="description" content={'Guarda ' + this.state.animes[0]?.title + ' su AnimeAndromeda'} />
+                        <title>{'AnimeAndromeda - ' + this.state.animes[0]?.title}</title>
+                        <link rel='canonical' href='https://www.animeandromeda.net' />
+                    </Helmet>
+                </HelmetProvider>
                 <AnimeBanner pic={this.state.animes[0]?.thumb} title={this.state.animes[0]?.title}></AnimeBanner>
                 <Container>
                     <Row>
@@ -56,7 +66,7 @@ class AnimeDetails extends React.Component {
                                 null :
                                 <div>
                                     <br></br>
-                                    <Spinner animation="grow" variant="light" />
+                                    <Spinner animation="grow" className='loader-themed' />
                                 </div>
                             }
                         </Col>
@@ -98,7 +108,8 @@ class AnimeDetails extends React.Component {
                                         pathname: '/anime/view', state: {
                                             stream: x.url,
                                             banner: this.state.animes[0]?.thumb,
-                                            title: this.state.animes[0]?.title
+                                            title: this.state.animes[0]?.title,
+                                            ep: x.ep
                                         }
                                     }
                                 }>

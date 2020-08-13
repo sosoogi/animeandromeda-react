@@ -10,7 +10,8 @@ $themes: (
         search: $search--dark,
         pagination: $pagination--dark,
         button-bg: $button-bg--dark,
-        button-bg-hover: $button-bg-hover--dark
+        button-bg-hover: $button-bg-hover--dark,
+        loader: $loader--dark
     ),
     light: (
         body-bg: $body-bg--light,
@@ -21,8 +22,21 @@ $themes: (
         search: $search--light,
         pagination: $pagination--light,
         button-bg: $button-bg--light,
-        button-bg-hover: $button-bg-hover--light
+        button-bg-hover: $button-bg-hover--light,
+        loader: $loader--light
     ),
+    amoled: (
+      body-bg: $body-bg--amoled,
+      overlay: $overlay--amoled,
+      color: $color--amoled,
+      text: $color--amoled,
+      box: $box--amoled,
+      search: $search--amoled,
+      pagination: $pagination--amoled,
+      button-bg: $button-bg--amoled,
+      button-bg-hover: $button-bg-hover--amoled,
+      loader: $loader--amoled
+  ),
 );
 
 @mixin themed() {
