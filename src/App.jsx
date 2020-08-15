@@ -5,6 +5,7 @@ import { Number as Sugar } from 'sugar';
 import { BrowserRouter, Route, Switch, } from 'react-router-dom';
 import AnimeDetails from './components/AnimeDetails/AnimeDetails';
 import AnimeView from './components/AnimeView/AnimeView';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import TelegramIco from './assets/telegram.svg';
 import { Subject } from 'rxjs';
 import { fromFetch } from 'rxjs/fetch';
@@ -72,8 +73,18 @@ class App extends React.Component {
   }
 
   render() {
+    const helmetContext = {};
+
     return (
       <div className={'theme ' + (this.state.theme === 'dark' ? 'theme--dark' : 'theme--light')}>
+        <HelmetProvider context={helmetContext}>
+          <Helmet>
+            <meta name='language' content='it' />
+            <meta name="description" content={'Archivio Anime senza pubblicità e communitiy driven ottimizzata per l\'uso mobile. Aggiungi l\'applicazione alla schermata home per averla sempre a portata di mano!'} />
+            <title>{'AnimeAndromeda - Anime Andromeda Home'}</title>
+            <link rel='canonical' href='https://www.animeandromeda.net' />
+          </Helmet>
+        </HelmetProvider>
         <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
           <div className='App'>
             <Switch>
