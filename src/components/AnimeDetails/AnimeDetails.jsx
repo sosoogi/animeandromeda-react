@@ -76,7 +76,7 @@ class AnimeDetails extends React.Component {
                 <Container
                     className={this.state.animes?.length > 0 ? 'anime-container shadow rounded bg-dark-as-box mb-3 p-3 w-100' : null}>
                     <Row>
-                        <Col xs={6} md={6} lg={6}>
+                        <Col xs={6} md={4} lg={3}>
                             <img alt={this.state.animes[0]?.series} className='series-pic' src={this.state.animes[0]?.pic}></img>
                         </Col>
                     </Row>

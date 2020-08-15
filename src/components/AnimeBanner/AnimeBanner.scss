@@ -1,5 +1,6 @@
 @import '../../themes/themes.scss';
 
+
 .banner{
   position: relative;
   width: 100%;
@@ -18,13 +19,10 @@
   @include themed() {
     color: t($color);
   }
+  top:15%;
   text-align: left;
-  padding-top:125px;
   z-index: 2;
-  top:30%;
-  left: 45%;
-  transform: translate(-50%, -50%);
-  padding: 20px;
+  transform: translateY(50%);
 }
 
 .banner-title{
@@ -32,60 +30,17 @@
   @include themed() {
     color: t($color);
   }
+  top:15%;
   text-align: left;
-  padding-top:125px;
   z-index: 2;
-  top:30%;
-  left: 35%;
-  transform: translate(-50%, -50%);
-  padding: 20px;
+  transform: translateY(50%);
 }
 
 
-@media screen and (max-width: 438px){
-  .banner-text{
-    left: 47%;
-  }
-  
-  .banner-title{
-    top:25%;
-  }
-}
 
 @media screen and (max-width: 330px){
   .banner-text{
     font-size: 2em;
     left: 45%;
-  }
-}
-
-@media screen and (min-width: 750px){
-  .banner-text{
-    left: 28.75%;
-    top:20%;
-  }
-
-  .banner-title{
-    top:20%;
-  }
-}
-
-@media screen and (min-height: 1000px){
-  .banner-text{
-    top:20%;
-  }
-
-  .banner-title{
-    top:20%;
-  }
-}
-
-@media screen and (min-height: 1200px){
-  .banner-text{
-    top:17%;
-  }
-
-  .banner-title{
-    top:17%;
   }
 }
