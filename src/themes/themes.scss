@@ -11,7 +11,8 @@ $themes: (
         pagination: $pagination--dark,
         button-bg: $button-bg--dark,
         button-bg-hover: $button-bg-hover--dark,
-        loader: $loader--dark
+        loader: $loader--dark,
+        box-shadow:$box-shadow--dark,
     ),
     light: (
         body-bg: $body-bg--light,
@@ -23,7 +24,8 @@ $themes: (
         pagination: $pagination--light,
         button-bg: $button-bg--light,
         button-bg-hover: $button-bg-hover--light,
-        loader: $loader--light
+        loader: $loader--light,
+        box-shadow:$box-shadow--light,
     ),
     amoled: (
       body-bg: $body-bg--amoled,

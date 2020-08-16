@@ -8,6 +8,7 @@ $overlay: 'overlay';
 $button-bg:'button-bg';
 $button-bg-hover:'button-bg-hover';
 $loader: 'loader';
+$box-shadow: 'box-shadow';
 
 $color--dark: #fff;
 $body-bg--dark: #141414;
@@ -19,7 +20,7 @@ $overlay--dark: rgba(0, 0, 0, 0.589);
 $button-bg--dark:#0063aa;
 $button-bg-hover--dark:#0078ce;
 $loader--dark: #f8f9fa!important;
-
+$box-shadow--dark: inset 5px -40px 38px -28px #000;
 
 $color--light: #000;
 $body-bg--light: #eaf4fd;
@@ -30,6 +31,7 @@ $overlay--light: #d9ecfca8;
 $button-bg--light:#82c7ff;
 $button-bg-hover--light:#66baff;
 $loader--light: #343a40!important;
+$box-shadow--light: inset 5px -40px 38px -28px #eaf4fd;
 
 $color--amoled: #fff;
 $body-bg--amoled: #000000;

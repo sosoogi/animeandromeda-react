@@ -10,9 +10,9 @@ import AnimeSearchField from '../AnimeSearchField/AnimeSearchField';
 import AndromedaDark from '../../assets/banner.jpg';
 import AndromedaLight from '../../assets/banner-light.jpg';
 import globals from '../../globals/variables';
-import { Subject } from 'rxjs';
+import { Observable, fromEvent, Subject } from 'rxjs';
 import { fromFetch } from 'rxjs/fetch';
-import { switchMap, debounceTime, take } from 'rxjs/operators';
+import { switchMap, debounceTime, take, map } from 'rxjs/operators';
 import './Home.scss';
 
 class Home extends React.Component {
@@ -23,16 +23,21 @@ class Home extends React.Component {
             banner: (localStorage.getItem('theme') || 'dark') === 'dark' ? AndromedaDark : AndromedaLight
         }
         this.refetchSub = new Subject();
+        this.randomButton = new React.createRef()
     }
 
-    handleRandomRefetch = () => {
-        this.refetchSub = fromFetch(globals.API_URL + 'anime/random/')
+    componentDidMount() {
+        this.sub = fromEvent(this.randomButton.current, 'click')
             .pipe(
-                switchMap(res => res.json()),
                 debounceTime(250),
-                take(1)
             )
-            .subscribe(data => this.setState({ random: data }), e => console.error(e))
+            .subscribe(() => {
+                fromFetch(globals.API_URL + 'anime/random/')
+                    .pipe(
+                        switchMap(res => res.json()),
+                    )
+                    .subscribe(data => this.setState({ random: data }), e => console.error(e))
+            });
     }
 
     componentWillUnmount() {
@@ -151,7 +156,9 @@ class Home extends React.Component {
                     <Row>
                         <Col>
                             {this.props.random.length > 0 ?
-                                <Button className='button-random' onClick={this.handleRandomRefetch}>Randomizza</Button> : null}
+                                <Button ref={this.randomButton} className='button-random'>Randomizza</Button> :
+                                <Button ref={this.randomButton} style={{ display: 'none' }} className='button-random'>Randomizza</Button>
+                            }
                         </Col>
                     </Row>
                 </Container>

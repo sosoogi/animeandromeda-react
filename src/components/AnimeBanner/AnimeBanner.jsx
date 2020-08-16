@@ -16,13 +16,17 @@ class AnimeBanner extends React.Component {
         return prop;
     }
 
+    goBack() {
+        window.history.back();
+    }
+
     render() {
         return (
             <div>
                 <div className='banner' style={{ backgroundImage: `url(${this.props.pic})` }}>
                 </div>
                 <Container>
-                    {this.props.title ? <h1 className='banner-title'>{this.truncateIfMobile(this.props.title)}</h1> : null}
+                    {this.props.title ? <h1 onClick={this.goBack} className='banner-title'>{this.truncateIfMobile(this.props.title)}</h1> : null}
                     {this.props.text ? <h1 className='banner-text'>{this.truncateIfMobile(this.props.text)}</h1> : null}
                 </Container>
             </div>
