@@ -68,7 +68,7 @@ class Home extends React.Component {
                     .pipe(
                         switchMap(res => res.json()),
                     )
-                    .subscribe(data => { this.setState({ random: data }); console.log(data) }, e => console.error(e))
+                    .subscribe(data => this.setState({ random: data }), e => console.error(e))
             });
 
     }

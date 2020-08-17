@@ -32,7 +32,7 @@ class AnimeSearchField extends React.Component {
                 .then(data => {
                     this.setState({ json: data });
                 })
-                .catch(console.log);
+                .catch(console.error);
         });
     }
 
