@@ -28,7 +28,8 @@ class AnimeDetails extends React.Component {
 
     componentDidMount() {
         window.scrollTo(0, 0);
-        this.subscription = fromFetch(globals.API_URL + 'anime/get/' + this.props.location.pathname.substring(15))
+        const series = this.props.location.pathname.substring(15);
+        this.subscription = fromFetch(globals.API_URL + 'anime/get/' + series)
             .pipe(
                 switchMap(res => res.json())
             )
@@ -36,6 +37,15 @@ class AnimeDetails extends React.Component {
 
         // google analytics
         ReactGA.pageview(window.location.pathname + window.location.search);
+        ReactGA.event({
+            category: 'Details',
+            action: 'User landed on the details of ' + series
+        });
+        this.goBack = this.goBack.bind(this);
+    }
+
+    goBack() {
+        this.props.history.goBack();
     }
 
     componentWillUnmount() {
@@ -139,6 +149,12 @@ class AnimeDetails extends React.Component {
                             </Col>
                         </Row>
                         : null}
+                </Container>
+                <div className='mt-3'></div>
+                <Container className={this.state.animes?.length > 0 ? 'anime-container p-3 shadow rounded' : null}>
+                    {this.state.animes?.length > 0 ?
+                        <Button className='button-ep' onClick={this.goBack}>Torna alla home</Button> : null
+                    }
                 </Container>
             </div >
         );

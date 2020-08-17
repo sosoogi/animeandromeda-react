@@ -9,35 +9,36 @@ import AnimeBanner from '../AnimeBanner/AnimeBanner';
 import AnimeSearchField from '../AnimeSearchField/AnimeSearchField';
 import AndromedaDark from '../../assets/banner.jpg';
 import AndromedaLight from '../../assets/banner-light.jpg';
-import globals from '../../globals/variables';
-import { Observable, fromEvent, Subject } from 'rxjs';
+import { fromEvent, ReplaySubject } from 'rxjs';
 import { fromFetch } from 'rxjs/fetch';
-import { switchMap, debounceTime, take, map } from 'rxjs/operators';
+import { switchMap, debounceTime } from 'rxjs/operators';
+import globals from '../../globals/variables';
 import './Home.scss';
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            random: this.props.random,
+            random: [],
             banner: (localStorage.getItem('theme') || 'dark') === 'dark' ? AndromedaDark : AndromedaLight
         }
-        this.refetchSub = new Subject();
+        this.refetchSub = new ReplaySubject();
         this.randomButton = new React.createRef()
     }
 
     componentDidMount() {
         this.sub = fromEvent(this.randomButton.current, 'click')
             .pipe(
-                debounceTime(250),
+                debounceTime(125),
             )
             .subscribe(() => {
                 fromFetch(globals.API_URL + 'anime/random/')
                     .pipe(
                         switchMap(res => res.json()),
                     )
-                    .subscribe(data => this.setState({ random: data }), e => console.error(e))
+                    .subscribe(data => { this.setState({ random: data }); console.log(data) }, e => console.error(e))
             });
+
     }
 
     componentWillUnmount() {
@@ -131,26 +132,27 @@ class Home extends React.Component {
                         </Col>
                     </Row>
                     <Row>
-                        {this.state.random.length > 0 ? this.state.random.map((anime, idx) => (
-                            <Col xs={6} md={3} lg={2} key={idx + 200}>
-                                <AnimeThumb
-                                    series={anime.series}
-                                    pic={anime.pic}
-                                    title={anime.series_pretty}
-                                    key={idx}>
-                                </AnimeThumb>
-                            </Col>
-                        )) :
-                            this.props.random.map((anime, idx) => (
-                                <Col xs={6} md={3} lg={2} key={idx + 200}>
+                        {
+                            this.state.random.length > 0 ? this.state.random.map((anime, idx) => (
+                                <Col xs={6} md={3} lg={2} key={idx}>
                                     <AnimeThumb
                                         series={anime.series}
                                         pic={anime.pic}
                                         title={anime.series_pretty}
-                                        key={idx}>
+                                        key={anime.idMAL}>
                                     </AnimeThumb>
                                 </Col>
-                            ))
+                            )) :
+                                this.props.random.map((anime, idx) => (
+                                    <Col xs={6} md={3} lg={2} key={idx}>
+                                        <AnimeThumb
+                                            series={anime.series}
+                                            pic={anime.pic}
+                                            title={anime.series_pretty}
+                                            key={anime.idMAL}>
+                                        </AnimeThumb>
+                                    </Col>
+                                ))
                         }
                     </Row>
                     <Row>

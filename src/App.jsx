@@ -54,6 +54,10 @@ class App extends React.Component {
     // google analytics
     ReactGA.initialize('UA-173488988-1');
     ReactGA.pageview(window.location.pathname + window.location.search);
+    ReactGA.event({
+      category: 'App',
+      action: 'User landed on the site'
+    });
   }
 
   componentDidUpdate() {
@@ -69,6 +73,10 @@ class App extends React.Component {
       this.setState({ theme: 'dark' });
       localStorage.setItem('theme', 'dark');
     }
+  }
+
+  navigateHome() {
+    window.location.pathname = '/';
   }
 
   componentWillUnmount() {
@@ -104,8 +112,8 @@ class App extends React.Component {
         <div className='mt-3'></div>
         <footer className='footer'>
           <div className='container'>
-            <span className='text-muted'>AnimeAndromeda |</span>
-            <span className='text-muted'>&nbsp;per qualsiasi informazione o richiesta scrivere al</span>
+            <span className='text-muted underlined' onClick={this.navigateHome}>AnimeAndromeda</span>
+            <span className='text-muted'>&nbsp;|&nbsp;per qualsiasi informazione o richiesta scrivere al</span>
             <a href='https://t.me/AnimeAndromeda'>
               <span className='text-muted'>&nbsp;gruppo Telegram&nbsp;
                 <img alt='telegram' src={TelegramIco} height={18}></img>

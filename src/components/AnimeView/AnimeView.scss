@@ -1,6 +1,39 @@
-.anime-video{
-    margin-top: 15px;
+@import '../../themes/themes.scss';
+
+.anime-video {
     width: 100%;
     height: initial;
     outline: none !important;
+}
+
+.blocked {
+    width: 100%;
+    height: 150px;
+    background-position-x: 50% !important;
+    background-position-y: 40% !important;
+    background-size: cover !important;
+}
+
+.goBack-btn {
+    margin-bottom: 2px; 
+    margin-top: 2px;
+    width: 100%;
+    @include themed() {
+        color: t($color);
+        background-color: t($button-bg);
+    }
+    border-color: rgba(255, 255, 255, 0);
+}
+
+.goBack-btn:hover {
+    @include themed() {
+        background-color: t($button-bg-hover);
+    }
+}
+
+.goBack-btn:active:focus {
+    @include themed() {
+        background-color: t($button-bg-hover);
+    }
+    border-color: rgba(255, 255, 255, 0);
 }

@@ -17,7 +17,11 @@ class AnimeBanner extends React.Component {
     }
 
     goBack() {
-        window.history.back();
+        if (window.history.length > 0) {
+            window.history.back();
+            return;
+        }
+        window.location.pathname = '/';
     }
 
     render() {
