@@ -9,34 +9,55 @@ import AnimeBanner from '../AnimeBanner/AnimeBanner';
 import AnimeSearchField from '../AnimeSearchField/AnimeSearchField';
 import AndromedaDark from '../../assets/banner.jpg';
 import AndromedaLight from '../../assets/banner-light.jpg';
-import AndromedaDarkWebp from '../../assets/banner.webp';
-import AndromedaLightWebp from '../../assets/banner-light.webp';
+// import AndromedaDarkWebp from '../../assets/banner.webp';
+// import AndromedaLightWebp from '../../assets/banner-light.webp';
 import { fromEvent, ReplaySubject } from 'rxjs';
-import { fromFetch } from 'rxjs/fetch';
 import { switchMap, debounceTime } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { fromFetch } from 'rxjs/fetch';
 import globals from '../../globals/variables';
-import supportsWebp from '../../globals/functions';
 import './Home.scss';
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            latest: [],
+            airing: [],
             random: [],
             banner: ''
         }
+
+        this.latestSub = new Subject();
+        this.airingSub = new Subject();
+        this.randomSub = new Subject();
         this.refetchSub = new ReplaySubject();
         this.randomButton = new React.createRef()
+
     }
 
     componentDidMount() {
-        if (supportsWebp) {
-            (localStorage.getItem('theme') || 'dark') === 'dark' ?
-                this.setState({ banner: AndromedaDarkWebp }) : this.setState({ banner: AndromedaLightWebp })
-        } else {
-            (localStorage.getItem('theme') || 'dark') === 'dark' ?
-                this.setState({ banner: AndromedaDark }) : this.setState({ banner: AndromedaLight })
-        }
+        this.latestSub = fromFetch(globals.API_URL + 'anime/latest/')
+            .pipe(
+                switchMap(res => res.json())
+            )
+            .subscribe(data => this.setState({ latest: data }), e => console.error(e));
+
+        this.airingSub = fromFetch(globals.API_URL + 'anime/latest/airing')
+            .pipe(
+                switchMap(res => res.json())
+            )
+            .subscribe(data => this.setState({ airing: data }), e => console.error(e));
+
+        this.randomSub = fromFetch(globals.API_URL + 'anime/random/')
+            .pipe(
+                switchMap(res => res.json())
+            )
+            .subscribe(data => this.setState({ random: data }), e => console.error(e));
+
+        (localStorage.getItem('theme') || 'dark') === 'dark' ?
+            this.setState({ banner: AndromedaDark }) :
+            this.setState({ banner: AndromedaLight })
 
         fromEvent(this.randomButton.current, 'click')
             .pipe(
@@ -52,11 +73,10 @@ class Home extends React.Component {
 
     }
 
-    useEffect() {
-
-    }
-
     componentWillUnmount() {
+        this.latestSub.unsubscribe();
+        this.randomSub.unsubscribe();
+        this.airingSub.unsubscribe();
         this.refetchSub.unsubscribe();
     }
 
@@ -68,7 +88,7 @@ class Home extends React.Component {
                 <Container className='anime-container p-3 shadow rounded'>
                     <Row>
                         <Col>
-                            {this.props.latest?.length > 0 ?
+                            {this.state.latest?.length > 0 ?
                                 null :
                                 <div>
                                     <br></br>
@@ -79,11 +99,11 @@ class Home extends React.Component {
                     </Row>
                     <Row>
                         <Col>
-                            <h3 className='home-section-title'>{this.props.latest?.length > 0 ? 'Ultimi Anime inseriti' : ''}</h3>
+                            <h3 className='home-section-title'>{this.state.latest?.length > 0 ? 'Ultimi Anime inseriti' : ''}</h3>
                         </Col>
                     </Row>
                     <Row>
-                        {this.props.latest?.map((anime, idx) => (
+                        {this.state.latest?.map((anime, idx) => (
                             <Col xs={6} md={3} lg={2} key={idx}>
                                 <AnimeThumb
                                     series={anime._id.series}
@@ -100,7 +120,7 @@ class Home extends React.Component {
                 <Container className='anime-container p-3 shadow rounded'>
                     <Row>
                         <Col>
-                            {this.props.airing?.length > 0 ?
+                            {this.state.airing?.length > 0 ?
                                 null :
                                 <div>
                                     <br></br>
@@ -111,11 +131,11 @@ class Home extends React.Component {
                     </Row>
                     <Row>
                         <Col>
-                            <h3 className='home-section-title'>{this.props.airing?.length > 0 ? 'Anime in corso' : ''}</h3>
+                            <h3 className='home-section-title'>{this.state.airing?.length > 0 ? 'Anime in corso' : ''}</h3>
                         </Col>
                     </Row>
                     <Row>
-                        {this.props.airing?.map((anime, idx) => (
+                        {this.state.airing?.map((anime, idx) => (
                             <Col xs={6} md={3} lg={2} key={idx}>
                                 <AnimeThumb
                                     series={anime._id.series}
@@ -132,7 +152,7 @@ class Home extends React.Component {
                 <Container className='anime-container p-3 shadow rounded'>
                     <Row>
                         <Col>
-                            {this.props.random?.length > 0 ?
+                            {this.state.random?.length > 0 ?
                                 null :
                                 <div>
                                     <br></br>
@@ -143,12 +163,12 @@ class Home extends React.Component {
                     </Row>
                     <Row>
                         <Col>
-                            <h3 className='home-section-title'>{this.props.random.length > 0 ? 'Anime random' : ''}</h3>
+                            <h3 className='home-section-title'>{this.state.random.length > 0 ? 'Anime random' : ''}</h3>
                         </Col>
                     </Row>
                     <Row>
                         {
-                            this.state.random.length > 0 ? this.state.random.map((anime, idx) => (
+                            this.state.random.map((anime, idx) => (
                                 <Col xs={6} md={3} lg={2} key={idx}>
                                     <AnimeThumb
                                         series={anime.series}
@@ -157,22 +177,12 @@ class Home extends React.Component {
                                         key={anime.idMAL}>
                                     </AnimeThumb>
                                 </Col>
-                            )) :
-                                this.props.random.map((anime, idx) => (
-                                    <Col xs={6} md={3} lg={2} key={idx}>
-                                        <AnimeThumb
-                                            series={anime.series}
-                                            pic={anime.pic}
-                                            title={anime.series_pretty}
-                                            key={anime.idMAL}>
-                                        </AnimeThumb>
-                                    </Col>
-                                ))
+                            ))
                         }
                     </Row>
                     <Row>
                         <Col>
-                            {this.props.random.length > 0 ?
+                            {this.state.random.length > 0 ?
                                 <Button ref={this.randomButton} className='button-random'>Randomizza</Button> :
                                 <Button ref={this.randomButton} style={{ display: 'none' }} className='button-random'>Randomizza</Button>
                             }

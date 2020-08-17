@@ -12,17 +12,17 @@ export class Pagination extends React.Component {
 
         return (
             <nav>
-                <ul className='pagination justify-content-center d-flex flex-wrap'>
+                <ul className='pagination justify-content-center d-flex flex-wrap pagica'>
                     <li className='page-item'>
-                        <a className='page-link' onClick={() => prevPage()}>Indietro</a>
+                        <button className='page-link' onClick={() => prevPage()}>Indietro</button>
                     </li>
                     {pageNumbers.map((x, idx) => (
                         <li className={x === currentPage ? 'page-item active' : 'page-item'} key={idx}>
-                            <a onClick={() => paginate(x)} className='page-link'>{x}</a>
+                            <button onClick={() => paginate(x)} className='page-link'>{x}</button>
                         </li>
                     ))}
                     <li className='page-item'>
-                        <a className='page-link' onClick={() => nextPage()}>Avanti</a>
+                        <button className='page-link' onClick={() => nextPage()}>Avanti</button>
                     </li>
                 </ul>
             </nav>

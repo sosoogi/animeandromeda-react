@@ -7,6 +7,10 @@
     }
 }
 
+.pagica {
+    border-color: rgba(0, 0, 0, 0.418);
+}
+
 .pagination>li.active>a{
     @include themed() {
         color: t($color);
