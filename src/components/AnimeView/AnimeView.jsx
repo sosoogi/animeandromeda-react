@@ -3,9 +3,19 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import AnimeBanner from '../AnimeBanner/AnimeBanner';
+import ReactGA from 'react-ga';
 import './AnimeView.scss';
 
 class AnimeView extends React.Component {
+
+    componentDidMount() {
+        // google analytics
+        ReactGA.pageview(window.location.pathname + window.location.search);
+        ReactGA.event({
+            category: 'Anime',
+            action: 'User started streaming' + this.props.location.state?.title
+        });
+    }
 
     componentDidUpdate() {
         window.scrollTo(0, 0);

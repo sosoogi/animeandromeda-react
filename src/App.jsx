@@ -10,6 +10,7 @@ import TelegramIco from './assets/telegram.svg';
 import { Subject } from 'rxjs';
 import { fromFetch } from 'rxjs/fetch';
 import { switchMap } from 'rxjs/operators';
+import ReactGA from 'react-ga';
 import './App.scss';
 
 class App extends React.Component {
@@ -47,12 +48,16 @@ class App extends React.Component {
       )
       .subscribe(data => this.setState({ random: data }), e => console.error(e));
 
-    //prevent white bar in dark theme
+    // prevent white bar in dark theme
     this.state.theme === 'dark' ? document.body.style.backgroundColor = '#141414' : document.body.style.backgroundColor = '#eaf4fd'
+
+    // google analytics
+    ReactGA.initialize('UA-173488988-1');
+    ReactGA.pageview(window.location.pathname + window.location.search);
   }
 
   componentDidUpdate() {
-    //actually change the body
+    // actually change the body
     this.state.theme === 'dark' ? document.body.style.backgroundColor = '#141414' : document.body.style.backgroundColor = '#eaf4fd'
   }
 

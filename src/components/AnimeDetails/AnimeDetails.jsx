@@ -12,6 +12,7 @@ import { Subject } from 'rxjs';
 import { fromFetch } from 'rxjs/fetch';
 import { switchMap } from 'rxjs/operators';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import ReactGA from 'react-ga';
 import './AnimeDetails.scss';
 
 class AnimeDetails extends React.Component {
@@ -32,6 +33,9 @@ class AnimeDetails extends React.Component {
                 switchMap(res => res.json())
             )
             .subscribe(data => this.setState({ animes: data }), e => console.error(e));
+
+        // google analytics
+        ReactGA.pageview(window.location.pathname + window.location.search);
     }
 
     componentWillUnmount() {
