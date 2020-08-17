@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import AnimeBanner from '../AnimeBanner/AnimeBanner';
 import ReactGA from 'react-ga';
+import AdSense from 'react-adsense';
 import './AnimeView.scss';
 
 class AnimeView extends React.Component {
@@ -37,6 +38,15 @@ class AnimeView extends React.Component {
                                 <source src={this.props.location.state?.stream}></source>
                             </video>
                         </Col>
+                    </Row>
+                    <Row>
+                        <AdSense.Google
+                            client='ca-pub-6114628226777879'
+                            slot='7806394673'
+                            style={{ display: 'block' }}
+                            layout='in-article'
+                            format='fluid'
+                        />
                     </Row>
                 </Container>
             </div>
