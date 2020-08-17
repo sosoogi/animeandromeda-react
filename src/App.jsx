@@ -4,9 +4,10 @@ import { BrowserRouter, Route, Switch, } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import TelegramIco from './assets/telegram.svg';
 import ReactGA from 'react-ga';
+import Home from './components/Home/Home';
 import './App.scss';
 
-const Home = React.lazy(() => import('./components/Home/Home'));
+
 const AnimeDetails = React.lazy(() => import('./components/AnimeDetails/AnimeDetails'));
 const AnimeView = React.lazy(() => import('./components/AnimeView/AnimeView'));
 
@@ -76,7 +77,7 @@ class App extends React.Component {
         <BrowserRouter>
           <div className='App'>
             <Switch>
-              <Route exact path='/' component={this.lazyLoadCompoment(Home)}></Route>
+              <Route exact path='/' render={(props) => <Home {...props}></Home>}></Route>
               <Route exact path='/anime/details/:anime' component={this.lazyLoadCompoment(AnimeDetails)} key={Sugar.random(1000)}></Route>
               <Route exact path='/anime/view' component={this.lazyLoadCompoment(AnimeView)}></Route>
             </Switch>

@@ -33,7 +33,6 @@ class Home extends React.Component {
         this.randomSub = new Subject();
         this.refetchSub = new ReplaySubject();
         this.randomButton = new React.createRef()
-
     }
 
     componentDidMount() {
