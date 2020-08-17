@@ -9,10 +9,13 @@ import AnimeBanner from '../AnimeBanner/AnimeBanner';
 import AnimeSearchField from '../AnimeSearchField/AnimeSearchField';
 import AndromedaDark from '../../assets/banner.jpg';
 import AndromedaLight from '../../assets/banner-light.jpg';
+import AndromedaDarkWebp from '../../assets/banner.webp';
+import AndromedaLightWebp from '../../assets/banner-light.webp';
 import { fromEvent, ReplaySubject } from 'rxjs';
 import { fromFetch } from 'rxjs/fetch';
 import { switchMap, debounceTime } from 'rxjs/operators';
 import globals from '../../globals/variables';
+import supportsWebp from '../../globals/functions';
 import './Home.scss';
 
 class Home extends React.Component {
@@ -20,14 +23,22 @@ class Home extends React.Component {
         super(props);
         this.state = {
             random: [],
-            banner: (localStorage.getItem('theme') || 'dark') === 'dark' ? AndromedaDark : AndromedaLight
+            banner: ''
         }
         this.refetchSub = new ReplaySubject();
         this.randomButton = new React.createRef()
     }
 
     componentDidMount() {
-        this.sub = fromEvent(this.randomButton.current, 'click')
+        if (supportsWebp) {
+            (localStorage.getItem('theme') || 'dark') === 'dark' ?
+                this.setState({ banner: AndromedaDarkWebp }) : this.setState({ banner: AndromedaLightWebp })
+        } else {
+            (localStorage.getItem('theme') || 'dark') === 'dark' ?
+                this.setState({ banner: AndromedaDark }) : this.setState({ banner: AndromedaLight })
+        }
+
+        fromEvent(this.randomButton.current, 'click')
             .pipe(
                 debounceTime(125),
             )
@@ -38,6 +49,10 @@ class Home extends React.Component {
                     )
                     .subscribe(data => { this.setState({ random: data }); console.log(data) }, e => console.error(e))
             });
+
+    }
+
+    useEffect() {
 
     }
 

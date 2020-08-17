@@ -16,6 +16,7 @@ class AnimeThumb extends React.Component {
                             height={300}
                             src={this.props.pic || globals.INCONSISTENT_API_IMG}
                             className='flyer'
+                            alt=''
                         />
                         <div className='caption'>{this.props.title || this.props.series.replace(/([a-z])([A-Z0-9])/g, '$1 $2')}</div>
                     </Figure>
