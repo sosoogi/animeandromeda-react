@@ -38,6 +38,18 @@
   cursor: pointer;
 }
 
+.banner-subtitle{
+  position: absolute;
+  @include themed() {
+    color: t($color);
+  }
+  padding-left: 2px;
+  top:15%;
+  text-align: left;
+  z-index: 2;
+  transform: translateY(50%);
+}
+
 @media screen and (max-width: 330px){
   .banner-text{
     font-size: 2em;

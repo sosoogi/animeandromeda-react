@@ -7,7 +7,6 @@ import ReactGA from 'react-ga';
 import Home from './components/Home/Home';
 import './App.scss';
 
-
 const AnimeDetails = React.lazy(() => import('./components/AnimeDetails/AnimeDetails'));
 const AnimeView = React.lazy(() => import('./components/AnimeView/AnimeView'));
 
@@ -17,8 +16,8 @@ class App extends React.Component {
     this.state = {
       theme: localStorage.getItem('theme') || 'dark'
     };
-    this.changeTheme = this.changeTheme.bind(this);
 
+    this.changeTheme = this.changeTheme.bind(this);
   }
 
   componentDidMount() {
@@ -51,10 +50,14 @@ class App extends React.Component {
 
   lazyLoadCompoment(C) {
     return (props) => (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<><br></br><div>Caricamento...</div></>}>
         <C {...props} />
       </Suspense>
     );
+  }
+
+  scrollToTop() {
+    window.scrollTo(0, 0);
   }
 
   navigateHome() {
@@ -79,7 +82,7 @@ class App extends React.Component {
             <Switch>
               <Route exact path='/' render={(props) => <Home {...props}></Home>}></Route>
               <Route exact path='/anime/details/:anime' component={this.lazyLoadCompoment(AnimeDetails)} key={Sugar.random(1000)}></Route>
-              <Route exact path='/anime/view' component={this.lazyLoadCompoment(AnimeView)}></Route>
+              <Route exact path='/anime/view' component={this.lazyLoadCompoment(AnimeView)} onEnter={this.scrollToTop}></Route>
             </Switch>
           </div>
         </BrowserRouter>
@@ -87,14 +90,15 @@ class App extends React.Component {
         <footer className='footer'>
           <div className='container'>
             <span className='text-muted underlined' onClick={this.navigateHome}>AnimeAndromeda</span>
-            <span className='text-muted'>&nbsp;|&nbsp;per qualsiasi informazione o richiesta scrivere al</span>
+            <span className='text-muted'>&nbsp;|&nbsp;per qualsiasi informazione o richiesta scrivere al&nbsp;</span>
             <a href='https://t.me/AnimeAndromeda'>
-              <span className='text-muted'>&nbsp;gruppo Telegram&nbsp;
-                <img alt='telegram' src={TelegramIco} height={18}></img>
-                &nbsp;|
+              <span className='text-muted underlined'>gruppo Telegram
+              </span>
+              <span>
+                &nbsp;<img alt='telegram' src={TelegramIco} height={18}></img>
               </span>
             </a>
-            <span className='text-muted font-weight-light'>&nbsp;this site acts as an index, nothing is stored |&nbsp;</span>
+            <span className='text-muted font-weight-light'>&nbsp;|&nbsp;this site acts as an index, nothing is stored |&nbsp;</span>
             <span className='text-muted font-weight-light underlined' onClick={this.changeTheme}>
               {this.state.theme === 'light' ? 'Passa al tema scuro' : 'Passa al tema chiaro'}
             </span>

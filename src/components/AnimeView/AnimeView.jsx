@@ -38,7 +38,11 @@ class AnimeView extends React.Component {
         return (
             <div>
                 {this.props.location.state ? null : 'Non aprire la pagina in una nuova scheda :/'}
-                <AnimeBanner title={this.props.location.state?.title} pic={this.props.location.state?.banner}></AnimeBanner>
+                <AnimeBanner
+                    title={this.props.location.state?.title}
+                    subtitle={this.props.location.state?.ep}
+                    pic={this.props.location.state?.banner}>
+                </AnimeBanner>
                 <div className='mt-3'></div>
                 <Container className='anime-container shadow rounded bg-dark-as-box w-100'>
                     <Row>
@@ -59,8 +63,8 @@ class AnimeView extends React.Component {
                                 <div className='blocked' style={{ backgroundImage: `url(${globals.BLOCKED_ADS_IMG})` }} />
                             </AdBlockDetect>
                             <AdSense.Google
-                                client='ca-pub-6114628226777879'
-                                slot='7806394673'
+                                client='pub-6114628226777879'
+                                slot='7980124212'
                                 style={{ display: 'block' }}
                                 layout='in-article'
                                 format='fluid'

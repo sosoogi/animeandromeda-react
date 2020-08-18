@@ -30,6 +30,7 @@ class AnimeBanner extends React.Component {
                 <div className='banner' style={{ backgroundImage: `url(${this.props.pic})` }}>
                 </div>
                 <Container>
+                    {this.props.subtitle ? <h6 className='banner-subtitle'>{this.props.subtitle}</h6> : null}
                     {this.props.title ? <h1 onClick={this.goBack} className='banner-title'>{this.truncateIfMobile(this.props.title)}</h1> : null}
                     {this.props.text ? <h1 className='banner-text'>{this.truncateIfMobile(this.props.text)}</h1> : null}
                 </Container>
