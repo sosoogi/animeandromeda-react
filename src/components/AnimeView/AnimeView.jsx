@@ -63,7 +63,7 @@ class AnimeView extends React.Component {
                                 <div className='blocked' style={{ backgroundImage: `url(${globals.BLOCKED_ADS_IMG})` }} />
                             </AdBlockDetect>
                             <AdSense.Google
-                                client='pub-6114628226777879'
+                                client='ca-pub-6114628226777879'
                                 slot='7980124212'
                                 style={{ display: 'block' }}
                                 layout='in-article'
