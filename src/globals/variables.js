@@ -1,4 +1,4 @@
-import rotto from '../assets/rotto.png'
+import rotto from '../assets/rotto.svg'
 import blocked from '../assets/blocked.png'
 
 const globals = {

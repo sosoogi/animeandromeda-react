@@ -40,15 +40,3 @@
 .search-input:focus{
     outline: none;
 }
-
-@media screen and (max-width: 500px) /* Mobile */ {
-    .results{
-        width: 100%;
-    }    
-    .search-container{
-        width: 100%;
-    }
-    .search-input{
-        width: 100%;
-    }
-}

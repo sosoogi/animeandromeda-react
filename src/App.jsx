@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch, } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import TelegramIco from './assets/telegram.svg';
 import ReactGA from 'react-ga';
+import { getLCP } from 'web-vitals';
 import Home from './components/Home/Home';
 import './App.scss';
 
@@ -31,6 +32,8 @@ class App extends React.Component {
       category: 'App',
       action: 'User landed on the site'
     });
+
+    getLCP(this.sendToGoogleAnalytics);
   }
 
   componentDidUpdate() {
@@ -62,6 +65,16 @@ class App extends React.Component {
 
   navigateHome() {
     window.location.pathname = '/';
+  }
+
+  sendToGoogleAnalytics = ({ name, delta, id }) => {
+    ReactGA.event('send', 'event', {
+      category: 'Web Vitals',
+      action: name,
+      value: Math.round(name === 'CLS' ? delta * 1000 : delta),
+      label: id,
+      nonInteraction: true,
+    });
   }
 
   render() {
