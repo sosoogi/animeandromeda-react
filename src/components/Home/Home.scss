@@ -31,3 +31,22 @@
     }
     border-color: rgba(255, 255, 255, 0);
 }
+
+.carozello {
+    object-fit: cover;
+    height:500px;
+    opacity: 0.65;
+}
+
+.mobile-responsive{
+    padding: 0px;
+}
+
+@media screen and (max-width: 600px){
+    .carozello {
+        object-fit: cover;
+        height:250px;
+        opacity: 0.65;
+    }
+  }
+

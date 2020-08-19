@@ -5,6 +5,7 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import TelegramIco from './assets/telegram.svg';
 import ReactGA from 'react-ga';
 import { getLCP } from 'web-vitals';
+import { WebpMachine } from "webp-hero"
 import Home from './components/Home/Home';
 import './App.scss';
 
@@ -33,6 +34,8 @@ class App extends React.Component {
       action: 'User landed on the site'
     });
 
+    const webpMachine = new WebpMachine();
+    webpMachine.polyfillDocument();
     getLCP(this.sendToGoogleAnalytics);
   }
 
@@ -67,7 +70,7 @@ class App extends React.Component {
     window.location.pathname = '/';
   }
 
-  sendToGoogleAnalytics = ({ name, delta, id }) => {
+  sendToGoogleAnalytics({ name, delta, id }) {
     ReactGA.event('send', 'event', {
       category: 'Web Vitals',
       action: name,
