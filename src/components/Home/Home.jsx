@@ -10,8 +10,6 @@ import AnimeBanner from '../AnimeBanner/AnimeBanner';
 import AnimeSearchField from '../AnimeSearchField/AnimeSearchField';
 import AndromedaDark from '../../assets/banner.webp';
 import AndromedaLight from '../../assets/banner-light.webp';
-// import AndromedaDarkWebp from '../../assets/banner.webp';
-// import AndromedaLightWebp from '../../assets/banner-light.webp';
 import { Link } from 'react-router-dom';
 import { fromEvent, ReplaySubject } from 'rxjs';
 import { switchMap, debounceTime } from 'rxjs/operators';
