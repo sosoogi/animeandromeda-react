@@ -35,7 +35,7 @@
 .carozello {
     object-fit: cover;
     height:500px;
-    opacity: 0.65;
+    opacity: 0.68;
 }
 
 .mobile-responsive{
@@ -46,7 +46,13 @@
     .carozello {
         object-fit: cover;
         height:317px;
-        opacity: 0.65;
+        opacity: 0.68;
     }
   }
 
+div.carousel-opactiy {
+    background: rgba(39,62,84,0.82);
+    overflow: hidden;
+    height: 100%;
+    z-index: 2;
+}

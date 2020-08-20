@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import globals from '../../globals/variables'
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Spinner from 'react-bootstrap/Spinner';
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 import { Link } from 'react-router-dom';
 import AnimeBanner from '../AnimeBanner/AnimeBanner';
 import Pagination from '../Pagination/Pagination';
@@ -61,6 +63,26 @@ class AnimeDetails extends React.Component {
         const paginate = pageNum => this.setState({ currentPage: pageNum });
         const nextPage = () => this.setState({ currentPage: currentPage + 1 });
         const prevPage = () => this.setState({ currentPage: currentPage - 1 });
+        const alternateStreaming = [];
+
+        const episodes = animes.map(x => x.ep);
+        let hasAlternate = false;
+
+        if ((new Set(episodes)).size !== episodes.length) {
+            hasAlternate = true;
+        }
+
+        if (hasAlternate) {
+            animes.forEach((x, idx) => {
+                if (idx % 2 !== 0) {
+                    alternateStreaming.push(x)
+                }
+            });
+            for (let i = 0; i < currentAnimes.length; i++) {
+                currentAnimes.splice(i + 1, 1);
+            }
+        }
+        console.log(alternateStreaming)
 
         return (
             <div className='View'>
@@ -114,26 +136,81 @@ class AnimeDetails extends React.Component {
                 </Container>
                 <div className='mt-3'></div>
                 <Container className={this.state.animes?.length > 0 ? 'anime-container p-3 shadow rounded' : null}>
-                    <Row>
-                        {currentAnimes.map((x, idx) => (
-                            <Col xs={6} md={4} lg={2} key={idx}>
-                                <Link key={idx} to={
-                                    {
-                                        pathname: '/anime/view', state: {
-                                            stream: x.url,
-                                            banner: this.state.animes[0]?.thumb,
-                                            title: this.state.animes[0]?.title,
-                                            ep: 'Episodio ' + (x.ep.toLowerCase().split('ep').slice(-1).pop().split('_')[1])
-                                        }
-                                    }
-                                }>
-                                    <Button className='button-ep' key={idx}>
-                                        {'Episodio ' + (x.ep.toLowerCase().split('ep').slice(-1).pop().split('_')[1])}
-                                    </Button>
-                                </Link>
+                    {alternateStreaming?.length > 0 ?
+                        <Row>
+                            <Col>
+                                <Tabs variant='pills' defaultActiveKey='default' className='streaming-tabs'>
+                                    <Tab eventKey='default' title='Streaming 1'>
+                                        <div className='spacer-s'></div>
+                                        <Row>
+                                            {currentAnimes.map((x, idx) => (
+                                                <Col xs={6} md={4} lg={2} key={idx}>
+                                                    <Link key={idx} to={
+                                                        {
+                                                            pathname: '/anime/view', state: {
+                                                                stream: x.url,
+                                                                banner: this.state.animes[0]?.thumb,
+                                                                title: this.state.animes[0]?.title,
+                                                                ep: 'Episodio ' + (x.ep.toLowerCase().split('ep').slice(-1).pop().split('_')[1])
+                                                            }
+                                                        }
+                                                    }>
+                                                        <Button className='button-ep' key={idx}>
+                                                            {'Episodio ' + (x.ep.toLowerCase().split('ep').slice(-1).pop().split('_')[1])}
+                                                        </Button>
+                                                    </Link>
+                                                </Col>
+                                            ))}
+                                        </Row>
+                                    </Tab>
+                                    <Tab eventKey='alternate' title='Streaming 2' className='tabs-streaming'>
+                                        <div className='spacer-s'></div>
+                                        <Row>
+                                            {alternateStreaming.map((x, idx) => (
+                                                <Col xs={6} md={4} lg={2} key={idx}>
+                                                    <Link key={idx} to={
+                                                        {
+                                                            pathname: '/anime/view', state: {
+                                                                stream: x.url,
+                                                                banner: this.state.animes[0]?.thumb,
+                                                                title: this.state.animes[0]?.title,
+                                                                ep: 'Episodio ' + (x.ep.toLowerCase().split('ep').slice(-1).pop().split('_')[1])
+                                                            }
+                                                        }
+                                                    }>
+                                                        <Button className='button-ep' key={idx}>
+                                                            {'Episodio ' + (x.ep.toLowerCase().split('ep').slice(-1).pop().split('_')[1])}
+                                                        </Button>
+                                                    </Link>
+                                                </Col>
+                                            ))}
+                                        </Row>
+                                    </Tab>
+                                </Tabs>
                             </Col>
-                        ))}
-                    </Row>
+                        </Row> :
+
+                        <Row>
+                            {currentAnimes.map((x, idx) => (
+                                <Col xs={6} md={4} lg={2} key={idx}>
+                                    <Link key={idx} to={
+                                        {
+                                            pathname: '/anime/view', state: {
+                                                stream: x.url,
+                                                banner: this.state.animes[0]?.thumb,
+                                                title: this.state.animes[0]?.title,
+                                                ep: 'Episodio ' + (x.ep.toLowerCase().split('ep').slice(-1).pop().split('_')[1])
+                                            }
+                                        }
+                                    }>
+                                        <Button className='button-ep' key={idx}>
+                                            {'Episodio ' + (x.ep.toLowerCase().split('ep').slice(-1).pop().split('_')[1])}
+                                        </Button>
+                                    </Link>
+                                </Col>
+                            ))}
+                        </Row>
+                    }
                     <div className='mt-3'></div>
                     {this.state.animes?.length > 0 ?
                         <Row>

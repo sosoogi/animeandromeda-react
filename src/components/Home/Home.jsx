@@ -89,17 +89,19 @@ class Home extends React.Component {
                         <Carousel>
                             {this.state.airing?.map((x, idx) => (
                                 <Carousel.Item key={idx}>
-                                    <img
-                                        className='d-block w-100 carozello'
-                                        src={x.thumb}
-                                        alt={x._id.series}
-                                    />
-                                    <Link to={'/anime/details/' + x._id.series}>
-                                        <Carousel.Caption className='shadowed'>
-                                            <h3>{x.pretty}</h3>
-                                            <p>{'Episodio ' + x.count}</p>
-                                        </Carousel.Caption>
-                                    </Link>
+                                    <div className='carousel-opactiy'>
+                                        <img
+                                            className='d-block w-100 carozello'
+                                            src={x.thumb}
+                                            alt={x._id.series}
+                                        />
+                                        <Link to={'/anime/details/' + x._id.series}>
+                                            <Carousel.Caption>
+                                                <h3>{x.pretty}</h3>
+                                                <p>{'Episodio ' + x.count}</p>
+                                            </Carousel.Caption>
+                                        </Link>
+                                    </div>
                                 </Carousel.Item>))}
                         </Carousel> :
                         <Spinner animation="grow" className='loader-themed' />

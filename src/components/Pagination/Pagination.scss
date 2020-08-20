@@ -16,7 +16,7 @@
         color: t($color);
         background-color: t($button-bg);
     }
-    border-color: rgba(0, 0, 0, 0.418);
+    border: 0px;
 }
 
 
@@ -25,6 +25,7 @@
         color: t($color);
         background-color: t($pagination);
     }
+    border: 0px;
     
 }
 
@@ -33,7 +34,7 @@
         color: t($color);
         background-color: t($button-bg);
     }
-    border-color: rgba(0, 0, 0, 0.418);
+    border: 0px;
 }
 
 .page-link:active{
@@ -41,5 +42,5 @@
         color: t($color);
         background-color: t($button-bg);
     }
-    border-color: rgba(0, 0, 0, 0.418);
+    border: 0px;
 }

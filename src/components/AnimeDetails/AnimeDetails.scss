@@ -49,3 +49,21 @@
     text-align: left;
     margin-top: 10px; 
 }
+
+/* Active tab */
+.streaming-tabs  > a,
+.streaming-tabs  > a:hover,
+.streaming-tabs  > a:focus {
+    @include themed() {
+        color: t($color);
+    }
+}
+
+.streaming-tabs>a.active{
+    @include themed() {
+        color: t($color);
+        background-color: rgba(0, 0, 0, 0);
+        text-decoration: underline;
+        border-color: rgba(0, 0, 0, 0.418);
+    }
+}
