@@ -199,12 +199,12 @@ class AnimeDetails extends React.Component {
                                                 stream: x.url,
                                                 banner: this.state.animes[0]?.thumb,
                                                 title: this.state.animes[0]?.title,
-                                                ep: 'Episodio ' + (x.ep.toLowerCase().split('ep').slice(-1).pop().split('_')[1])
+                                                ep: 'Episodio ' + (x.ep.toLowerCase().split('ep').slice(-1).pop().split('_')[1] || x.ep)
                                             }
                                         }
                                     }>
                                         <Button className='button-ep' key={idx}>
-                                            {'Episodio ' + (x.ep.toLowerCase().split('ep').slice(-1).pop().split('_')[1])}
+                                            {'Episodio ' + (x.ep.toLowerCase().split('ep').slice(-1).pop().split('_')[1] || x.ep)}
                                         </Button>
                                     </Link>
                                 </Col>
