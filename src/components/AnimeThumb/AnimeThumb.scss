@@ -19,9 +19,26 @@
 }
 
 .flyer {
+    object-fit: cover;
+    height:230px;   
     bottom: 0;
 }
 
 .flyer-spacer{
     margin-top: 20px;
 }
+@media screen and (min-width: 800px) and (max-width: 1200px){
+    .flyer {
+        object-fit: cover;
+        height:200px;   
+        bottom: 0;
+    }
+  }
+
+@media screen and (min-width: 400px) and (max-width: 700px){
+    .flyer {
+        object-fit: cover;
+        height:280px;   
+        bottom: 0;
+    }
+  }

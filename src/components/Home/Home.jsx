@@ -127,7 +127,7 @@ class Home extends React.Component {
                     </Row>
                     <Row>
                         {this.state.latest?.map((anime, idx) => (
-                            <Col xs={6} md={3} lg={2} key={idx}>
+                            <Col xs={6} md={3} lg={2} key={idx} className='mobile-responsive-col'>
                                 <AnimeThumb
                                     series={anime._id.series}
                                     pic={anime.pic}
@@ -159,7 +159,7 @@ class Home extends React.Component {
                     </Row>
                     <Row>
                         {this.state.airing?.map((anime, idx) => (
-                            <Col xs={6} md={3} lg={2} key={idx}>
+                            <Col xs={6} md={3} lg={2} key={idx} className='mobile-responsive-col'>
                                 <AnimeThumb
                                     series={anime._id.series}
                                     pic={anime.pic}
@@ -192,7 +192,7 @@ class Home extends React.Component {
                     <Row>
                         {
                             this.state.random.map((anime, idx) => (
-                                <Col xs={6} md={3} lg={2} key={idx}>
+                                <Col xs={6} md={3} lg={2} key={idx} className='mobile-responsive-col'>
                                     <AnimeThumb
                                         series={anime.series}
                                         pic={anime.pic}
