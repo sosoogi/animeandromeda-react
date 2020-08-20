@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import globals from '../../globals/variables'
@@ -113,7 +113,7 @@ class AnimeDetails extends React.Component {
                     className={this.state.animes?.length > 0 ? 'anime-container shadow rounded bg-dark-as-box mb-3 p-3 w-100' : null}>
                     <Row>
                         <Col xs={6} md={4} lg={3}>
-                            <img alt={this.state.animes[0]?.series} className='series-pic' src={this.state.animes[0]?.pic}></img>
+                            <img alt='' className='series-pic' src={this.state.animes[0]?.pic}></img>
                         </Col>
                     </Row>
                     <Row>
