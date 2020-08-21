@@ -82,7 +82,6 @@ class AnimeDetails extends React.Component {
                 currentAnimes.splice(i + 1, 1);
             }
         }
-        console.log(alternateStreaming)
 
         return (
             <div className='View'>

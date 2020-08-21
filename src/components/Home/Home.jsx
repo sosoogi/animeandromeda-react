@@ -3,14 +3,13 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
-import Carousel from 'react-bootstrap/Carousel';
 import Container from 'react-bootstrap/Container';
 import AnimeThumb from '../AnimeThumb/AnimeThumb';
 import AnimeBanner from '../AnimeBanner/AnimeBanner';
+import AnimeCarousel from '../AnimeCarousel/AnimeCarousel';
 import AnimeSearchField from '../AnimeSearchField/AnimeSearchField';
 import AndromedaDark from '../../assets/banner.webp';
 import AndromedaLight from '../../assets/banner-light.webp';
-import { Link } from 'react-router-dom';
 import { fromEvent, ReplaySubject } from 'rxjs';
 import { switchMap, debounceTime } from 'rxjs/operators';
 import { Subject } from 'rxjs';
@@ -86,25 +85,7 @@ class Home extends React.Component {
                 <AnimeSearchField className='container shadow rounded bg-dark-as-box mb-3 p-3 w-100'></AnimeSearchField>
                 <Container className='anime-container shadow rounded mobile-responsive'>
                     {this.state.airing?.length > 0 ?
-                        <Carousel>
-                            {this.state.airing?.map((x, idx) => (
-                                <Carousel.Item key={idx}>
-                                    <div className='carousel-opactiy'>
-                                        <img
-                                            className='d-block w-100 carozello'
-                                            src={x.thumb}
-                                            alt={x._id.series}
-                                        />
-                                        <Link to={'/anime/details/' + x._id.series}>
-                                            <Carousel.Caption>
-                                                <h3>{x.pretty}</h3>
-                                                <p>{'Episodio ' + x.count}</p>
-                                            </Carousel.Caption>
-                                        </Link>
-                                    </div>
-                                </Carousel.Item>))}
-                        </Carousel> :
-                        <Spinner animation="grow" className='loader-themed' />
+                        <AnimeCarousel /> : <Spinner animation="grow" className='loader-themed' />
                     }
                 </Container>
                 <div className='mt-3'></div>

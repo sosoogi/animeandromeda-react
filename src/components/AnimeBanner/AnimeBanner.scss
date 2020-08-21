@@ -17,13 +17,12 @@
 
 .banner-text{
   position: absolute;
-  @include themed() {
-    color: t($color);
-  }
+  color:white;
   top:15%;
   text-align: left;
   z-index: 2;
   transform: translateY(50%);
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.575);
 }
 
 .banner-title{
@@ -35,6 +34,7 @@
   text-align: left;
   z-index: 2;
   transform: translateY(50%);
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.575);
   cursor: pointer;
 }
 
@@ -48,6 +48,7 @@
   text-align: left;
   z-index: 2;
   transform: translateY(50%);
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.575);
 }
 
 @media screen and (max-width: 330px){
