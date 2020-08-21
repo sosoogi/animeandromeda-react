@@ -50,12 +50,12 @@ class AnimeSearchField extends React.Component {
                             <div className='results'>
                                 <Container>
                                     <Row>
-                                        <Col xs={3} md={3} lg={3}>
+                                        <Col xs={4} md={3} lg={3}>
                                             <div>
                                                 <img alt={anime.redundant} className='spacer-left' width={96} src={anime.pic}></img>
                                             </div>
                                         </Col>
-                                        <Col xs={9} md={9} lg={9}>
+                                        <Col xs={8} md={9} lg={9}>
                                             <div className='pt-4 font-weight-bold'>{anime.title}</div>
                                             <div>episodi:&nbsp;{anime.count}</div>
                                         </Col>
