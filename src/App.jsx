@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { Number as Sugar } from 'sugar';
+import { shrinkLocalStorage } from './globals/functions';
 import { BrowserRouter, Route, Switch, } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import TelegramIco from './assets/telegram.svg';
@@ -25,7 +25,7 @@ class App extends React.Component {
   componentDidMount() {
     // prevent white bar in dark theme
     this.state.theme === 'dark' ? document.body.style.backgroundColor = '#141414' : document.body.style.backgroundColor = '#eaf4fd'
-
+    shrinkLocalStorage();
     // google analytics
     ReactGA.initialize('UA-173488988-1');
     ReactGA.pageview(window.location.pathname + window.location.search);
@@ -97,7 +97,7 @@ class App extends React.Component {
           <div className='App'>
             <Switch>
               <Route exact path='/' render={(props) => <Home {...props}></Home>}></Route>
-              <Route exact path='/anime/details/:anime' component={this.lazyLoadCompoment(AnimeDetails)} key={Sugar.random(1000)}></Route>
+              <Route exact path='/anime/details/:anime' component={this.lazyLoadCompoment(AnimeDetails)}></Route>
               <Route exact path='/anime/view' component={this.lazyLoadCompoment(AnimeView)} onEnter={this.scrollToTop}></Route>
             </Switch>
           </div>

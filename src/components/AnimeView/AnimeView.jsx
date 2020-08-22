@@ -5,16 +5,22 @@ import Container from 'react-bootstrap/Container';
 import AnimeBanner from '../AnimeBanner/AnimeBanner';
 import AdBlockDetect from 'react-ad-block-detect';
 import ReactGA from 'react-ga';
-import AdSense from 'react-adsense';
+// import AdSense from 'react-adsense';
 import globals from '../../globals/variables';
+import crypto from 'crypto';
 import './AnimeView.scss';
 import { Button } from 'react-bootstrap';
 
 class AnimeView extends React.Component {
-
     constructor(props) {
         super(props);
         this.goBack = this.goBack.bind(this);
+        this.state = {
+            tick: 0
+        }
+        this.videoRef = React.createRef();
+        this.updateTick = this.updateTick.bind(this);
+        this.updateTickOnPlay = this.updateTickOnPlay.bind(this);
     }
 
     componentDidMount() {
@@ -24,6 +30,63 @@ class AnimeView extends React.Component {
             category: 'Anime',
             action: 'User started streaming ' + this.props.location.state?.title
         });
+
+        this.checkSeries(this.props.location.state?.stream);
+    }
+
+    checkSeries(url) {
+        const hashedUrl = this.createMD5(url);
+        if (localStorage.getItem('video-' + hashedUrl)) {
+            const lsdata = localStorage.getItem('video-' + hashedUrl).split(';');
+            const series = lsdata[0]
+            const tick = Number(lsdata[1]);
+
+            if (series === hashedUrl) {
+                this.setState({ tick: tick });
+            }
+        } else {
+            localStorage.setItem(
+                'video-' + hashedUrl,
+                hashedUrl
+                + ';' +
+                this.state.tick);
+        }
+    }
+
+    updateTick() {
+        const hashedUrl = this.createMD5(this.props.location.state?.stream);
+        localStorage.setItem(
+            'video-' + hashedUrl,
+            hashedUrl
+            + ';' +
+            this.videoRef.current.currentTime);
+        this.setState({ tick: Number(this.videoRef.current.currentTime) });
+        console.log(localStorage.getItem('video-' + hashedUrl))
+    }
+
+    updateTickOnPlay() {
+        const hashedUrl = this.createMD5(this.props.location.state?.stream);
+        const updateTick = () => {
+            this.setState({ tick: this.videoRef.current?.currentTime });
+            localStorage.setItem(
+                'video-' + hashedUrl,
+                hashedUrl
+                + ';' +
+                this.state.tick);
+        }
+        updateTick();
+        const interval = setInterval(() => updateTick(), 15000);
+        return () => {
+            clearInterval(interval);
+        }
+    }
+
+    createMD5(data) {
+        const salt = crypto
+            .createHmac('md5', data)
+            .update('per favore')
+            .digest('hex')
+        return salt;
     }
 
     componentDidUpdate() {
@@ -50,8 +113,13 @@ class AnimeView extends React.Component {
                             className='anime-video'
                             controls
                             controlsList='nodownload'
-                            autoPlay>
-                            <source src={this.props.location.state?.stream}></source>
+                            autoPlay
+                            onSeeked={this.updateTick}
+                            onPause={this.updateTick}
+                            onPlay={this.updateTickOnPlay}
+                            ref={this.videoRef}
+                        >
+                            <source src={this.props.location.state?.stream + '#t=' + this.state.tick}></source>
                         </video>
                     </Row>
                 </Container>
@@ -62,13 +130,13 @@ class AnimeView extends React.Component {
                             <AdBlockDetect>
                                 <div className='blocked' style={{ backgroundImage: `url(${globals.BLOCKED_ADS_IMG})` }} />
                             </AdBlockDetect>
-                            <AdSense.Google
+                            {/* <AdSense.Google
                                 client='ca-pub-6114628226777879'
                                 slot='7980124212'
                                 style={{ display: 'block' }}
                                 layout='in-article'
                                 format='fluid'
-                            />
+                            /> */}
                         </Col>
                     </Row>
                     <Row>
