@@ -61,7 +61,6 @@ class AnimeView extends React.Component {
             + ';' +
             this.videoRef.current.currentTime);
         this.setState({ tick: Number(this.videoRef.current.currentTime) });
-        console.log(localStorage.getItem('video-' + hashedUrl))
     }
 
     updateTickOnPlay() {
