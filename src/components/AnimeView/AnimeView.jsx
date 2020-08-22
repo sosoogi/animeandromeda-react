@@ -24,6 +24,7 @@ class AnimeView extends React.Component {
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0);
         // google analytics
         ReactGA.pageview(window.location.pathname + window.location.search);
         ReactGA.event({
@@ -86,10 +87,6 @@ class AnimeView extends React.Component {
             .update('per favore')
             .digest('hex')
         return salt;
-    }
-
-    componentDidUpdate() {
-        window.scrollTo(0, 0);
     }
 
     goBack() {
