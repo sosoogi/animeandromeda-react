@@ -53,13 +53,9 @@ class Home extends React.Component {
             )
             .subscribe(data => this.setState({ random: data }), e => console.error(e));
 
-        (localStorage.getItem('theme') || 'dark') === 'dark' ?
-            this.setState({ banner: AndromedaDark }) :
-            this.setState({ banner: AndromedaLight })
-
         fromEvent(this.randomButton.current, 'click')
             .pipe(
-                debounceTime(175),
+                debounceTime(250),
             )
             .subscribe(() => {
                 fromFetch(globals.API_URL + 'anime/random/')
@@ -69,6 +65,9 @@ class Home extends React.Component {
                     .subscribe(data => this.setState({ random: data }), e => console.error(e))
             });
 
+        (localStorage.getItem('theme') || 'dark') === 'dark' ?
+            this.setState({ banner: AndromedaDark }) :
+            this.setState({ banner: AndromedaLight })
     }
 
     componentWillUnmount() {

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Pagination.scss';
 
-export class Pagination extends React.Component {
+export class Pagination extends React.PureComponent {
     render() {
         const { episodesPerPage, totalEpisodes, paginate, nextPage, prevPage, currentPage } = this.props;
         const pageNumbers = [];

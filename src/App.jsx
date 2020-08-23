@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch, } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import TelegramIco from './assets/telegram.svg';
 import ReactGA from 'react-ga';
-import { getLCP } from 'web-vitals';
+import { getCLS, getFID, getLCP } from 'web-vitals';
 import { WebpMachine } from "webp-hero"
 import Home from './components/Home/Home';
 import './App.scss';
@@ -25,7 +25,6 @@ class App extends React.Component {
   componentDidMount() {
     // prevent white bar in dark theme
     this.state.theme === 'dark' ? document.body.style.backgroundColor = '#141414' : document.body.style.backgroundColor = '#eaf4fd'
-    shrinkLocalStorage();
     // google analytics
     ReactGA.initialize('UA-173488988-1');
     ReactGA.pageview(window.location.pathname + window.location.search);
@@ -34,9 +33,14 @@ class App extends React.Component {
       action: 'User landed on the site'
     });
 
+    getLCP(this.sendToGoogleAnalytics);
+    getCLS(this.sendToGoogleAnalytics);
+    getFID(this.sendToGoogleAnalytics);
+
+    // webp polyfill
     const webpMachine = new WebpMachine();
     webpMachine.polyfillDocument();
-    getLCP(this.sendToGoogleAnalytics);
+    shrinkLocalStorage();
   }
 
   componentDidUpdate() {
@@ -70,7 +74,7 @@ class App extends React.Component {
     window.location.pathname = '/';
   }
 
-  sendToGoogleAnalytics({ name, delta, id }) {
+  async sendToGoogleAnalytics({ name, delta, id }) {
     ReactGA.event('send', 'event', {
       category: 'Web Vitals',
       action: name,

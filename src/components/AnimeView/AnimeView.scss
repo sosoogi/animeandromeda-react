@@ -37,3 +37,7 @@
     }
     border-color: rgba(255, 255, 255, 0);
 }
+
+video::-webkit-media-controls-panel {
+    background-image: linear-gradient(transparent, transparent) !important; 
+  }

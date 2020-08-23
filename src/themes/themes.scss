@@ -27,6 +27,7 @@ $themes: (
         loader: $loader--light,
         box-shadow:$box-shadow--light,
     ),
+  /*
     amoled: (
       body-bg: $body-bg--amoled,
       overlay: $overlay--amoled,
@@ -39,6 +40,7 @@ $themes: (
       button-bg-hover: $button-bg-hover--amoled,
       loader: $loader--amoled
   ),
+  */
 );
 
 @mixin themed() {
