@@ -1,4 +1,4 @@
-FROM node:14 as react-build
+FROM node:12 as react-build
 WORKDIR /usr/app
 COPY . ./
 RUN yarn

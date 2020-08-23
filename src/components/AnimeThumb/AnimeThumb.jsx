@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import globals from '../../globals/variables';
 import './AnimeThumb.scss';
 
-class AnimeThumb extends React.Component {
+class AnimeThumb extends React.PureComponent {
 
     render() {
         return (
