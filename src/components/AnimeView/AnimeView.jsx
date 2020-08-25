@@ -5,7 +5,6 @@ import Container from 'react-bootstrap/Container';
 import AnimeBanner from '../AnimeBanner/AnimeBanner';
 import AdBlockDetect from 'react-ad-block-detect';
 import ReactGA from 'react-ga';
-// import AdSense from 'react-adsense';
 import globals from '../../globals/variables';
 import crypto from 'crypto';
 import './AnimeView.scss';
@@ -126,13 +125,6 @@ class AnimeView extends React.Component {
                             <AdBlockDetect>
                                 <div className='blocked' style={{ backgroundImage: `url(${globals.BLOCKED_ADS_IMG})` }} />
                             </AdBlockDetect>
-                            {/* <AdSense.Google
-                                client='ca-pub-6114628226777879'
-                                slot='7980124212'
-                                style={{ display: 'block' }}
-                                layout='in-article'
-                                format='fluid'
-                            /> */}
                         </Col>
                     </Row>
                     <Row>
