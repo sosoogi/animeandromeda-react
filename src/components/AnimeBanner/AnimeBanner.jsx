@@ -4,40 +4,36 @@ import { String as Sugar } from 'sugar';
 import globals from '../../globals/variables';
 import './AnimeBanner.scss';
 
-class AnimeBanner extends React.Component {
-
-    truncateIfMobile(prop) {
-        if (window.innerWidth <= globals.MOBILE_MAX_WIDTH) {
-            if (prop.length > 28) {
-                return Sugar.truncate(prop, 28, '...')
-            }
-            return prop;
+const truncateIfMobile = (prop) => {
+    if (window.innerWidth <= globals.MOBILE_MAX_WIDTH) {
+        if (prop.length > 28) {
+            return Sugar.truncate(prop, 28, '...')
         }
         return prop;
     }
+    return prop;
+}
 
-    goBack() {
-        if (window.history.length > 0) {
-            window.history.back();
-            return;
-        }
-        window.location.pathname = '/';
+const goBack = () => {
+    if (window.history.length > 0) {
+        window.history.back();
+        return;
     }
+    window.location.pathname = '/';
+}
 
-    render() {
-        return (
-            <div>
-                <div className='banner' style={{ backgroundImage: `url(${this.props.pic})` }}>
-                </div>
-                <Container>
-                    {this.props.subtitle ? <h6 className='banner-subtitle'>{this.props.subtitle}</h6> : null}
-                    {this.props.title ? <h1 onClick={this.goBack} className='banner-title'>{this.truncateIfMobile(this.props.title)}</h1> : null}
-                    {this.props.text ? <h1 className='banner-text'>{this.truncateIfMobile(this.props.text)}</h1> : null}
-                </Container>
+const AnimeBanner = (props) => {
+    return (
+        <div>
+            <div className='banner' style={{ backgroundImage: `url(${props.pic})` }}>
             </div>
-        );
-    }
-
+            <Container>
+                {props.subtitle ? <h6 className='banner-subtitle'>{props.subtitle}</h6> : null}
+                {props.title ? <h1 onClick={goBack} className='banner-title'>{truncateIfMobile(props.title)}</h1> : null}
+                {props.text ? <h1 className='banner-text'>{truncateIfMobile(props.text)}</h1> : null}
+            </Container>
+        </div>
+    );
 }
 
 export default AnimeBanner;
