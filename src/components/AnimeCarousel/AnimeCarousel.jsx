@@ -38,7 +38,7 @@ class AnimeCarousel extends React.Component {
     }
 
     handleImageLoaded() {
-        this.setState(state => ({ ready: !state.ready }));
+        this.setState({ ready: true });
     }
 
     render() {

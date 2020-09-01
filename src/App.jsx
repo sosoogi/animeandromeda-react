@@ -24,7 +24,7 @@ class App extends React.Component {
 
   componentDidMount() {
     // prevent white bar in dark theme
-    this.state.theme === 'dark' ? document.body.style.backgroundColor = '#141414' : document.body.style.backgroundColor = '#eaf4fd'
+    this.state.theme === 'dark' ? document.body.style.backgroundColor = '#0A1621' : document.body.style.backgroundColor = '#eaf4fd'
     // google analytics
     ReactGA.initialize('UA-173488988-1');
     ReactGA.pageview(window.location.pathname + window.location.search);
@@ -45,7 +45,7 @@ class App extends React.Component {
 
   componentDidUpdate() {
     // actually change the body
-    this.state.theme === 'dark' ? document.body.style.backgroundColor = '#141414' : document.body.style.backgroundColor = '#eaf4fd'
+    this.state.theme === 'dark' ? document.body.style.backgroundColor = '#0A1621' : document.body.style.backgroundColor = '#eaf4fd'
   }
 
   changeTheme() {

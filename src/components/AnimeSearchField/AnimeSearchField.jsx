@@ -2,10 +2,10 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-// import Spinner from 'react-bootstrap/Spinner';
 import globals from '../../globals/variables';
 import { Subject, fromEvent } from 'rxjs';
-import { debounceTime, map, distinctUntilChanged } from 'rxjs/operators'
+import { fromFetch } from 'rxjs/fetch'
+import { debounceTime, map, switchMap, distinctUntilChanged } from 'rxjs/operators'
 import { Link } from 'react-router-dom';
 import './AnimeSearchField.scss';
 
@@ -27,12 +27,11 @@ class AnimeSearchField extends React.Component {
             debounceTime(500),
             distinctUntilChanged()
         ).subscribe(res => {
-            fetch(globals.API_URL + 'anime/search/' + res)
-                .then(res => res.json())
-                .then(data => {
-                    this.setState({ json: data });
-                })
-                .catch(console.error);
+            fromFetch(globals.API_URL + 'anime/search/' + res)
+                .pipe(
+                    switchMap(res => res.json()),
+                )
+                .subscribe(data => this.setState({ json: data }), e => console.error(e))
         });
     }
 
