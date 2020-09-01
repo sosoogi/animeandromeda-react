@@ -2,8 +2,9 @@ import rotto from '../assets/rotto.svg'
 import blocked from '../assets/blocked.png'
 
 const globals = {
-    API_URL_FALLBACK: 'https://api.animeandromeda.net/api/',
-    API_URL: 'https://animeandromeda-api-fallback.herokuapp.com/api/',
+    API_URL: 'https://animeandromeda-py.herokuapp.com/api/v2/',
+    API_URL_FALLBACK: 'https://api.animeandromeda.net/api/v2/',
+    API_URL_FALLBACK2: 'https://animeandromeda-api-fallback.herokuapp.com/api/',
     INCONSISTENT_API_IMG: rotto,
     BLOCKED_ADS_IMG: blocked,
     MOBILE_MAX_WIDTH: 420,

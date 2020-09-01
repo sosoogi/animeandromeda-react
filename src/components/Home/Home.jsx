@@ -35,7 +35,7 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
-        this.latestSub = fromFetch(globals.API_URL + 'anime/latest/')
+        this.latestSub = fromFetch(globals.API_URL + 'anime/latest')
             .pipe(
                 switchMap(res => res.json())
             )
@@ -47,7 +47,7 @@ class Home extends React.Component {
             )
             .subscribe(data => this.setState({ airing: data }), e => console.error(e));
 
-        this.randomSub = fromFetch(globals.API_URL + 'anime/random/')
+        this.randomSub = fromFetch(globals.API_URL + 'anime/random')
             .pipe(
                 switchMap(res => res.json())
             )
@@ -58,7 +58,7 @@ class Home extends React.Component {
                 debounceTime(250),
             )
             .subscribe(() => {
-                fromFetch(globals.API_URL + 'anime/random/')
+                fromFetch(globals.API_URL + 'anime/random')
                     .pipe(
                         switchMap(res => res.json()),
                     )
