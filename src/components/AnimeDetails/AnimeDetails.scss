@@ -61,7 +61,7 @@
 
 .streaming-tabs>a.active{
     @include themed() {
-        color: t($color);
+        color: t($button-bg-hover);
         background-color: rgba(0, 0, 0, 0);
         text-decoration: underline;
         border-color: rgba(0, 0, 0, 0.418);

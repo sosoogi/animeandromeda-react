@@ -65,7 +65,14 @@ class AnimeDetails extends React.Component {
         const prevPage = () => this.setState({ currentPage: currentPage - 1 });
         const alternateStreaming = [];
 
-        const episodes = animes.map(x => x.ep);
+        const _episodes = animes.map(x => Number(x.ep));
+        const episodes = [];
+        _episodes.forEach(ep => {
+            if (ep) {
+                episodes.push(ep)
+            }
+        })
+
         let hasAlternate = false;
 
         if ((new Set(episodes)).size !== episodes.length) {
