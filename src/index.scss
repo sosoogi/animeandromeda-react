@@ -2,11 +2,11 @@
 @import '~bootstrap/scss/bootstrap-grid';
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/mixins/breakpoints';
-@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Overpass&display=swap');
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Mulish', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Overpass', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

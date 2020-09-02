@@ -11,8 +11,8 @@
     position: absolute;
     z-index: 50;
     min-height: 57px;
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
 }
 
 .flyer-container{
@@ -24,7 +24,7 @@
     object-fit: cover;
     height:230px;   
     bottom: 0;
-    border-radius: 0.5rem;
+    border-radius: 0.5em;
 }
 
 .flyer-spacer{
