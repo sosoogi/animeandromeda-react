@@ -186,8 +186,8 @@ class Home extends React.Component {
                     <Row>
                         <Col>
                             {this.state.random.length > 0 ?
-                                <Button ref={this.randomButton} className='button-random'>Randomizza</Button> :
-                                <Button ref={this.randomButton} style={{ display: 'none' }} className='button-random'>Randomizza</Button>
+                                <Button ref={this.randomButton} className='button-random'>Random</Button> :
+                                <Button ref={this.randomButton} style={{ display: 'none' }} className='button-random'>Random</Button>
                             }
                         </Col>
                     </Row>
