@@ -60,20 +60,21 @@ class AnimeDetails extends React.Component {
         const indexOfLastPost = currentPage * episodesPerPage;
         const indexOfFirstPost = indexOfLastPost - episodesPerPage;
         const currentAnimes = animes.slice(indexOfFirstPost, indexOfLastPost);
-        const paginate = pageNum => this.setState({ currentPage: pageNum });
+
+        const paginate = (pageNum) => this.setState({ currentPage: pageNum });
         const nextPage = () => this.setState({ currentPage: currentPage + 1 });
         const prevPage = () => this.setState({ currentPage: currentPage - 1 });
-        const alternateStreaming = [];
 
         const _episodes = animes.map(x => Number(x.ep));
+        const alternateStreaming = [];
+        let hasAlternate = false;
+
         const episodes = [];
         _episodes.forEach(ep => {
             if (ep) {
                 episodes.push(ep)
             }
         })
-
-        let hasAlternate = false;
 
         if ((new Set(episodes)).size !== episodes.length) {
             hasAlternate = true;

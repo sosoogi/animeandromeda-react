@@ -12,6 +12,21 @@
   <priority>1.00</priority>
 </url>
 <url>
+  <loc>https://www.animeandromeda.net/anime/details/Oregairu3</loc>
+  <lastmod>2020-09-02T23:15:19+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.animeandromeda.net/anime/details/ThoseYearsIOpenedAZoo</loc>
+  <lastmod>2020-09-02T23:15:19+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://www.animeandromeda.net/anime/details/TheGodOfHighSchool</loc>
+  <lastmod>2020-09-02T23:15:19+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>https://www.animeandromeda.net/anime/details/MaouGakuinnoFutekigousha</loc>
   <lastmod>2020-08-15T23:15:19+00:00</lastmod>
   <priority>0.50</priority>
@@ -39,7 +54,7 @@
 <url>
   <loc>https://www.animeandromeda.net/anime/details/black-clover</loc>
   <lastmod>2020-08-11T23:15:19+00:00</lastmod>
-  <priority>0.50</priority>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.animeandromeda.net/anime/details/that-time-i-got-reincarnated-as-a-slime</loc>
@@ -1579,7 +1594,7 @@
 <url>
   <loc>https://www.animeandromeda.net/anime/details/Boruto</loc>
   <lastmod>2020-08-11T23:15:19+00:00</lastmod>
-  <priority>0.50</priority>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.animeandromeda.net/anime/details/DBS</loc>

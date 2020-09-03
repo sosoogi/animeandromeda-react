@@ -3,12 +3,12 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import AnimeBanner from '../AnimeBanner/AnimeBanner';
-import AdBlockDetect from 'react-ad-block-detect';
+// import AdBlockDetect from 'react-ad-block-detect';
+//  import globals from '../../globals/variables';
 import ReactGA from 'react-ga';
-import globals from '../../globals/variables';
 import crypto from 'crypto';
+import Button from 'react-bootstrap/Button';
 import './AnimeView.scss';
-import { Button } from 'react-bootstrap';
 
 class AnimeView extends React.Component {
     constructor(props) {
@@ -74,7 +74,7 @@ class AnimeView extends React.Component {
                 this.state.tick);
         }
         updateTick();
-        const interval = setInterval(() => updateTick(), 15000);
+        const interval = setInterval(() => updateTick(), 20000);
         return () => {
             clearInterval(interval);
         }
@@ -120,13 +120,6 @@ class AnimeView extends React.Component {
                 </Container>
                 <div className='mt-3'></div>
                 <Container className='anime-container shadow rounded bg-dark-as-box mb-3 p-3 w-100'>
-                    <Row>
-                        <Col>
-                            <AdBlockDetect>
-                                <div className='blocked' style={{ backgroundImage: `url(${globals.BLOCKED_ADS_IMG})` }} />
-                            </AdBlockDetect>
-                        </Col>
-                    </Row>
                     <Row>
                         <Col>
                             <div className='spacer'></div>
