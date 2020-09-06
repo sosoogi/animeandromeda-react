@@ -38,6 +38,32 @@
     border-color: rgba(255, 255, 255, 0);
 }
 
+.report-btn {
+    margin-bottom: 2px; 
+    margin-top: 2px;
+    width: 100%;
+    @include themed() {
+        color: t($color);
+    }
+    background-color: #E93139;
+    border-color: rgba(255, 255, 255, 0);
+}
+
+.report-btn:hover {
+    background-color: #e45158;
+    border-color: rgb(202, 72, 72);
+}
+
+.report-btn:focus {
+    background-color: #e45158;
+    border-color: rgb(202, 72, 72);
+}
+
+.report-btn:disabled {
+    background-color: #8f8f8f;
+    border-color: rgba(255, 255, 255, 0);   
+}
+
 video::-webkit-media-controls-panel {
     background-image: linear-gradient(transparent, transparent) !important; 
   }

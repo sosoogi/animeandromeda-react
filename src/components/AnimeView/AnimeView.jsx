@@ -3,11 +3,13 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import AnimeBanner from '../AnimeBanner/AnimeBanner';
-// import AdBlockDetect from 'react-ad-block-detect';
-//  import globals from '../../globals/variables';
 import ReactGA from 'react-ga';
-import crypto from 'crypto';
+import globals from '../../globals/variables';
+import { createMD5 } from '../../globals/functions';
 import Button from 'react-bootstrap/Button';
+import { Subject } from 'rxjs';
+import { switchMap } from 'rxjs/operators'
+import { fromFetch } from 'rxjs/fetch';
 import './AnimeView.scss';
 
 class AnimeView extends React.Component {
@@ -17,6 +19,7 @@ class AnimeView extends React.Component {
         this.state = {
             tick: 0
         }
+        this.reportLinkSub = new Subject();
         this.videoRef = React.createRef();
         this.updateTick = this.updateTick.bind(this);
         this.updateTickOnPlay = this.updateTickOnPlay.bind(this);
@@ -35,7 +38,7 @@ class AnimeView extends React.Component {
     }
 
     checkSeries(url) {
-        const hashedUrl = this.createMD5(url);
+        const hashedUrl = createMD5(url);
         if (localStorage.getItem('video-' + hashedUrl)) {
             const lsdata = localStorage.getItem('video-' + hashedUrl).split(';');
             const series = lsdata[0]
@@ -46,15 +49,12 @@ class AnimeView extends React.Component {
             }
         } else {
             localStorage.setItem(
-                'video-' + hashedUrl,
-                hashedUrl
-                + ';' +
-                this.state.tick);
+                'video-' + hashedUrl, hashedUrl + ';' + this.state.tick);
         }
     }
 
     updateTick() {
-        const hashedUrl = this.createMD5(this.props.location.state?.stream);
+        const hashedUrl = createMD5(this.props.location.state?.stream);
         localStorage.setItem(
             'video-' + hashedUrl,
             hashedUrl
@@ -64,14 +64,10 @@ class AnimeView extends React.Component {
     }
 
     updateTickOnPlay() {
-        const hashedUrl = this.createMD5(this.props.location.state?.stream);
+        const hashedUrl = createMD5(this.props.location.state?.stream);
         const updateTick = () => {
             this.setState({ tick: this.videoRef.current?.currentTime });
-            localStorage.setItem(
-                'video-' + hashedUrl,
-                hashedUrl
-                + ';' +
-                this.state.tick);
+            localStorage.setItem('video-' + hashedUrl, hashedUrl + ';' + this.state.tick);
         }
         updateTick();
         const interval = setInterval(() => updateTick(), 20000);
@@ -80,16 +76,33 @@ class AnimeView extends React.Component {
         }
     }
 
-    createMD5(data) {
-        const salt = crypto
-            .createHmac('md5', data)
-            .update('per favore')
-            .digest('hex')
-        return salt;
-    }
-
     goBack() {
         this.props.history.goBack();
+    }
+
+    reportLink() {
+        this.reportLinkSub = fromFetch(globals.API_URL + 'anime/report', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                series: this.props.location.state?.title,
+                episode: this.props.location.state?.ep
+            })
+        })
+            .pipe(
+                switchMap(res => res.json())
+            )
+            .subscribe(data => {
+                this.setState({ reported: data });
+            }, e => console.error(e));
+
+        this.refs.report.setAttribute("disabled", "disabled");
+    }
+
+    componentWillUnmount() {
+        this.reportLinkSub.unsubscribe();
     }
 
     render() {
@@ -122,8 +135,18 @@ class AnimeView extends React.Component {
                 <Container className='anime-container shadow rounded bg-dark-as-box mb-3 p-3 w-100'>
                     <Row>
                         <Col>
-                            <div className='spacer'></div>
-                            <Button className='goBack-btn' onClick={this.goBack}>Torna al menu degli episodi</Button>
+                            <Button className='goBack-btn' onClick={this.goBack}>
+                                Torna al menu degli episodi
+                            </Button>
+                        </Col>
+                    </Row>
+                </Container>
+                <Container className='anime-container shadow rounded bg-dark-as-box mb-3 p-3 w-100'>
+                    <Row>
+                        <Col>
+                            <Button className='report-btn' ref="report" onClick={() => this.reportLink()}>
+                                Segnala streaming non funzionante
+                            </Button>
                         </Col>
                     </Row>
                 </Container>
