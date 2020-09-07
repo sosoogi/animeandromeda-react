@@ -1,6 +1,7 @@
 import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 import Container from 'react-bootstrap/Container';
@@ -9,7 +10,8 @@ import AnimeBanner from '../AnimeBanner/AnimeBanner';
 import AnimeCarousel from '../AnimeCarousel/AnimeCarousel';
 import AnimeSearchField from '../AnimeSearchField/AnimeSearchField';
 import AndromedaDark from '../../assets/banner.webp';
-import AndromedaLight from '../../assets/banner-light.webp';
+import Paypal from '../../assets/paypal.svg';
+import Github from '../../assets/github.svg';
 import { fromEvent, ReplaySubject } from 'rxjs';
 import { switchMap, debounceTime } from 'rxjs/operators';
 import { Subject } from 'rxjs';
@@ -64,10 +66,6 @@ class Home extends React.Component {
                     )
                     .subscribe(data => this.setState({ random: data }), e => console.error(e))
             });
-
-        (localStorage.getItem('theme') || 'dark') === 'dark' ?
-            this.setState({ banner: AndromedaDark }) :
-            this.setState({ banner: AndromedaLight })
     }
 
     componentWillUnmount() {
@@ -79,8 +77,8 @@ class Home extends React.Component {
 
     render() {
         return (
-            <div className='Home'>
-                <AnimeBanner text={'AnimeAndromeda'} pic={this.state.banner}></AnimeBanner>
+            <main className='Home'>
+                <AnimeBanner text={'AnimeAndromeda'} pic={AndromedaDark}></AnimeBanner>
                 <AnimeSearchField className='container shadow rounded bg-dark-as-box mb-3 p-3 w-100'></AnimeSearchField>
                 <Container className='anime-container shadow rounded mobile-responsive'>
                     {this.state.airing?.length > 0 ?
@@ -196,7 +194,31 @@ class Home extends React.Component {
                         </Col>
                     </Row>
                 </Container>
-            </div >
+
+                <div className='mt-3'></div>
+                <Container className='p-0'>
+                    <a href='https://paypal.me/pools/c/8somkJXivr'>
+                        <Alert className='pp-h'>
+                            <span>
+                                <img alt='telegram' src={Paypal} height={16}></img>&nbsp;
+                            </span>
+                            Aiuta lo sviluppo con una piccola donazione
+                        </Alert>
+                    </a>
+                </Container>
+
+                {/* <Container className='p-0'>
+                    <a href='https://github.com/oppaoppai/animeandromeda-py'>
+                        <Alert className='pp-g'>
+                            <span>
+                                <img alt='telegram' src={Github} height={16}></img>&nbsp;
+                            </span>
+                            Dai pure un'occhiata alle sorgenti su Github
+                        </Alert>
+                    </a>
+                </Container> */}
+
+            </main>
         );
     }
 }
