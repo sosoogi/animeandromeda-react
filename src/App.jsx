@@ -126,7 +126,7 @@ class App extends React.Component {
               <div className='col-lg-4 col-md-4 col-xs-6'>
                 <span className='text-muted'>
                   All Rights Reserved, all files on this site are the property of
-                  their respective and rightful owners. Info/Abuse: animeandromeda@gmail.com
+                  their respective and rightful owners. Info/Abuse: info.animeandromeda@gmail.com
                 </span>
               </div>
             </div>
