@@ -75,7 +75,7 @@ class App extends React.Component {
   }
 
   async sendToGoogleAnalytics({ name, delta, id }) {
-    ReactGA.event('send', 'event', {
+    ReactGA.event({
       category: 'Web Vitals',
       action: name,
       value: Math.round(name === 'CLS' ? delta * 1000 : delta),

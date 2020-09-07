@@ -21,6 +21,7 @@ class AnimeView extends React.Component {
         }
         this.reportLinkSub = new Subject();
         this.videoRef = React.createRef();
+        this.report_btn = React.createRef();
         this.updateTick = this.updateTick.bind(this);
         this.updateTickOnPlay = this.updateTickOnPlay.bind(this);
     }
@@ -98,7 +99,7 @@ class AnimeView extends React.Component {
                 this.setState({ reported: data });
             }, e => console.error(e));
 
-        this.refs.report.setAttribute("disabled", "disabled");
+        this.report_btn.current.setAttribute("disabled", "disabled");
     }
 
     componentWillUnmount() {
@@ -144,7 +145,7 @@ class AnimeView extends React.Component {
                 <Container className='anime-container shadow rounded bg-dark-as-box mb-3 p-3 w-100'>
                     <Row>
                         <Col>
-                            <Button className='report-btn' ref="report" onClick={() => this.reportLink()}>
+                            <Button className='report-btn' ref={this.report_btn} onClick={() => this.reportLink()}>
                                 Segnala streaming non funzionante
                             </Button>
                         </Col>
