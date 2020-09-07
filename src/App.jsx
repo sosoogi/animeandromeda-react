@@ -106,24 +106,33 @@ class App extends React.Component {
             </Switch>
           </div>
         </BrowserRouter>
+
         <div className='mt-3'></div>
+
         <footer className='footer'>
           <div className='container'>
-            <span className='text-muted underlined' onClick={this.navigateHome}>AnimeAndromeda</span>
-            <span className='text-muted'>&nbsp;|&nbsp;per qualsiasi informazione o richiesta scrivere al&nbsp;</span>
-            <a href='https://t.me/AnimeAndromeda'>
-              <span className='text-muted underlined'>gruppo Telegram
-              </span>
-              <span>
-                &nbsp;<img alt='telegram' src={TelegramIco} height={18}></img>
-              </span>
-            </a>
-            <span className='text-muted font-weight-light'>&nbsp;|&nbsp;this site acts as an index, nothing is stored |&nbsp;</span>
-            <span className='text-muted font-weight-light underlined' onClick={this.changeTheme}>
-              {this.state.theme === 'light' ? 'Passa al tema scuro' : 'Passa al tema chiaro'}
-            </span>
+            <div className='row'>
+              <div className='col-lg-8 col-md-8 col-xs-6'>
+                <div className='text-muted underlined' onClick={this.navigateHome}>AnimeAndromeda</div>
+                <span className='text-muted'>Per qualsiasi informazione o richiesta scrivere al&nbsp;</span>
+                <a href='https://t.me/AnimeAndromeda'>
+                  <span className='text-muted underlined'>gruppo Telegram</span>
+                  <span>&nbsp;<img alt='telegram' src={TelegramIco} height={18}></img></span>
+                </a>
+                <p className='text-muted underlined' onClick={this.changeTheme}>
+                  {this.state.theme === 'light' ? 'Passa al tema scuro' : 'Passa al tema chiaro'}
+                </p>
+              </div>
+              <div className='col-lg-4 col-md-4 col-xs-6'>
+                <span className='text-muted'>
+                  All Rights Reserved, all files on this site are the property of
+                  their respective and rightful owners. Info/Abuse: animeandromeda@gmail.com
+                </span>
+              </div>
+            </div>
           </div>
         </footer>
+
       </div >
     );
   }

@@ -55,7 +55,7 @@ class Home extends React.Component {
             )
             .subscribe(data => this.setState({ random: data }), e => console.error(e));
 
-        fromEvent(this.randomButton.current, 'click')
+        this.refetchSub = fromEvent(this.randomButton.current, 'click')
             .pipe(
                 debounceTime(250),
             )
@@ -80,7 +80,7 @@ class Home extends React.Component {
             <main className='Home'>
                 <AnimeBanner text={'AnimeAndromeda'} pic={AndromedaDark}></AnimeBanner>
                 <AnimeSearchField className='container shadow rounded bg-dark-as-box mb-3 p-3 w-100'></AnimeSearchField>
-                <Container className='anime-container shadow rounded mobile-responsive'>
+                <Container className='home-anime-container shadow rounded mobile-responsive'>
                     {this.state.airing?.length > 0 ?
                         <AnimeCarousel /> :
                         <div>
@@ -90,7 +90,7 @@ class Home extends React.Component {
                     }
                 </Container>
                 <div className='mt-3'></div>
-                <Container className='anime-container p-3 shadow rounded'>
+                <Container className='home-anime-container p-3 shadow rounded'>
                     <Row>
                         <Col>
                             {this.state.latest?.length > 0 ?
@@ -122,7 +122,7 @@ class Home extends React.Component {
                     </Row>
                 </Container>
                 <div className='mt-3'></div>
-                <Container className='anime-container p-3 shadow rounded'>
+                <Container className='home-anime-container p-3 shadow rounded'>
                     <Row>
                         <Col>
                             {this.state.airing?.length > 0 ?
@@ -154,7 +154,7 @@ class Home extends React.Component {
                     </Row>
                 </Container>
                 <div className='mt-3'></div>
-                <Container className='anime-container p-3 shadow rounded'>
+                <Container className='home-anime-container p-3 shadow rounded'>
                     <Row>
                         <Col>
                             {this.state.random?.length > 0 ?
