@@ -84,7 +84,11 @@ class Home extends React.Component {
                 <AnimeSearchField className='container shadow rounded bg-dark-as-box mb-3 p-3 w-100'></AnimeSearchField>
                 <Container className='anime-container shadow rounded mobile-responsive'>
                     {this.state.airing?.length > 0 ?
-                        <AnimeCarousel /> : <Spinner animation="grow" className='loader-themed' />
+                        <AnimeCarousel /> :
+                        <div>
+                            <br></br>
+                            <Spinner animation="grow" className='loader-themed' />
+                        </div>
                     }
                 </Container>
                 <div className='mt-3'></div>
@@ -113,7 +117,7 @@ class Home extends React.Component {
                                     pic={anime.pic}
                                     thumb={anime.thumb}
                                     title={anime.pretty}
-                                    key={idx}>
+                                    key={anime._id.series}>
                                 </AnimeThumb>
                             </Col>
                         ))}
@@ -145,7 +149,7 @@ class Home extends React.Component {
                                     pic={anime.pic}
                                     thumb={anime.thumb}
                                     title={anime.pretty}
-                                    key={idx}>
+                                    key={anime._id.series}>
                                 </AnimeThumb>
                             </Col>
                         ))}

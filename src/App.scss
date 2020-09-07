@@ -21,6 +21,7 @@
   @include themed() {
     background-color: t($box);
   }
+  min-height: 300px;
 }
 
 .footer {
