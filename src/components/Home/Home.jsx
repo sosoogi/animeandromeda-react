@@ -2,6 +2,8 @@ import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Alert from 'react-bootstrap/Alert';
+// import Nav from 'react-bootstrap/Nav';
+// import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 import Container from 'react-bootstrap/Container';
@@ -11,7 +13,7 @@ import AnimeCarousel from '../AnimeCarousel/AnimeCarousel';
 import AnimeSearchField from '../AnimeSearchField/AnimeSearchField';
 import AndromedaDark from '../../assets/banner.webp';
 import Paypal from '../../assets/paypal.svg';
-//import Github from '../../assets/github.svg';
+// import Github from '../../assets/github.svg';
 import { fromEvent, ReplaySubject } from 'rxjs';
 import { switchMap, debounceTime } from 'rxjs/operators';
 import { Subject } from 'rxjs';
@@ -26,7 +28,6 @@ class Home extends React.Component {
             latest: [],
             airing: [],
             random: [],
-            banner: ''
         }
 
         this.latestSub = new Subject();
@@ -208,7 +209,7 @@ class Home extends React.Component {
                 </Container>
 
                 {/* <Container className='p-0'>
-                    <a href='https://github.com/oppaoppai/animeandromeda-py'>
+                    <a href='https://github.com/oppaoppai/animeandromeda-python'>
                         <Alert className='pp-g'>
                             <span>
                                 <img alt='telegram' src={Github} height={16}></img>&nbsp;

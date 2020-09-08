@@ -10,6 +10,8 @@ import Button from 'react-bootstrap/Button';
 import { Subject } from 'rxjs';
 import { switchMap } from 'rxjs/operators'
 import { fromFetch } from 'rxjs/fetch';
+// import Alert from 'react-bootstrap/Alert';
+// import Paypal from '../../assets/paypal.svg';
 import './AnimeView.scss';
 
 class AnimeView extends React.Component {
@@ -151,6 +153,7 @@ class AnimeView extends React.Component {
                         </Col>
                     </Row>
                 </Container>
+
             </div >
         );
     }

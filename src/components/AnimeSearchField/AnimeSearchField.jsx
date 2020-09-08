@@ -22,7 +22,10 @@ class AnimeSearchField extends React.Component {
     componentDidMount() {
         this.subscription = fromEvent(this.search.current, 'keyup').pipe(
             map((event) => {
-                return event.target.value;
+                if (event.target.value.length > 1) {
+                    return event.target.value;
+                }
+                return '';
             }),
             debounceTime(500),
             distinctUntilChanged()
