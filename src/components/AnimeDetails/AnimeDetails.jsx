@@ -96,8 +96,11 @@ class AnimeDetails extends React.Component {
                 <HelmetProvider context={helmetContext}>
                     <Helmet>
                         <meta name='language' content='it' />
-                        <meta name="description" content={`Guarda ${this.state.animes[0]?.title} su AnimeAndromeda`} />
-                        <title>{`${this.state.animes[0]?.title} - AnimeAndromeda`}</title>
+                        <meta name="description" content={
+                            `Guarda tutti gli episodi di ${this.state.animes[0]?.title || this.state.animes[0]?.series} su AnimeAndromeda.
+                            Sempre in alta definizione e senza pubblicità!`
+                        } />
+                        <title>{`${this.state.animes[0]?.title || this.state.animes[0]?.series} streaming SUB ITA - AnimeAndromeda`}</title>
                         <link rel='canonical' href='https://www.animeandromeda.net' />
                     </Helmet>
                 </HelmetProvider>

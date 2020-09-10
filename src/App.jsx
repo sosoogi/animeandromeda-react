@@ -85,9 +85,9 @@ class App extends React.Component {
         <HelmetProvider context={helmetContext}>
           <Helmet>
             <meta name='language' content='it' />
-            <meta name="description" content={'Archivio Anime communitiy driven ottimizzato per l\'uso mobile.' +
+            <meta name="description" content={'Archivio Anime senza pubblicità, communitiy driven ed ottimizzato per l\'uso mobile.' +
               'Aggiungi l\'applicazione alla schermata home per averla sempre a portata di mano!'} />
-            <title>{'AnimeAndromeda - Anime Andromeda - Streaming Anime SUB ITA'}</title>
+            <title>{'AnimeAndromeda - Anime Andromeda - Streaming Anime SUB ITA zero pubblicità'}</title>
             <link rel='canonical' href='https://www.animeandromeda.net' />
           </Helmet>
         </HelmetProvider>
