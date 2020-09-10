@@ -17,6 +17,7 @@ import { switchMap, debounceTime } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { fromFetch } from 'rxjs/fetch';
 import globals from '../../globals/variables';
+import ReactGA from 'react-ga';
 import './Home.scss';
 
 class Home extends React.Component {
@@ -65,6 +66,12 @@ class Home extends React.Component {
                     )
                     .subscribe(data => this.setState({ random: data }), e => console.error(e))
             });
+
+        ReactGA.pageview(window.location.pathname + window.location.search);
+        ReactGA.event({
+            category: 'Home',
+            action: 'User landed on the site'
+        });
     }
 
     componentWillUnmount() {

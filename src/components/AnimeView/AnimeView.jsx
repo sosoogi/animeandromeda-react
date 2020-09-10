@@ -10,8 +10,8 @@ import Button from 'react-bootstrap/Button';
 import { Subject } from 'rxjs';
 import { switchMap } from 'rxjs/operators'
 import { fromFetch } from 'rxjs/fetch';
-// import Alert from 'react-bootstrap/Alert';
-// import Paypal from '../../assets/paypal.svg';
+import Alert from 'react-bootstrap/Alert';
+import Paypal from '../../assets/paypal.svg';
 import './AnimeView.scss';
 
 class AnimeView extends React.Component {
@@ -153,7 +153,16 @@ class AnimeView extends React.Component {
                         </Col>
                     </Row>
                 </Container>
-
+                <Container className='p-0'>
+                    <a href='https://paypal.me/pools/c/8somkJXivr'>
+                        <Alert className='pp-h'>
+                            <span>
+                                <img alt='telegram' src={Paypal} height={16}></img>&nbsp;
+                            </span>
+                            Aiuta lo sviluppo con una piccola donazione
+                        </Alert>
+                    </a>
+                </Container>
             </div >
         );
     }

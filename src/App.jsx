@@ -30,12 +30,7 @@ class App extends React.Component {
     this.state.theme === 'dark' ? document.body.style.backgroundColor = '#0A1621' : document.body.style.backgroundColor = '#eaf4fd'
     // google analytics
     ReactGA.initialize('UA-173488988-1');
-    ReactGA.pageview(window.location.pathname + window.location.search);
-    ReactGA.event({
-      category: 'App',
-      action: 'User landed on the site'
-    });
-
+    // web vitals
     getLCP(this.sendToGoogleAnalytics);
     getCLS(this.sendToGoogleAnalytics);
     getFID(this.sendToGoogleAnalytics);
