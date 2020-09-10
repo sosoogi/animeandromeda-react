@@ -84,10 +84,3 @@ div.carousel-opactiy {
 //     background: linear-gradient(90deg, rgba(79,91,213,0.575) 0%, rgba(150,47,191,0.575) 25%, rgba(214,41,118,0.575) 50%, rgba(250,126,30,0.575) 75%, rgba(254,218,117,0.575) 100%);
 //     color: #fff
 // }
-
-.home-navbar {
-    @include themed() {
-        color: t($color);
-        background-color: t($box);
-    }
-}

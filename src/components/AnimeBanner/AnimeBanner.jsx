@@ -14,13 +14,13 @@ const truncateIfMobile = (prop) => {
     return prop;
 }
 
-const goBack = () => {
-    if (window.history.length > 0) {
-        window.history.back();
-        return;
-    }
-    window.location.pathname = '/';
-}
+// const goBack = () => {
+//     if (window.history.length > 0) {
+//         window.history.back();
+//         return;
+//     }
+//     window.location.pathname = '/';
+// }
 
 const AnimeBanner = (props) => {
     return (
@@ -29,7 +29,7 @@ const AnimeBanner = (props) => {
             </div>
             <Container>
                 {props.subtitle ? <h6 className='banner-subtitle'>{props.subtitle}</h6> : null}
-                {props.title ? <h1 onClick={goBack} className='banner-title'>{truncateIfMobile(props.title)}</h1> : null}
+                {props.title ? <h1 className='banner-title'>{truncateIfMobile(props.title)}</h1> : null}
                 {props.text ? <h1 className='banner-text'>{truncateIfMobile(props.text)}</h1> : null}
             </Container>
         </div>

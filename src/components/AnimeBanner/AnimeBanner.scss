@@ -18,7 +18,7 @@
 .banner-text{
   position: absolute;
   color:white;
-  top:15%;
+  top:18%;
   text-align: left;
   z-index: 2;
   transform: translateY(50%);
@@ -30,7 +30,7 @@
   @include themed() {
     color: t($color);
   }
-  top:15%;
+  top:18%;
   text-align: left;
   z-index: 2;
   transform: translateY(50%);
@@ -44,7 +44,7 @@
     color: t($color);
   }
   padding-left: 2px;
-  top:15%;
+  top:18%;
   text-align: left;
   z-index: 2;
   transform: translateY(50%);

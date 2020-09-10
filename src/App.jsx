@@ -1,16 +1,19 @@
 import React, { Suspense } from 'react';
 import { shrinkLocalStorage } from './globals/functions';
-import { BrowserRouter, Route, Switch, } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import TelegramIco from './assets/telegram.svg';
 import ReactGA from 'react-ga';
 import { getCLS, getFID, getLCP } from 'web-vitals';
 import { WebpMachine } from "webp-hero"
 import Home from './components/Home/Home';
+import Navbar from './components/Navbar/Navbar';
 import './App.scss';
 
 const AnimeDetails = React.lazy(() => import('./components/AnimeDetails/AnimeDetails'));
 const AnimeView = React.lazy(() => import('./components/AnimeView/AnimeView'));
+const Calendar = React.lazy(() => import('./components/AnimeCalendar/Calendar'));
+const Archive = React.lazy(() => import('./components/AnimeArchive/Archive'));
 
 class App extends React.Component {
   constructor(props) {
@@ -66,10 +69,6 @@ class App extends React.Component {
     );
   }
 
-  scrollToTop() {
-    window.scrollTo(0, 0);
-  }
-
   navigateHome() {
     window.location.pathname = '/';
   }
@@ -99,10 +98,13 @@ class App extends React.Component {
         </HelmetProvider>
         <BrowserRouter>
           <div className='App'>
+            <Navbar />
             <Switch>
               <Route exact path='/' render={(props) => <Home {...props}></Home>}></Route>
               <Route exact path='/anime/details/:anime' component={this.lazyLoadCompoment(AnimeDetails)}></Route>
-              <Route exact path='/anime/view' component={this.lazyLoadCompoment(AnimeView)} onEnter={this.scrollToTop}></Route>
+              <Route exact path='/anime/view/:anime/:ep' component={this.lazyLoadCompoment(AnimeView)}></Route>
+              <Route exact path='/anime/calendario' component={this.lazyLoadCompoment(Calendar)}></Route>
+              <Route exact path='/anime/archivio' component={this.lazyLoadCompoment(Archive)}></Route>
             </Switch>
           </div>
         </BrowserRouter>

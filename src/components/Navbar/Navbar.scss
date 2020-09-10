@@ -1,0 +1,8 @@
+@import '../../themes/themes.scss';
+
+.home-navbar {
+    @include themed() {
+        color: t($color);
+        background-color: t($box);
+    }
+}
