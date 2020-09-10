@@ -8,7 +8,7 @@ const Calendar = () => {
             <div className='container home-anime-container p-3 shadow rounded'>
                 <div className='row'>
                     <div className='col'>
-                        <img className='img-fluid' src={Logo}></img>
+                        <img alt='animeandromeda-heading' className='img-fluid' src={Logo}></img>
                     </div>
                 </div>
                 <div className='row'>

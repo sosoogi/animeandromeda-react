@@ -31,11 +31,15 @@ class App extends React.Component {
     this.state.theme === 'dark' ? document.body.style.backgroundColor = '#0A1621' : document.body.style.backgroundColor = '#eaf4fd'
     // google analytics
     ReactGA.initialize('UA-173488988-1');
+    ReactGA.pageview(window.location.pathname + window.location.search);
+    ReactGA.event({
+      category: 'Home',
+      action: 'User landed on the site'
+    });
     // web vitals
     getLCP(this.sendToGoogleAnalytics);
     getCLS(this.sendToGoogleAnalytics);
     getFID(this.sendToGoogleAnalytics);
-
     // webp polyfill
     const webpMachine = new WebpMachine();
     webpMachine.polyfillDocument();
@@ -88,13 +92,13 @@ class App extends React.Component {
             <meta name='language' content='it' />
             <meta name="description" content={'Archivio Anime senza pubblicità, communitiy driven ed ottimizzato per l\'uso mobile.' +
               'Aggiungi l\'applicazione alla schermata home per averla sempre a portata di mano!'} />
-            <title>{'AnimeAndromeda - Anime Andromeda - Streaming Anime SUB ITA zero pubblicità'}</title>
+            <title>{'AnimeAndromeda - Streaming Anime SUB ITA senza pubblicità - Anime Andromeda'}</title>
             <link rel='canonical' href='https://www.animeandromeda.net' />
           </Helmet>
         </HelmetProvider>
         <BrowserRouter>
           <div className='App'>
-            <Navbar />
+            <Navbar></Navbar>
             <Switch>
               <Route exact path='/' render={(props) => <Home {...props}></Home>}></Route>
               <Route exact path='/anime/details/:anime' component={this.lazyLoadCompoment(AnimeDetails)}></Route>
@@ -132,7 +136,6 @@ class App extends React.Component {
             </div>
           </div>
         </footer>
-
       </div >
     );
   }

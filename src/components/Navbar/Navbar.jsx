@@ -24,7 +24,7 @@ const AnimeNavbar = () => {
                         <Nav.Link as={Link} to='/anime/archivio'>Archivio</Nav.Link>
                         <Nav.Link as={Link} to='/anime/calendario'>Calendario</Nav.Link>
                     </Nav>
-                    <NavDropdown title="Altro" bsPrefix='typo-normal px-1'>
+                    <NavDropdown drop='left' title="Altro" bsPrefix='typo-normal px-1' id='navbardropdown-h'>
                         <NavDropdown.Item as={Link} to='/about'>About us</NavDropdown.Item>
                         <NavDropdown.Divider />
                         <NavDropdown.Item href="https://paypal.me/pools/c/8somkJXivr">Supporta lo sviluppo</NavDropdown.Item>
