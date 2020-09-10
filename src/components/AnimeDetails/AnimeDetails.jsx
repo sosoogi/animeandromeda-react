@@ -96,8 +96,8 @@ class AnimeDetails extends React.Component {
                 <HelmetProvider context={helmetContext}>
                     <Helmet>
                         <meta name='language' content='it' />
-                        <meta name="description" content={'Guarda ' + this.state.animes[0]?.title + ' su AnimeAndromeda'} />
-                        <title>{'AnimeAndromeda - ' + this.state.animes[0]?.title}</title>
+                        <meta name="description" content={`Guarda ${this.state.animes[0]?.title} su AnimeAndromeda`} />
+                        <title>{`${this.state.animes[0]?.title} - AnimeAndromeda`}</title>
                         <link rel='canonical' href='https://www.animeandromeda.net' />
                     </Helmet>
                 </HelmetProvider>
