@@ -3,6 +3,11 @@
 .home-navbar {
     @include themed() {
         color: t($color);
-        background-color: t($box);
+        background-color: t($search);
     }
+}
+
+.typo-normal{
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
 }

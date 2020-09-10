@@ -14,6 +14,7 @@ const AnimeDetails = React.lazy(() => import('./components/AnimeDetails/AnimeDet
 const AnimeView = React.lazy(() => import('./components/AnimeView/AnimeView'));
 const Calendar = React.lazy(() => import('./components/AnimeCalendar/Calendar'));
 const Archive = React.lazy(() => import('./components/AnimeArchive/Archive'));
+const About = React.lazy(() => import('./components/About/About'));
 
 class App extends React.Component {
   constructor(props) {
@@ -101,6 +102,7 @@ class App extends React.Component {
               <Route exact path='/anime/view' component={this.lazyLoadCompoment(AnimeView)}></Route>
               <Route exact path='/anime/calendario' component={this.lazyLoadCompoment(Calendar)}></Route>
               <Route exact path='/anime/archivio' component={this.lazyLoadCompoment(Archive)}></Route>
+              <Route exact path='/about' component={this.lazyLoadCompoment(About)}></Route>
             </Switch>
           </div>
         </BrowserRouter>

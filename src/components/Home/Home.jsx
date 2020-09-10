@@ -6,10 +6,10 @@ import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 import Container from 'react-bootstrap/Container';
 import AnimeThumb from '../AnimeThumb/AnimeThumb';
-import AnimeBanner from '../AnimeBanner/AnimeBanner';
+// import AnimeBanner from '../AnimeBanner/AnimeBanner';
 import AnimeCarousel from '../AnimeCarousel/AnimeCarousel';
 import AnimeSearchField from '../AnimeSearchField/AnimeSearchField';
-import AndromedaDark from '../../assets/banner.webp';
+// import AndromedaDark from '../../assets/banner.webp';
 import Paypal from '../../assets/paypal.svg';
 // import Github from '../../assets/github.svg';
 import { fromEvent, ReplaySubject } from 'rxjs';
@@ -84,7 +84,7 @@ class Home extends React.Component {
     render() {
         return (
             <main className='Home'>
-                <AnimeBanner text={'AnimeAndromeda'} pic={AndromedaDark}></AnimeBanner>
+                {/* <AnimeBanner text={'AnimeAndromeda'} pic={AndromedaDark}></AnimeBanner> */}
                 <AnimeSearchField className='container shadow rounded bg-dark-as-box mb-3 p-3 w-100'></AnimeSearchField>
                 <Container className='home-anime-container shadow rounded mobile-responsive'>
                     {this.state.airing?.length > 0 ?
