@@ -102,7 +102,8 @@ class App extends React.Component {
             <Switch>
               <Route exact path='/' render={(props) => <Home {...props}></Home>}></Route>
               <Route exact path='/anime/details/:anime' component={this.lazyLoadCompoment(AnimeDetails)}></Route>
-              <Route exact path='/anime/view/:anime/:ep' component={this.lazyLoadCompoment(AnimeView)}></Route>
+              {/* <Route exact path='/anime/view/:anime/:ep' component={this.lazyLoadCompoment(AnimeView)}></Route> */}
+              <Route exact path='/anime/view' component={this.lazyLoadCompoment(AnimeView)}></Route>
               <Route exact path='/anime/calendario' component={this.lazyLoadCompoment(Calendar)}></Route>
               <Route exact path='/anime/archivio' component={this.lazyLoadCompoment(Archive)}></Route>
             </Switch>
