@@ -120,10 +120,10 @@ class App extends React.Component {
               <div className='col-lg-8 col-md-8 col-xs-6'>
                 <div className='text-muted underlined' onClick={this.navigateHome}>AnimeAndromeda</div>
                 <span className='text-muted'>Per qualsiasi informazione o richiesta scrivere al&nbsp;</span>
-                <div onClick={() => window.open('https://t.me/AnimeAndromeda')}>
+                <span onClick={() => window.open('https://t.me/AnimeAndromeda')}>
                   <span className='text-muted underlined'>gruppo Telegram</span>
                   <span>&nbsp;<img alt='telegram' src={TelegramIco} height={18}></img></span>
-                </div>
+                </span>
                 <p className='text-muted underlined' onClick={this.changeTheme}>
                   {this.state.theme === 'light' ? 'Passa al tema scuro' : 'Passa al tema chiaro'}
                 </p>
