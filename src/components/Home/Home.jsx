@@ -10,7 +10,7 @@ import AnimeCarousel from '../AnimeCarousel/AnimeCarousel';
 import AnimeSearchField from '../AnimeSearchField/AnimeSearchField';
 import Paypal from '../../assets/paypal.svg';
 // import Github from '../../assets/github.svg';
-import { Shuffle } from 'react-bootstrap-icons';
+// import { Shuffle } from 'react-bootstrap-icons';
 import { fromEvent, ReplaySubject } from 'rxjs';
 import { switchMap, debounceTime } from 'rxjs/operators';
 import { Subject } from 'rxjs';
