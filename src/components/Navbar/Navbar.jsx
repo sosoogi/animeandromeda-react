@@ -11,7 +11,7 @@ const AnimeNavbar = () => {
         <div className='container-fluid home-navbar'>
             <div className='container p-0'>
                 <Navbar className='home-navbar px-0 py-1' variant="dark" >
-                    <Link to='/'>
+                    <Link to='/' aria-label="Ritorna alla Home">
                         <Navbar.Brand>
                             <img
                                 alt=''
