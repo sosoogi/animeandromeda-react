@@ -6,12 +6,11 @@ import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 import Container from 'react-bootstrap/Container';
 import AnimeThumb from '../AnimeThumb/AnimeThumb';
-// import AnimeBanner from '../AnimeBanner/AnimeBanner';
 import AnimeCarousel from '../AnimeCarousel/AnimeCarousel';
 import AnimeSearchField from '../AnimeSearchField/AnimeSearchField';
-// import AndromedaDark from '../../assets/banner.webp';
 import Paypal from '../../assets/paypal.svg';
 // import Github from '../../assets/github.svg';
+import { Shuffle } from 'react-bootstrap-icons';
 import { fromEvent, ReplaySubject } from 'rxjs';
 import { switchMap, debounceTime } from 'rxjs/operators';
 import { Subject } from 'rxjs';
@@ -187,7 +186,7 @@ class Home extends React.Component {
                     <Row>
                         <Col>
                             {this.state.random.length > 0 ?
-                                <Button ref={this.randomButton} className='button-random'>Random</Button> :
+                                <Button ref={this.randomButton} className='button-random'>{'Random '}<Shuffle></Shuffle></Button> :
                                 <Button ref={this.randomButton} style={{ display: 'none' }} className='button-random'>Random</Button>
                             }
                         </Col>

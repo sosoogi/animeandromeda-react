@@ -2,8 +2,10 @@ import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import globals from '../../globals/variables'
+import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
+import ListGroup from 'react-bootstrap/ListGroup';
 import Spinner from 'react-bootstrap/Spinner';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
@@ -15,6 +17,7 @@ import { fromFetch } from 'rxjs/fetch';
 import { switchMap } from 'rxjs/operators';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import ReactGA from 'react-ga';
+import { convertDate, convertAiredFrom } from '../../globals/functions';
 import './AnimeDetails.scss';
 
 class AnimeDetails extends React.Component {
@@ -120,27 +123,51 @@ class AnimeDetails extends React.Component {
                 </Container>
                 <div className='mt-3'></div>
                 <Container
-                    className={this.state.animes?.length > 0 ? 'anime-container shadow rounded bg-dark-as-box mb-3 p-3 w-100' : null}>
+                    className={this.state.animes?.length > 0 ? 'anime-container shadow rounded bg-dark-as-box mb-3 p-3 w-100' : 'hidden'}>
                     <Row>
                         <Col xs={6} md={4} lg={3}>
                             <img alt='' className='series-pic' src={this.state.animes[0]?.pic}></img>
                         </Col>
+                        <Col md={8} lg={9}>
+                            <ListGroup>
+                                <ListGroup.Item className='list-group-details'>
+                                    <strong>Titolo: </strong>{this.state.animes[0]?.title}
+                                </ListGroup.Item>
+                                <ListGroup.Item className='list-group-details'>
+                                    <strong>Anno: </strong>{convertAiredFrom(this.state.animes[0]?.aired)}
+                                </ListGroup.Item>
+                                <ListGroup.Item className='list-group-details'>
+                                    <strong>In corso: </strong>{this.state.animes[0]?.airing ? 'Si' : 'Terminato'}
+                                </ListGroup.Item>
+                                <ListGroup.Item className='list-group-details'>
+                                    <strong>idMAL: </strong>{this.state.animes[0]?.idMAL}
+                                </ListGroup.Item>
+                                <ListGroup.Item className='list-group-details'>
+                                    <strong>Aggiornato il: </strong>
+                                    {convertDate(new Date(this.state.animes[0]?.updated.$date || this.state.animes[0]?.updated))}
+                                </ListGroup.Item>
+                            </ListGroup>
+                        </Col>
                     </Row>
                     <Row>
                         <Col>
-                            <p className='series-desc'>
+                            <p className='series-desc text-justify'>
                                 {this.state.animes[0]?.desc}
                             </p>
                         </Col>
                     </Row>
                     <Row>
                         <Col>
-                            <p className='series-desc'>
-                                {this.state.animes.length > 0 ? 'Genere: ' : ''}
+                            <div className='text-left'>
                                 {this.state.animes[0]?.genres.map((x, idx) => (
-                                    <span key={idx}>{x + ', '}</span>
+                                    <React.Fragment key={idx}>
+                                        <Link to={`/anime/archivio/${x}`}>
+                                            <Badge pill variant="light" >{x}</Badge>
+                                            <span>{' '}</span>
+                                        </Link>
+                                    </React.Fragment>
                                 ))}
-                            </p>
+                            </div>
                         </Col>
                     </Row>
                 </Container>

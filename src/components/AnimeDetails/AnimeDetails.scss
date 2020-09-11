@@ -30,7 +30,6 @@
 
 .series-pic {
     float: left;
-    margin-top: 10px;
     margin-bottom: 10px;
     height: 250px;
 }
@@ -39,7 +38,7 @@
     @include themed() {
         color: t($color);
     }
-    text-align: left;
+    margin-top: 10px;
 }
 
 .series-title {
@@ -66,4 +65,16 @@
         text-decoration: underline;
         border-color: rgba(0, 0, 0, 0.418);
     }
+}
+
+.list-group-details {
+    @include themed() {
+        color: t($color);
+        background-color: t($overlay-lighter);
+        text-align: left;
+    }
+}
+
+.hidden{
+    display: none;
 }

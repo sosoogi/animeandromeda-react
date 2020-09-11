@@ -3,7 +3,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import AnimeBanner from '../AnimeBanner/AnimeBanner';
-import ReactGA from 'react-ga';
 import globals from '../../globals/variables';
 import { createMD5 } from '../../globals/functions';
 import Button from 'react-bootstrap/Button';
@@ -30,13 +29,6 @@ class AnimeView extends React.Component {
 
     componentDidMount() {
         window.scrollTo(0, 0);
-        // google analytics
-        ReactGA.pageview(window.location.pathname + window.location.search);
-        ReactGA.event({
-            category: 'Anime',
-            action: 'User started streaming ' + this.props.location.state?.title
-        });
-
         this.checkSeries(this.props.location.state?.stream);
     }
 
@@ -123,7 +115,6 @@ class AnimeView extends React.Component {
                         <video
                             className='anime-video'
                             controls
-                            controlsList='nodownload'
                             autoPlay
                             onSeeked={this.updateTick}
                             onPause={this.updateTick}

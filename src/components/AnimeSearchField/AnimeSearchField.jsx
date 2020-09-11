@@ -7,6 +7,7 @@ import { Subject, fromEvent } from 'rxjs';
 import { fromFetch } from 'rxjs/fetch'
 import { debounceTime, map, switchMap, distinctUntilChanged } from 'rxjs/operators'
 import { Link } from 'react-router-dom';
+// import { Search } from 'react-bootstrap-icons'
 import './AnimeSearchField.scss';
 
 class AnimeSearchField extends React.Component {
@@ -45,7 +46,7 @@ class AnimeSearchField extends React.Component {
     render() {
         return (
             <div className='search-container'>
-                <input className='search-input' type='text' ref={this.search} placeholder='Cerca' />
+                <input className='search-input' type='text' ref={this.search} placeholder='Cerca'></input>
                 {this.state.json.length > 0 ?
                     this.state.json.map((anime, idx) => (
                         <Link key={idx} className='results-wrapper search-link' to={{ pathname: '/anime/details/' + anime.redundant }}>
