@@ -8,16 +8,14 @@ import { Link } from 'react-router-dom';
 import './AnimeCarousel.scss';
 
 class AnimeCarousel extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             json: [],
             index: 0,
             ready: false,
         }
         this.subscription = new Subject();
-        this.deferImageLoading = this.deferImageLoading.bind(this);
-        this.handleImageLoaded = this.handleImageLoaded.bind(this);
     }
 
     componentDidMount() {
@@ -32,12 +30,12 @@ class AnimeCarousel extends React.Component {
         this.subscription.unsubscribe();
     }
 
-    deferImageLoading(index) {
+    deferImageLoading = (index) => {
         this.setState(state => ({ ready: !state.ready }));
         this.setState({ index: index });
     }
 
-    handleImageLoaded() {
+    handleImageLoaded = () => {
         this.setState({ ready: true });
     }
 

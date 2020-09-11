@@ -4884,6 +4884,12 @@
   <priority>0.50</priority>
   <changefreq>weekly</changefreq>
 </url>
+<url>
+  <loc>https://www.animeandromeda.net/anime/details/BokunoKanojo</loc>
+  <lastmod>2020-09-11T17:15:19+00:00</lastmod>
+  <priority>0.60</priority>
+  <changefreq>weekly</changefreq>
+</url>
 
 
 

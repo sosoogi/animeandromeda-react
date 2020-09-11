@@ -14,8 +14,8 @@ import Paypal from '../../assets/paypal.svg';
 import './AnimeView.scss';
 
 class AnimeView extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.goBack = this.goBack.bind(this);
         this.state = {
             tick: 0
@@ -23,8 +23,6 @@ class AnimeView extends React.Component {
         this.reportLinkSub = new Subject();
         this.videoRef = React.createRef();
         this.report_btn = React.createRef();
-        this.updateTick = this.updateTick.bind(this);
-        this.updateTickOnPlay = this.updateTickOnPlay.bind(this);
     }
 
     componentDidMount() {
@@ -48,7 +46,7 @@ class AnimeView extends React.Component {
         }
     }
 
-    updateTick() {
+    updateTick = () => {
         const hashedUrl = createMD5(this.props.location.state?.stream);
         localStorage.setItem(
             'video-' + hashedUrl,
@@ -58,7 +56,7 @@ class AnimeView extends React.Component {
         this.setState({ tick: Number(this.videoRef.current.currentTime) });
     }
 
-    updateTickOnPlay() {
+    updateTickOnPlay = () => {
         const hashedUrl = createMD5(this.props.location.state?.stream);
         const updateTick = () => {
             this.setState({ tick: this.videoRef.current?.currentTime });
@@ -145,14 +143,12 @@ class AnimeView extends React.Component {
                     </Row>
                 </Container>
                 <Container className='p-0'>
-                    <a href='https://paypal.me/pools/c/8somkJXivr'>
-                        <Alert className='pp-h'>
-                            <span>
-                                <img alt='telegram' src={Paypal} height={16}></img>&nbsp;
-                            </span>
-                            Aiuta lo sviluppo con una piccola donazione
-                        </Alert>
-                    </a>
+                    <Alert className='pp-h' onClick={() => window.open('https://paypal.me/pools/c/8somkJXivr')}>
+                        <span>
+                            <img alt='telegram' src={Paypal} height={16}></img>&nbsp;
+                        </span>
+                         Aiuta lo sviluppo con una piccola donazione
+                    </Alert>
                 </Container>
             </div >
         );

@@ -68,16 +68,17 @@ div.carousel-opactiy {
 }
 
 .pp-h {
+    cursor: pointer;
     background: rgba(0, 0, 0, 0);
     background: linear-gradient(90deg, rgba(3, 116, 186, 0.75) 0%, rgba(25,199,228,0.75) 100%);
     color: #fff
 }
 
-.pp-g {
-    background: rgba(0, 0, 0, 0);
-    background: linear-gradient(90deg, rgba(36, 41, 46, 0.75) 0%, rgba(69, 70, 71, 0.75) 100%);
-    color: #fff
-}
+// .pp-g {
+//     background: rgba(0, 0, 0, 0);
+//     background: linear-gradient(90deg, rgba(36, 41, 46, 0.75) 0%, rgba(69, 70, 71, 0.75) 100%);
+//     color: #fff
+// }
 
 // .pp-i{
 //     background: rgb(79,91,213);

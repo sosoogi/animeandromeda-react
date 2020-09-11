@@ -113,10 +113,9 @@ class AnimeDetails extends React.Component {
                         <Col>
                             {this.state.animes?.length > 0 ?
                                 null :
-                                <div>
-                                    <br></br>
-                                    <Spinner animation="grow" className='loader-themed' />
-                                </div>
+                                <React.Fragment>
+                                    <Spinner animation="grow" className='loader-themed mt-5' />
+                                </React.Fragment>
                             }
                         </Col>
                     </Row>
@@ -125,10 +124,10 @@ class AnimeDetails extends React.Component {
                 <Container
                     className={this.state.animes?.length > 0 ? 'anime-container shadow rounded bg-dark-as-box mb-3 p-3 w-100' : 'hidden'}>
                     <Row>
-                        <Col xs={6} md={4} lg={3}>
+                        <Col md={3} xl={2}>
                             <img alt='' className='series-pic' src={this.state.animes[0]?.pic}></img>
                         </Col>
-                        <Col md={8} lg={9}>
+                        <Col md={9} xl={10}>
                             <ListGroup>
                                 <ListGroup.Item className='list-group-details'>
                                     <strong>Titolo: </strong>{this.state.animes[0]?.title}
@@ -162,7 +161,7 @@ class AnimeDetails extends React.Component {
                                 {this.state.animes[0]?.genres.map((x, idx) => (
                                     <React.Fragment key={idx}>
                                         <Link to={`/anime/archivio/${x}`}>
-                                            <Badge pill variant="light" >{x}</Badge>
+                                            <Badge pill variant="light" className='genre-badge'>{x}</Badge>
                                             <span>{' '}</span>
                                         </Link>
                                     </React.Fragment>

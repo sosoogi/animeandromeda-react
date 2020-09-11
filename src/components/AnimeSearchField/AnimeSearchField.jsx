@@ -46,7 +46,7 @@ class AnimeSearchField extends React.Component {
     render() {
         return (
             <div className='search-container'>
-                <input className='search-input' type='text' ref={this.search} placeholder='Cerca'></input>
+                <input className='search-input' type='text' ref={this.search} placeholder='Cerca' aria-label='Cerca'></input>
                 {this.state.json.length > 0 ?
                     this.state.json.map((anime, idx) => (
                         <Link key={idx} className='results-wrapper search-link' to={{ pathname: '/anime/details/' + anime.redundant }}>

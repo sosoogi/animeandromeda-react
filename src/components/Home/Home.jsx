@@ -19,8 +19,8 @@ import globals from '../../globals/variables';
 import './Home.scss';
 
 class Home extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             latest: [],
             airing: [],
@@ -81,10 +81,9 @@ class Home extends React.Component {
                 <Container className='home-anime-container shadow rounded mobile-responsive'>
                     {this.state.airing?.length > 0 ?
                         <AnimeCarousel /> :
-                        <div>
-                            <br></br>
-                            <Spinner animation="grow" className='loader-themed' />
-                        </div>
+                        <React.Fragment>
+                            <Spinner animation="grow" className='loader-themed mt-5' />
+                        </React.Fragment>
                     }
                 </Container>
                 <div className='mt-3'></div>
@@ -93,10 +92,9 @@ class Home extends React.Component {
                         <Col>
                             {this.state.latest?.length > 0 ?
                                 null :
-                                <div>
-                                    <br></br>
-                                    <Spinner animation="grow" className='loader-themed' />
-                                </div>
+                                <React.Fragment>
+                                    <Spinner animation="grow" className='loader-themed mt-5' />
+                                </React.Fragment>
                             }
                         </Col>
                     </Row>
@@ -125,10 +123,9 @@ class Home extends React.Component {
                         <Col>
                             {this.state.airing?.length > 0 ?
                                 null :
-                                <div>
-                                    <br></br>
-                                    <Spinner animation="grow" className='loader-themed' />
-                                </div>
+                                <React.Fragment>
+                                    <Spinner animation="grow" className='loader-themed mt-5' />
+                                </React.Fragment>
                             }
                         </Col>
                     </Row>
@@ -157,10 +154,9 @@ class Home extends React.Component {
                         <Col>
                             {this.state.random?.length > 0 ?
                                 null :
-                                <div>
-                                    <br></br>
-                                    <Spinner animation="grow" className='loader-themed' />
-                                </div>
+                                <React.Fragment>
+                                    <Spinner animation="grow" className='loader-themed mt-5' />
+                                </React.Fragment>
                             }
                         </Col>
                     </Row>
@@ -195,25 +191,21 @@ class Home extends React.Component {
 
                 <div className='mt-3'></div>
                 <Container className='p-0'>
-                    <a href='https://paypal.me/pools/c/8somkJXivr'>
-                        <Alert className='pp-h'>
-                            <span>
-                                <img alt='telegram' src={Paypal} height={16}></img>&nbsp;
-                            </span>
-                            Aiuta lo sviluppo con una piccola donazione
-                        </Alert>
-                    </a>
+                    <Alert className='pp-h' onClick={() => window.open('https://paypal.me/pools/c/8somkJXivr')}>
+                        <span>
+                            <img alt='telegram' src={Paypal} height={16}></img>&nbsp;
+                        </span>
+                         Aiuta lo sviluppo con una piccola donazione
+                    </Alert>
                 </Container>
 
                 {/* <Container className='p-0'>
-                    <a href='https://github.com/oppaoppai/animeandromeda-python'>
-                        <Alert className='pp-g'>
-                            <span>
-                                <img alt='telegram' src={Github} height={16}></img>&nbsp;
-                            </span>
-                            Dai pure un'occhiata alle sorgenti su Github
-                        </Alert>
-                    </a>
+                    <Alert className='pp-g' onClick={() => window.open('https://github.com/oppaoppai/animeandromeda-python')}>
+                        <span>
+                            <img alt='telegram' src={Github} height={16}></img>&nbsp;
+                        </span>
+                        Dai pure un'occhiata alle sorgenti su Github
+                    </Alert>
                 </Container> */}
 
             </main>
