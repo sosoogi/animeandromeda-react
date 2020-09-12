@@ -2,12 +2,11 @@ import React from 'react';
 import { Subject } from 'rxjs';
 import { fromFetch } from 'rxjs/fetch';
 import { switchMap } from 'rxjs/operators';
-import globals from '../../globals/variables';
 import { genresDomain } from '../../globals/domains';
+import globals from '../../globals/variables';
 import Spinner from 'react-bootstrap/Spinner';
 import Form from 'react-bootstrap/Form';
 import AnimeThumb from '../AnimeThumb/AnimeThumb';
-import { String as Sugar } from 'sugar';
 import './Archive.scss';
 
 class Archive extends React.Component {
@@ -17,7 +16,6 @@ class Archive extends React.Component {
             animes: []
         }
         this.subscription = new Subject();
-        this.filterByGenre = this.filterByGenre.bind(this);
     }
 
     componentDidMount() {
@@ -31,7 +29,7 @@ class Archive extends React.Component {
                 .subscribe(data => this.setState({ animes: data }), e => console.error(e));
     }
 
-    filterByGenre(e) {
+    filterByGenre = (e) => {
         const { value } = e.target;
         this.subscription = fromFetch(`${globals.API_URL}anime/genre/${value}`)
             .pipe(
@@ -40,14 +38,8 @@ class Archive extends React.Component {
             .subscribe(data => this.setState({ animes: data }), e => console.error(e));
     }
 
-    truncate = (prop) => {
-        if (prop.length > 28) {
-            return Sugar.truncate(prop, 28, '...')
-        }
-        return prop;
-    }
-
     render() {
+        const _genre = decodeURIComponent(this.props.location.pathname.substring(16));
         return (
             <div>
                 <div className='mt-3'></div>
@@ -60,7 +52,7 @@ class Archive extends React.Component {
                     <div className='row'>
                         <div className='col'>
                             <Form.Group as={'div'} controlId="formGridState">
-                                <Form.Control as="select" placeholder="Scegli un genere" onChange={this.filterByGenre}>
+                                <Form.Control as="select" defaultValue={_genre} onChange={this.filterByGenre}>
                                     {genresDomain.map((genre, idx) => (
                                         <option key={idx}>{genre}</option>
                                     ))}
@@ -86,7 +78,7 @@ class Archive extends React.Component {
                         ))}
                     </div>
                 </div>
-            </div >
+            </div>
         );
     }
 }
