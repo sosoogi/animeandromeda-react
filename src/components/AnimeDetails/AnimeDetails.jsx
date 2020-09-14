@@ -46,10 +46,9 @@ class AnimeDetails extends React.Component {
             category: 'Details',
             action: 'User landed on the details of ' + series
         });
-        this.goBack = this.goBack.bind(this);
     }
 
-    goBack() {
+    goBack = () => {
         this.props.history.goBack();
     }
 
@@ -139,7 +138,7 @@ class AnimeDetails extends React.Component {
                                     <strong>In corso: </strong>{this.state.animes[0]?.airing ? 'Si' : 'Terminato'}
                                 </ListGroup.Item>
                                 <ListGroup.Item className='list-group-details'>
-                                    <strong>idMAL: </strong>{this.state.animes[0]?.idMAL}
+                                    <strong>Punteggio: </strong>{(this.state.animes[0]?.score || 0.00) + '/10'}
                                 </ListGroup.Item>
                                 <ListGroup.Item className='list-group-details'>
                                     <strong>Aggiornato il: </strong>

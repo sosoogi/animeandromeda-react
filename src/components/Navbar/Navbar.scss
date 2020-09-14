@@ -14,3 +14,12 @@
 .typo-normal:hover{
     color: rgba(255, 255, 255, 0.5);
 }
+
+.navbar-dark .navbar-toggler{
+    border-color: transparent;
+}
+
+.navbar-dark .navbar-toggler:focus,
+.navbar-dark .navbar-toggler:hover {
+    border-color: transparent;
+}

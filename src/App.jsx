@@ -17,13 +17,11 @@ const Archive = React.lazy(() => import('./components/AnimeArchive/Archive'));
 const About = React.lazy(() => import('./components/About/About'));
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       theme: localStorage.getItem('theme') || 'dark'
     };
-
-    this.changeTheme = this.changeTheme.bind(this);
   }
 
   componentDidMount() {
@@ -51,7 +49,7 @@ class App extends React.Component {
     this.state.theme === 'dark' ? document.body.style.backgroundColor = '#0A1621' : document.body.style.backgroundColor = '#eaf4fd'
   }
 
-  changeTheme() {
+  changeTheme = () => {
     if (this.state.theme === 'dark') {
       this.setState({ theme: 'light' });
       localStorage.setItem('theme', 'light');
@@ -125,7 +123,7 @@ class App extends React.Component {
                   <span>&nbsp;<img alt='telegram' src={TelegramIco} height={18}></img></span>
                 </span>
                 <p className='text-muted underlined' onClick={this.changeTheme}>
-                  {this.state.theme === 'light' ? 'Passa al tema scuro' : 'Passa al tema chiaro'}
+                  {this.state.theme === 'light' ? 'Passa al tema scuro' : 'Passa al tema alternativo'}
                 </p>
               </div>
               <div className='col-lg-4 col-md-4 col-xs-6'>

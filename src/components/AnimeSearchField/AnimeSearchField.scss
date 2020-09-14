@@ -21,7 +21,10 @@
 }
 
 .search-link:hover{
-    color: rgb(111, 135, 240);
+    @include themed() {
+        color: t($button-bg);
+    }
+    // color: rgb(111, 135, 240);
     text-decoration: none;
 }
 

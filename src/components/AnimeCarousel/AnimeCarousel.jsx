@@ -1,9 +1,5 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import globals from '../../globals/variables';
-import { Subject } from 'rxjs';
-import { fromFetch } from 'rxjs/fetch';
-import { switchMap } from 'rxjs/operators';
 import { Link } from 'react-router-dom';
 import './AnimeCarousel.scss';
 
@@ -11,23 +7,9 @@ class AnimeCarousel extends React.Component {
     constructor() {
         super();
         this.state = {
-            json: [],
             index: 0,
             ready: false,
         }
-        this.subscription = new Subject();
-    }
-
-    componentDidMount() {
-        this.subscription = fromFetch(globals.API_URL + 'anime/latest/airing')
-            .pipe(
-                switchMap(res => res.json())
-            )
-            .subscribe(data => this.setState({ json: data }), e => console.error(e));
-    }
-
-    componentWillUnmount() {
-        this.subscription.unsubscribe();
     }
 
     deferImageLoading = (index) => {
@@ -50,12 +32,12 @@ class AnimeCarousel extends React.Component {
                 interval={this.state.ready ? 5000 : null}
             >
                 {
-                    this.state.json?.map((x, idx) => (
+                    this.props.apiResponse?.map((x, idx) => (
                         <Carousel.Item key={idx}>
                             <div className='carousel-opactiy'>
                                 <img
                                     className='d-block w-100 carozello'
-                                    src={this.state.json[this.state.index]?.thumb}
+                                    src={this.props.apiResponse[this.state.index]?.thumb}
                                     alt={x._id.series}
                                     onLoad={this.handleImageLoaded}
                                 />

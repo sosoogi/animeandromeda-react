@@ -16,7 +16,6 @@ import './AnimeView.scss';
 class AnimeView extends React.Component {
     constructor() {
         super();
-        this.goBack = this.goBack.bind(this);
         this.state = {
             tick: 0
         }
@@ -69,7 +68,7 @@ class AnimeView extends React.Component {
         }
     }
 
-    goBack() {
+    goBack = () => {
         this.props.history.goBack();
     }
 

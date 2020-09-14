@@ -6,3 +6,9 @@
         background-color: t($search);
     }
 }
+
+.link-calendar {
+    @include themed() {
+        color: t($color);
+    }
+}
