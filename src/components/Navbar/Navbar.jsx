@@ -27,7 +27,7 @@ const AnimeNavbar = () => {
                             />{' '}
                         </Navbar.Brand>
                     </Link>
-                    <Navbar.Toggle aria-controls="responsive-navbar" />
+                    <Navbar.Toggle aria-controls="responsive-navbar" aria-label="toggle navbar" />
                     <Navbar.Collapse>
                         <Nav className="mr-auto">
                             <Nav.Link onClick={() => { setExpanded(false) }} as={Link} to='/anime/archivio'>Archivio</Nav.Link>

@@ -21,8 +21,7 @@
     "react-scripts": "3.4.1",
     "rxjs": "^6.6.2",
     "sugar": "^2.0.6",
-    "web-vitals": "^0.2.4",
-    "webp-hero": "^0.0.0-dev.24"
+    "web-vitals": "^0.2.4"
   },
   "scripts": {
     "start": "set PORT=3001 && react-scripts start",

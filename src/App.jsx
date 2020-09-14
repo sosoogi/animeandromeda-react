@@ -5,7 +5,6 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import TelegramIco from './assets/telegram.svg';
 import ReactGA from 'react-ga';
 import { getCLS, getFID, getLCP } from 'web-vitals';
-// import { WebpMachine } from "webp-hero"
 import Home from './components/Home/Home';
 import Navbar from './components/Navbar/Navbar';
 import './App.scss';
