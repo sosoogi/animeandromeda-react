@@ -1,5 +1,6 @@
 import React from 'react';
 import Logo from '../../assets/Illustration.webp';
+import Logo_fb from '../../assets/Illustration.png';
 
 const Calendar = () => {
     return (
@@ -8,7 +9,10 @@ const Calendar = () => {
             <div className='container home-anime-container p-3 shadow rounded'>
                 <div className='row'>
                     <div className='col'>
-                        <img alt='animeandromeda-heading' className='img-fluid' src={Logo}></img>
+                        <picture>
+                            <source alt='animeandromeda-heading' className='img-fluid' srcset={Logo} type="image/webp"></source>
+                            <img alt='animeandromeda-heading' className='img-fluid' src={Logo_fb}></img>
+                        </picture>
                     </div>
                 </div>
                 <div className='row'>
