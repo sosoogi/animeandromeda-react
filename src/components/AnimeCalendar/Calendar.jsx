@@ -127,7 +127,7 @@ class Calendar extends React.PureComponent {
                     </div>
                     <div className='row'>
                         <div className='col'>
-                            * Gli orari sono molto indicativi, tieni conto del tempo della traduzione da perte del fansub
+                            * Gli orari sono molto indicativi, tieni conto del tempo della traduzione da parte del fansub
                         </div>
                     </div>
                 </div>
