@@ -13,6 +13,16 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
+  <loc>https://www.animeandromeda.net/calendario</loc>
+  <lastmod>2020-09-16T23:10:19+00:00</lastmod>
+  <priority>0.90</priority>
+</url>
+<url>
+  <loc>https://www.animeandromeda.net/archivio</loc>
+  <lastmod>2020-09-16T23:10:19+00:00</lastmod>
+  <priority>0.90</priority>
+</url>
+<url>
   <loc>https://www.animeandromeda.net/anime/details/Oregairu3</loc>
   <lastmod>2020-09-02T23:15:19+00:00</lastmod>
   <priority>0.80</priority>
@@ -61,13 +71,13 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>https://www.animeandromeda.net/anime/details/black-clover</loc>
+  <loc>https://www.animeandromeda.net/anime/details/BlackClover</loc>
   <lastmod>2020-09-10T23:15:19+00:00</lastmod>
   <priority>0.80</priority>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>https://www.animeandromeda.net/anime/details/that-time-i-got-reincarnated-as-a-slime</loc>
+  <loc>https://www.animeandromeda.net/anime/details/TenseiShitaraSlimeDattaKen</loc>
   <lastmod>2020-09-10T23:15:19+00:00</lastmod>
   <priority>0.50</priority>
   <changefreq>weekly</changefreq>

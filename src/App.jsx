@@ -81,7 +81,7 @@ class App extends React.Component {
   }
 
   render() {
-    const helmetContext = {};
+    const helmetContext = { 'app': '/' }
     return (
       <div className={'theme ' + (this.state.theme === 'dark' ? 'theme--dark' : 'theme--light')}>
         <HelmetProvider context={helmetContext}>
@@ -101,9 +101,9 @@ class App extends React.Component {
               <Route exact path='/anime/details/:anime' component={this.lazyLoadCompoment(AnimeDetails)}></Route>
               {/* <Route exact path='/anime/view/:anime/:ep' component={this.lazyLoadCompoment(AnimeView)}></Route> */}
               <Route exact path='/anime/view' component={this.lazyLoadCompoment(AnimeView)}></Route>
-              <Route exact path='/anime/calendario' component={this.lazyLoadCompoment(Calendar)}></Route>
-              <Route exact path='/anime/archivio' key='def' component={this.lazyLoadCompoment(Archive)}></Route>
-              <Route exact path='/anime/archivio/:genere' key='pre' component={this.lazyLoadCompoment(Archive)}></Route>
+              <Route exact path='/calendario' component={this.lazyLoadCompoment(Calendar)}></Route>
+              <Route exact path='/archivio' key='def' component={this.lazyLoadCompoment(Archive)}></Route>
+              <Route exact path='/archivio/:genere' key='pre' component={this.lazyLoadCompoment(Archive)}></Route>
               <Route exact path='/about' component={this.lazyLoadCompoment(About)}></Route>
             </Switch>
           </div>

@@ -138,11 +138,10 @@ class AnimeDetails extends React.Component {
                                     <strong>In corso: </strong>{this.state.animes[0]?.airing ? 'Si' : 'Terminato'}
                                 </ListGroup.Item>
                                 <ListGroup.Item className='list-group-details'>
-                                    <strong>Punteggio: </strong>{(this.state.animes[0]?.score || 0.00) + '/10'}
+                                    <strong>Punteggio: </strong>{(this.state.animes[0]?.score || '-') + '/10'}
                                 </ListGroup.Item>
                                 <ListGroup.Item className='list-group-details'>
-                                    <strong>Aggiornato il: </strong>
-                                    {convertDate(new Date(this.state.animes[0]?.updated.$date || this.state.animes[0]?.updated))}
+                                    <strong>Durata: </strong>{(this.state.animes[0]?.duration || '-')}
                                 </ListGroup.Item>
                             </ListGroup>
                         </Col>
@@ -159,7 +158,7 @@ class AnimeDetails extends React.Component {
                             <div className='text-left'>
                                 {this.state.animes[0]?.genres.map((x, idx) => (
                                     <React.Fragment key={idx}>
-                                        <Link to={`/anime/archivio/${x}`}>
+                                        <Link to={`/archivio/${x}`}>
                                             <Badge pill variant="light" className='genre-badge'>{x}</Badge>
                                             <span>{' '}</span>
                                         </Link>
@@ -267,6 +266,11 @@ class AnimeDetails extends React.Component {
                     {this.state.animes?.length > 0 ?
                         <Button className='button-ep' onClick={this.goBack}>Torna alla home</Button> : null
                     }
+                </Container>
+
+                <div className='mt-3'></div>
+                <Container className={this.state.animes?.length > 0 ? 'anime-container p-3 shadow rounded' : null}>
+                    Aggiunto il {convertDate(new Date(this.state.animes[0]?.updated.$date || this.state.animes[0]?.updated))} da Peocchi
                 </Container>
             </div >
         );

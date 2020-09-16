@@ -7,6 +7,7 @@ import globals from '../../globals/variables';
 import Spinner from 'react-bootstrap/Spinner';
 import Form from 'react-bootstrap/Form';
 import AnimeThumb from '../AnimeThumb/AnimeThumb';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import './Archive.scss';
 
 class Archive extends React.Component {
@@ -20,7 +21,7 @@ class Archive extends React.Component {
 
     componentDidMount() {
         window.scrollTo(0, 0);
-        const genre = decodeURIComponent(this.props.location.pathname.substring(16));
+        const genre = decodeURIComponent(this.props.location.pathname.substring(10));
         if (genre)
             this.subscription = fromFetch(`${globals.API_URL}anime/genre/${genre}`)
                 .pipe(
@@ -39,11 +40,23 @@ class Archive extends React.Component {
     }
 
     render() {
-        const _genre = decodeURIComponent(this.props.location.pathname.substring(16));
+        const _genre = decodeURIComponent(this.props.location.pathname.substring(10));
+        const helmetContext = {}
         return (
             <div>
+                <HelmetProvider context={helmetContext}>
+                    <Helmet>
+                        <meta name='language' content='it' />
+                        <meta name="description" content={
+                            `Certe volte è dura ricordarsi istantaneamente il nome di una serie :/ , per questo ti offriamo dei comodi 
+                            filtri per la ricerca`
+                        } />
+                        <title>Archivio Anime - ricerca filtrata - AnimeAndromeda - Anime Andromeda</title>
+                        <link rel='canonical' href='https://www.animeandromeda.net' />
+                    </Helmet>
+                </HelmetProvider>
                 <div className='mt-3'></div>
-                <div className='container home-anime-container p-3 shadow rounded'>
+                <div className='container anime-container p-3 shadow rounded'>
                     <div className='row'>
                         <div className='col'>
                             <h3 className='home-section-title'>{'Archivio Anime'}</h3>

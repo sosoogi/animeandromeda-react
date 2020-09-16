@@ -30,8 +30,8 @@ const AnimeNavbar = () => {
                     <Navbar.Toggle aria-controls="responsive-navbar" aria-label="toggle navbar" />
                     <Navbar.Collapse>
                         <Nav className="mr-auto">
-                            <Nav.Link onClick={() => { setExpanded(false) }} as={Link} to='/anime/archivio'>Archivio</Nav.Link>
-                            <Nav.Link onClick={() => { setExpanded(false) }} as={Link} to='/anime/calendario'>Calendario</Nav.Link>
+                            <Nav.Link onClick={() => { setExpanded(false) }} as={Link} to='/archivio'>Archivio</Nav.Link>
+                            <Nav.Link onClick={() => { setExpanded(false) }} as={Link} to='/calendario'>Calendario</Nav.Link>
                         </Nav>
                         <Nav>
                             <NavDropdown title="Altro" bsPrefix='typo-normal' id='navbardropdown-h'>

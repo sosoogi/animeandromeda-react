@@ -5,6 +5,7 @@ import { fromFetch } from 'rxjs/fetch';
 import { switchMap } from 'rxjs/operators';
 import { Link } from 'react-router-dom';
 import globals from '../../globals/variables'
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import './Calendar.scss';
 
 
@@ -31,8 +32,20 @@ class Calendar extends React.PureComponent {
     }
 
     render() {
+        const helmetContext = {}
         return (
             <div>
+                <HelmetProvider context={helmetContext}>
+                    <Helmet>
+                        <meta name='language' content='it' />
+                        <meta name="description" content={
+                            `Controlla le prossime uscite delle tue serie preferite su AnimeAndromeda.
+                            Sempre in alta definizione e senza pubblicità!`
+                        } />
+                        <title>Calendario Uscite - AnimeAndromeda - Anime Andromeda</title>
+                        <link rel='canonical' href='https://www.animeandromeda.net' />
+                    </Helmet>
+                </HelmetProvider>
                 <div className='mt-3'></div>
                 <div className='container home-anime-container p-3 shadow rounded'>
                     <div className='row'>
