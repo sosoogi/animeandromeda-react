@@ -50,7 +50,6 @@ const AnimeScroller = (props) => {
                 wheel={false}
                 dragging={true}
                 transition={0.2}
-                translate={window.innerWidth <= globals.MOBILE_MAX_WIDTH ? 0 : 10}
             />
         </div>
     );
