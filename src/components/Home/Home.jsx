@@ -166,6 +166,12 @@ class Home extends React.Component {
                     </Row>
                     <Row>
                         {
+                            window.innerWidth <= globals.MOBILE_MAX_WIDTH ?
+                                <AnimeScroller data={this.state.random}></AnimeScroller> : null
+                        }
+                    </Row>
+                    <Row>
+                        {
                             window.innerWidth > globals.MOBILE_MAX_WIDTH ?
                                 this.state.random.map((anime, idx) => (
                                     <Col xs={6} md={3} lg={2} key={idx} className='mobile-responsive-col'>
@@ -176,9 +182,7 @@ class Home extends React.Component {
                                             key={anime.idMAL}>
                                         </AnimeThumb>
                                     </Col>
-                                )) :
-                                <AnimeScroller data={this.state.random}></AnimeScroller>
-
+                                )) : null
                         }
                     </Row>
                     <Row>
