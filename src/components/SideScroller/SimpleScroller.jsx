@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ScrollMenu from 'react-horizontal-scrolling-menu';
 import AnimeThumb from '../AnimeThumb/AnimeThumb';
-import globals from '../../globals/variables';
 import Hammer from 'hammerjs';
 import './SimpleScroller.scss';
 
@@ -41,7 +40,7 @@ const AnimeScroller = (props) => {
     const [selected, onSelect] = useState(0);
     const data = Menu(props.data);
     return (
-        <div className='container p-0' ref={containerRef}>
+        <div className='container container-fluid p-0' ref={containerRef}>
             <ScrollMenu
                 data={data}
                 selected={selected}

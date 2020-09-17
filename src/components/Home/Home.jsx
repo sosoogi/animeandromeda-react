@@ -177,9 +177,8 @@ class Home extends React.Component {
                                         </AnimeThumb>
                                     </Col>
                                 )) :
-                                <Col>
-                                    <AnimeScroller data={this.state.random}></AnimeScroller>
-                                </Col>
+                                <AnimeScroller data={this.state.random}></AnimeScroller>
+
                         }
                     </Row>
                     <Row>
