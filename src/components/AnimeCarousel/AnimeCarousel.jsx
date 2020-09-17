@@ -42,7 +42,8 @@ const AnimeCarousel = (props) => {
                                 </Carousel.Caption>
                             </Link>
                         </div>
-                    </Carousel.Item>))
+                    </Carousel.Item>)
+                )
             }
         </Carousel >
     );

@@ -11,8 +11,8 @@ import { Link } from 'react-router-dom';
 import './AnimeSearchField.scss';
 
 class AnimeSearchField extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             json: [],
         }
