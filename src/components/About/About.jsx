@@ -10,8 +10,8 @@ const Calendar = () => {
                 <div className='row'>
                     <div className='col'>
                         <picture>
-                            <source alt='animeandromeda-heading' className='img-fluid' srcset={Logo} type="image/webp"></source>
-                            <img alt='animeandromeda-heading' className='img-fluid' src={Logo_fb}></img>
+                            <source alt='animeandromeda-heading' className='img-fluid' srcSet={Logo} type="image/webp"></source>
+                            <img alt='animeandromeda-heading' className='img-fluid' srcSet={Logo_fb}></img>
                         </picture>
                     </div>
                 </div>

@@ -10,15 +10,14 @@ const AnimeThumb = (props) => {
             <div className='flyer-container'>
                 <Figure>
                     <Figure.Image
-                        width={window.innerWidth < globals.MOBILE_MAX_WIDTH ? window.innerWidth : 240}
-                        height={300}
+                        width={props.xsize || (window.innerWidth < globals.MOBILE_MAX_WIDTH ? window.innerWidth : 200)}
+                        height={props.ysize || 300}
                         src={props.pic || globals.INCONSISTENT_API_IMG}
                         className='flyer'
                         alt=''
                     />
-                    <div className='caption'>{props.title || props.series.replace(/([a-z])([A-Z0-9])/g, '$1 $2')}</div>
+                    <div className='caption'>{props.title || '-'}</div>
                 </Figure>
-                <div className='flyer-spacer'></div>
             </div>
         </Link>
     );

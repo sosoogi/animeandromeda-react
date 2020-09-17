@@ -8,9 +8,8 @@ import Container from 'react-bootstrap/Container';
 import AnimeThumb from '../AnimeThumb/AnimeThumb';
 import AnimeCarousel from '../AnimeCarousel/AnimeCarousel';
 import AnimeSearchField from '../AnimeSearchField/AnimeSearchField';
+import AnimeScroller from '../SideScroller/SimpleScroller';
 import Paypal from '../../assets/paypal.svg';
-// import Github from '../../assets/github.svg';
-// import { Shuffle } from 'react-bootstrap-icons';
 import { fromEvent, ReplaySubject } from 'rxjs';
 import { switchMap, debounceTime } from 'rxjs/operators';
 import { Subject } from 'rxjs';
@@ -55,7 +54,7 @@ class Home extends React.Component {
 
         this.refetchSub = fromEvent(this.randomButton.current, 'click')
             .pipe(
-                debounceTime(250),
+                debounceTime(125),
             )
             .subscribe(() => {
                 fromFetch(globals.API_URL + 'anime/random')
@@ -167,16 +166,18 @@ class Home extends React.Component {
                     </Row>
                     <Row>
                         {
-                            this.state.random.map((anime, idx) => (
-                                <Col xs={6} md={3} lg={2} key={idx} className='mobile-responsive-col'>
-                                    <AnimeThumb
-                                        series={anime.series}
-                                        pic={anime.pic}
-                                        title={anime.series_pretty}
-                                        key={anime.idMAL}>
-                                    </AnimeThumb>
-                                </Col>
-                            ))
+                            window.innerWidth > globals.MOBILE_MAX_WIDTH ?
+                                this.state.random.map((anime, idx) => (
+                                    <Col xs={6} md={3} lg={2} key={idx} className='mobile-responsive-col'>
+                                        <AnimeThumb
+                                            series={anime.series}
+                                            pic={anime.pic}
+                                            title={anime.series_pretty}
+                                            key={anime.idMAL}>
+                                        </AnimeThumb>
+                                    </Col>
+                                )) :
+                                <AnimeScroller data={this.state.random}></AnimeScroller>
                         }
                     </Row>
                     <Row>
