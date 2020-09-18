@@ -10,6 +10,7 @@ import AnimeCarousel from '../AnimeCarousel/AnimeCarousel';
 import AnimeSearchField from '../AnimeSearchField/AnimeSearchField';
 import AnimeScroller from '../SideScroller/SimpleScroller';
 import Paypal from '../../assets/paypal.svg';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { fromEvent, ReplaySubject } from 'rxjs';
 import { switchMap, debounceTime } from 'rxjs/operators';
 import { Subject } from 'rxjs';
@@ -26,18 +27,18 @@ class Home extends React.Component {
             random: [],
         }
 
-        this.latestSub = new Subject();
+        // this.latestSub = new Subject();
         this.airingSub = new Subject();
         this.randomSub = new ReplaySubject();
         this.randomButton = new React.createRef()
     }
 
     async componentDidMount() {
-        this.latestSub = fromFetch(globals.API_URL + 'anime/latest')
-            .pipe(
-                switchMap(res => res.json())
-            )
-            .subscribe(data => this.setState({ latest: data }), e => console.error(e));
+        // this.latestSub = fromFetch(globals.API_URL + 'anime/latest')
+        //     .pipe(
+        //         switchMap(res => res.json())
+        //     )
+        //     .subscribe(data => this.setState({ latest: data }), e => console.error(e));
 
         this.airingSub = fromFetch(globals.API_URL + 'anime/latest/airing')
             .pipe(
@@ -53,7 +54,7 @@ class Home extends React.Component {
 
         this.randomSub = fromEvent(this.randomButton.current, 'click')
             .pipe(
-                debounceTime(200),
+                debounceTime(175),
             )
             .subscribe(() => {
                 fromFetch(globals.API_URL + 'anime/random')
@@ -65,14 +66,24 @@ class Home extends React.Component {
     }
 
     componentWillUnmount() {
-        this.latestSub.unsubscribe();
+        // this.latestSub.unsubscribe();
         this.airingSub.unsubscribe();
         this.randomSub.unsubscribe();
     }
 
     render() {
+        const helmetContext = {}
         return (
             <main className='Home'>
+                <HelmetProvider context={helmetContext}>
+                    <Helmet>
+                        <meta name='language' content='it' />
+                        <meta name="description" content={'Archivio Anime senza pubblicità, communitiy driven ed ottimizzato per l\'uso mobile.' +
+                            'Aggiungi l\'applicazione alla schermata home per averla sempre a portata di mano!'} />
+                        <title>{'AnimeAndromeda - Streaming Anime SUB ITA senza pubblicità - Anime Andromeda'}</title>
+                        <link rel='canonical' href='https://www.animeandromeda.net' />
+                    </Helmet>
+                </HelmetProvider>
                 {/* <AnimeBanner text={'AnimeAndromeda'} pic={AndromedaDark}></AnimeBanner> */}
                 <AnimeSearchField className='container shadow rounded bg-dark-as-box mb-3 p-3 w-100'></AnimeSearchField>
                 <Container className='home-anime-container shadow rounded mobile-responsive'>
@@ -83,7 +94,8 @@ class Home extends React.Component {
                         </React.Fragment>
                     }
                 </Container>
-                <div className='mt-3'></div>
+                {/* in realtà è ridondante */}
+                {/* <div className='mt-3'></div>
                 <Container className='home-anime-container p-3 shadow rounded'>
                     <Row>
                         <Col>
@@ -108,12 +120,39 @@ class Home extends React.Component {
                                     pic={anime.pic}
                                     thumb={anime.thumb}
                                     title={anime.pretty}
+                                    ep={anime.count}
                                     key={anime._id.series}>
                                 </AnimeThumb>
                             </Col>
                         ))}
                     </Row>
-                </Container>
+                </Container> */}
+                {/* <div className='mt-3'></div>
+                <Container className='home-anime-container p-3 shadow rounded'>
+                    <Row>
+                        <Col>
+                            {this.state.latest?.length > 0 ?
+                                null :
+                                <React.Fragment>
+                                    <Spinner animation="grow" className='loader-themed mt-5' />
+                                </React.Fragment>
+                            }
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <h3 className='home-section-title'>{this.state.latest?.length > 0 ? 'Ultimi Anime inseriti' : ''}</h3>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col className='text-left'>
+                            {this.state.latest?.map((anime, idx) => (
+                                <p key={idx}>{`Inserito anime ${anime.pretty}`}</p>
+                            ))}
+                        </Col>
+
+                    </Row>
+                </Container> */}
                 <div className='mt-3'></div>
                 <Container className='home-anime-container p-3 shadow rounded'>
                     <Row>
@@ -128,7 +167,7 @@ class Home extends React.Component {
                     </Row>
                     <Row>
                         <Col>
-                            <h3 className='home-section-title'>{this.state.airing?.length > 0 ? 'Anime in corso' : ''}</h3>
+                            <h3 className='home-section-title'>{this.state.airing?.length > 0 ? 'Utlime aggiunte' : ''}</h3>
                         </Col>
                     </Row>
                     <Row>
@@ -139,6 +178,7 @@ class Home extends React.Component {
                                     pic={anime.pic}
                                     thumb={anime.thumb}
                                     title={anime.pretty}
+                                    ep={anime.count}
                                     key={anime._id.series}>
                                 </AnimeThumb>
                             </Col>

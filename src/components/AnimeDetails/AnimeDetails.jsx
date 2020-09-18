@@ -271,7 +271,7 @@ class AnimeDetails extends React.Component {
                 <div className='mt-3'></div>
                 <Container className={this.state.animes?.length > 0 ? 'anime-container p-3 shadow rounded' : null}>
                     {this.state.animes?.length > 0 ?
-                        <span>Aggiunto il {convertDate(new Date(this.state.animes[0]?.updated.$date || this.state.animes[0]?.updated))} da Peocchi</span> : 'Chotto matte'
+                        <small>Aggiunto il {convertDate(new Date(this.state.animes[0]?.updated.$date || this.state.animes[0]?.updated))} da Peocchi</small> : 'Chotto matte'
                     }
                 </Container>
             </div >

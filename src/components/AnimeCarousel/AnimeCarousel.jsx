@@ -23,7 +23,7 @@ const AnimeCarousel = (props) => {
             fade={true}
             controls={ready}
             indicators={ready}
-            interval={ready ? 5000 : null}
+            interval={ready ? 4000 : null}
         >
             {
                 props.apiResponse?.map((x, idx) => (

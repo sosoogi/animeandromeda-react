@@ -23,8 +23,8 @@ const containerRef = React.createRef();
 
 const onUpdate = () => {
     let hammer = Hammer(containerRef.current);
-    let wheeleventLeft = new WheelEvent("wheel", { deltaX: -600 });
-    let wheeleventRight = new WheelEvent("wheel", { deltaX: -600 });
+    let wheeleventLeft = new WheelEvent("wheel", { deltaX: -500 });
+    let wheeleventRight = new WheelEvent("wheel", { deltaX: -500 });
     hammer.on("swiperight", () => window.dispatchEvent(wheeleventRight));
     hammer.on("swipeleft", () => window.dispatchEvent(wheeleventLeft));
 }

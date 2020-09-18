@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react';
 import { shrinkLocalStorage } from './globals/functions';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
 import TelegramIco from './assets/telegram.svg';
 import ReactGA from 'react-ga';
 import { getCLS, getFID, getLCP } from 'web-vitals';
@@ -81,18 +80,8 @@ class App extends React.Component {
   }
 
   render() {
-    const helmetContext = { 'app': '/' }
     return (
       <div className={'theme ' + (this.state.theme === 'dark' ? 'theme--dark' : 'theme--light')}>
-        <HelmetProvider context={helmetContext}>
-          <Helmet>
-            <meta name='language' content='it' />
-            <meta name="description" content={'Archivio Anime senza pubblicità, communitiy driven ed ottimizzato per l\'uso mobile.' +
-              'Aggiungi l\'applicazione alla schermata home per averla sempre a portata di mano!'} />
-            <title>{'AnimeAndromeda - Streaming Anime SUB ITA senza pubblicità - Anime Andromeda'}</title>
-            <link rel='canonical' href='https://www.animeandromeda.net' />
-          </Helmet>
-        </HelmetProvider>
         <BrowserRouter>
           <div className='App'>
             <Navbar></Navbar>

@@ -1,7 +1,8 @@
 import React from 'react';
 import Figure from 'react-bootstrap/Figure';
-import { Link } from 'react-router-dom';
+import Badge from 'react-bootstrap/Badge';
 import globals from '../../globals/variables';
+import { Link } from 'react-router-dom';
 import './AnimeThumb.scss';
 
 const AnimeThumb = (props) => {
@@ -16,6 +17,8 @@ const AnimeThumb = (props) => {
                         className='flyer'
                         alt=''
                     />
+                    {/* {props.ep ? <div className='badge-ep'>{props.ep}</div> : null} */}
+                    {props.ep ? <Badge variant='danger' className='badge-ep'>{props.ep}</Badge> : null}
                     <div className='caption'>{props.title || '-'}</div>
                 </Figure>
             </div>
