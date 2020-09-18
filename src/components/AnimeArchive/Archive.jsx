@@ -12,13 +12,13 @@ import './Archive.scss';
 
 const Archive = (props) => {
     const [animes, setAnimes] = useState([]);
-    let subscription = new Subject();
 
     const helmetContext = {}
     const genre = decodeURIComponent(props.location.pathname.substring(10));
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        let subscription = new Subject();
         if (genre)
             subscription = fromFetch(`${globals.API_URL}anime/genre/${genre}`)
                 .pipe(
@@ -26,10 +26,11 @@ const Archive = (props) => {
                 )
                 .subscribe(data => setAnimes(data), e => console.error(e));
         return () => subscription.unsubscribe();
-    }, [])
+    }, [genre])
 
     const filterByGenre = (e) => {
         const { value } = e.target;
+        let subscription = new Subject();
         subscription = fromFetch(`${globals.API_URL}anime/genre/${value}`)
             .pipe(
                 switchMap(res => res.json())
