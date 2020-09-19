@@ -53,17 +53,30 @@
     right: 5px;
 }
 
-.caption-top {
-    @include themed() {
-        color: t($color);
-        background-color: t($overlay);
-    }
-    top: 0px;
-    padding: 5px 3px 5px 3px;
-    width: 100%;
+.badge-love {
     position: absolute;
-    z-index: 50;
-    min-height: 20px;
-    border-top-left-radius: 0.5em;
-    border-top-right-radius: 0.5em;
+    top: 5px;
+    right: 5px;
+    font-size: 1em;
 }
+
+.badge-premiere {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+// .caption-top {
+//     @include themed() {
+//         color: t($color);
+//         background-color: t($overlay);
+//     }
+//     top: 0px;
+//     padding: 5px 3px 5px 3px;
+//     width: 100%;
+//     position: absolute;
+//     z-index: 50;
+//     min-height: 20px;
+//     border-top-left-radius: 0.5em;
+//     border-top-right-radius: 0.5em;
+// }

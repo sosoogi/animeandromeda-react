@@ -11,9 +11,8 @@ import AnimeSearchField from '../AnimeSearchField/AnimeSearchField';
 import AnimeScroller from '../SideScroller/SimpleScroller';
 import Paypal from '../../assets/paypal.svg';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { fromEvent, ReplaySubject } from 'rxjs';
+import { fromEvent, ReplaySubject, Subject } from 'rxjs';
 import { switchMap, debounceTime } from 'rxjs/operators';
-import { Subject } from 'rxjs';
 import { fromFetch } from 'rxjs/fetch';
 import globals from '../../globals/variables';
 import './Home.scss';
@@ -217,6 +216,8 @@ class Home extends React.Component {
                                             series={anime.series}
                                             pic={anime.pic}
                                             title={anime.series_pretty}
+                                            premiere={anime.premiere}
+                                            loved={true}
                                             key={anime.idMAL}>
                                         </AnimeThumb>
                                     </Col>
@@ -225,7 +226,7 @@ class Home extends React.Component {
                     </Row>
                     <Row>
                         <Col>
-                            {this.state.random.length > 0 ?
+                            {this.state.random.length && window.innerWidth > globals.MOBILE_MAX_WIDTH > 0 ?
                                 <Button ref={this.randomButton} className='button-random'>{'Random '}</Button> :
                                 <Button ref={this.randomButton} style={{ display: 'none' }} className='button-random'>Random</Button>
                             }
