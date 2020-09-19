@@ -86,7 +86,7 @@ const AnimeScroller = (props) => {
                 selected={0}
                 scrollBy={16}
                 inertiaScrolling={true}
-                inertiaScrollingSlowdown={0.5}
+                inertiaScrollingSlowdown={0.85}
                 dragging={!more}
                 onLastItemVisible={stop ? () => { return; } : () => setMore(true)}
             />

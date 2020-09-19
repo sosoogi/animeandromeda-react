@@ -226,7 +226,7 @@ class Home extends React.Component {
                     </Row>
                     <Row>
                         <Col>
-                            {this.state.random.length && window.innerWidth > globals.MOBILE_MAX_WIDTH > 0 ?
+                            {this.state.random.length > 0 && window.innerWidth > globals.MOBILE_MAX_WIDTH ?
                                 <Button ref={this.randomButton} className='button-random'>{'Random '}</Button> :
                                 <Button ref={this.randomButton} style={{ display: 'none' }} className='button-random'>Random</Button>
                             }
