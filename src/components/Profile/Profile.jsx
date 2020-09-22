@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../Contexts/UserContext';
 import cookie from 'js-cookie';
 import { BehaviorSubject } from 'rxjs';
@@ -20,7 +20,7 @@ import globals from '../../globals/variables';
 import './Profile.scss';
 
 const Profile = (props) => {
-    const [userData] = useContext(UserContext);
+    const [userData, setUserData] = useContext(UserContext);
     const [uploaded, setUploaded] = useState(false);
 
     const submitPictures = (event, endpoint) => {
@@ -83,6 +83,22 @@ const Profile = (props) => {
             .subscribe(() => setUploaded(true));
         return () => subscription.unsubscribe();
     }
+
+    useEffect(() => {
+        if (userData instanceof String || userData === undefined || userData === 'expired token') {
+            let subscription = new BehaviorSubject({});
+            subscription = fromFetch(`${globals.AUTH_API_URL}/user`, {
+                headers: {
+                    'x-auth-token': cookie.get('auth-token'),
+                },
+            })
+                .pipe(
+                    switchMap(res => res.json())
+                )
+                .subscribe($data => setUserData($data));
+            return () => subscription.unsubscribe();
+        }
+    }, [setUserData, userData]);
 
     return (
         userData.username ?
