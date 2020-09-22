@@ -13,6 +13,13 @@
     }
 }
 
+.profile-pic {
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+}
+
+
 .custom-file-label {
     @include themed() {
         color: t($color);

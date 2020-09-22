@@ -108,7 +108,7 @@ const Profile = (props) => {
                 <Container className='home-anime-container shadow rounded p-3'>
                     <Row>
                         <Col lg={2} md={4}>
-                            <Image src={userData.img} height={150} rounded />
+                            <Image src={userData.img} className='profile-pic' rounded />
                             <h5
                                 className='mt-2 font-weight-bold'
                                 onChange={(e) => changeUsername(e)}
