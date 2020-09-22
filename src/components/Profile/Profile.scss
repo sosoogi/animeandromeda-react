@@ -19,6 +19,16 @@
     object-fit: cover;
 }
 
+.delete-loved {
+    cursor: pointer;
+    color:#fff;
+}
+
+.delete-loved:hover {
+    cursor: pointer;
+    color:rgb(185, 42, 42);
+}
+
 
 .custom-file-label {
     @include themed() {

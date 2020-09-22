@@ -130,7 +130,7 @@ const Profile = (props) => {
                                                 <Link to={`/anime/details/${x.series}`} className='profile-links'>
                                                     <span>{x.title}</span>
                                                 </Link>
-                                                <X onClick={() => deleteLoved(x)} className='float-right' style={{ cursor: 'pointer' }}></X>
+                                                <X onClick={() => deleteLoved(x)} className='float-right delete-loved'></X>
                                             </ListGroup.Item>
                                         ))}
                                     </ListGroup>
@@ -177,7 +177,7 @@ const Profile = (props) => {
                             <Button className='mt-5 float-left' variant="danger"
                                 onClick={() => {
                                     cookie.remove('auth-token');
-                                    props.history.push('/')
+                                    window.location.href = '/';
                                 }}>
                                 Logout
                             </Button>
