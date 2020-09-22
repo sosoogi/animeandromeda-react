@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import Logo from '../../assets/Illustration4.svg';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../Contexts/UserContext';
 import './Navbar.scss';
 
 const AnimeNavbar = () => {
     const [navExpanded, setExpanded] = useState(false);
+    const [userData] = useContext(UserContext);
 
     return (
         <div className='container-fluid home-navbar'>
@@ -20,11 +21,7 @@ const AnimeNavbar = () => {
                 >
                     <Link to='/' aria-label="Ritorna alla Home">
                         <Navbar.Brand onClick={() => setExpanded(false)}>
-                            <img
-                                alt=''
-                                height='42'
-                                src={Logo}
-                            />{' '}
+                            <img alt='animeandromeda logo' height='42' src={Logo} />{' '}
                         </Navbar.Brand>
                     </Link>
                     <Navbar.Toggle aria-controls="responsive-navbar" aria-label="toggle navbar" />
@@ -34,11 +31,10 @@ const AnimeNavbar = () => {
                             <Nav.Link onClick={() => { setExpanded(false) }} as={Link} to='/calendario'>Calendario</Nav.Link>
                         </Nav>
                         <Nav>
-                            <NavDropdown title="Altro" bsPrefix='typo-normal' id='navbardropdown-h'>
-                                <NavDropdown.Item onClick={() => { setExpanded(false) }} as={Link} to='/about'>About us</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="https://paypal.me/pools/c/8somkJXivr">Supporta lo sviluppo</NavDropdown.Item>
-                            </NavDropdown>
+                            <Nav.Link onClick={() => { setExpanded(false) }} as={Link} to='/about'>Altro</Nav.Link>
+                            <Nav.Link onClick={() => { setExpanded(false) }} as={Link} to='/profile'>
+                                {userData.username ? userData.username : 'Login'}
+                            </Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>

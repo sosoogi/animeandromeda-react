@@ -1,0 +1,9 @@
+@import '../../themes/themes.scss';
+
+.login-button{
+    width: 100%;
+    @include themed() {
+        color: t($color);
+        background-color: t($button-bg);
+    }
+}

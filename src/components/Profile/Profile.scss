@@ -1,0 +1,30 @@
+@import '../../themes/themes.scss';
+
+.list-group-profile {
+    @include themed() {
+        color: t($color);
+        background-color: t($overlay-lighter);
+    }
+}
+
+.profile-links {
+    @include themed() {
+        color: t($color);
+    }
+}
+
+.custom-file-label {
+    @include themed() {
+        color: t($color);
+        background-color: t($overlay-lighter);
+        border: 0px;
+    }
+}
+
+.custom-file-label::after {
+    @include themed() {
+        color: t($color);
+        background-color: t($overlay-lighter);
+        border: 0px;
+    }
+}

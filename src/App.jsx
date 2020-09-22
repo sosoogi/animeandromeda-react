@@ -6,13 +6,17 @@ import ReactGA from 'react-ga';
 import { getCLS, getFID, getLCP } from 'web-vitals';
 import Home from './components/Home/Home';
 import Navbar from './components/Navbar/Navbar';
+import PrivateRoute from './components/Routes/PrivateRoute';
+import { UserProvider } from './components/Contexts/UserContext';
 import './App.scss';
 
 const AnimeDetails = React.lazy(() => import('./components/AnimeDetails/AnimeDetails'));
 const AnimeView = React.lazy(() => import('./components/AnimeView/AnimeView'));
 const Calendar = React.lazy(() => import('./components/AnimeCalendar/Calendar'));
 const Archive = React.lazy(() => import('./components/AnimeArchive/Archive'));
+const Profile = React.lazy(() => import('./components/Profile/Profile'));
 const About = React.lazy(() => import('./components/About/About'));
+const Login = React.lazy(() => import('./components/Login/Login'));
 
 class App extends React.Component {
   constructor() {
@@ -36,9 +40,7 @@ class App extends React.Component {
     getLCP(this.sendToGoogleAnalytics);
     getCLS(this.sendToGoogleAnalytics);
     getFID(this.sendToGoogleAnalytics);
-    // webp polyfill
-    // const webpMachine = new WebpMachine();
-    // webpMachine.polyfillDocument();
+
     shrinkLocalStorage();
   }
 
@@ -83,19 +85,22 @@ class App extends React.Component {
     return (
       <div className={'theme ' + (this.state.theme === 'dark' ? 'theme--dark' : 'theme--light')}>
         <BrowserRouter>
-          <div className='App'>
-            <Navbar></Navbar>
-            <Switch>
-              <Route exact path='/' render={(props) => <Home {...props}></Home>}></Route>
-              <Route exact path='/anime/details/:anime' component={this.lazyLoadCompoment(AnimeDetails)}></Route>
-              {/* <Route exact path='/anime/view/:anime/:ep' component={this.lazyLoadCompoment(AnimeView)}></Route> */}
-              <Route exact path='/anime/view' component={this.lazyLoadCompoment(AnimeView)}></Route>
-              <Route exact path='/calendario' component={this.lazyLoadCompoment(Calendar)}></Route>
-              <Route exact path='/archivio' key='def' component={this.lazyLoadCompoment(Archive)}></Route>
-              <Route exact path='/archivio/:genere' key='pre' component={this.lazyLoadCompoment(Archive)}></Route>
-              <Route exact path='/about' component={this.lazyLoadCompoment(About)}></Route>
-            </Switch>
-          </div>
+          <UserProvider>
+            <div className='App'>
+              <Navbar></Navbar>
+              <Switch>
+                <Route exact path='/' render={(props) => <Home {...props}></Home>}></Route>
+                <Route exact path='/anime/details/:anime' component={this.lazyLoadCompoment(AnimeDetails)}></Route>
+                <Route exact path='/anime/view' component={this.lazyLoadCompoment(AnimeView)}></Route>
+                <Route exact path='/calendario' component={this.lazyLoadCompoment(Calendar)}></Route>
+                <Route exact path='/archivio' key='def' component={this.lazyLoadCompoment(Archive)}></Route>
+                <PrivateRoute exact path='/profile' component={this.lazyLoadCompoment(Profile)} />
+                <Route exact path='/archivio/:genere' key='pre' component={this.lazyLoadCompoment(Archive)}></Route>
+                <Route exact path='/about' component={this.lazyLoadCompoment(About)}></Route>
+                <Route exact path='/login' component={this.lazyLoadCompoment(Login)}></Route>
+              </Switch>
+            </div>
+          </UserProvider>
         </BrowserRouter>
 
         <div className='mt-3'></div>

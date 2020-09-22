@@ -1,4 +1,5 @@
-import crypto from 'crypto';
+import crypto from 'crypto'
+import cookie from 'js-cookie'
 
 export const shrinkLocalStorage = async () => {
     let a = {},
@@ -26,4 +27,8 @@ export const convertDate = (inputFormat) => {
 
 export const convertAiredFrom = (inputDate) => {
     return String(inputDate).split(' ')[2] || '0000';
+}
+
+export const isLogin = () => {
+    return !!cookie.get('auth-token')
 }

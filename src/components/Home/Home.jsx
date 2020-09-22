@@ -8,7 +8,7 @@ import Container from 'react-bootstrap/Container';
 import AnimeThumb from '../AnimeThumb/AnimeThumb';
 import AnimeCarousel from '../AnimeCarousel/AnimeCarousel';
 import AnimeSearchField from '../AnimeSearchField/AnimeSearchField';
-import AnimeScroller from '../SideScroller/SimpleScroller';
+import AnimeScroller from '../HScroller/SimpleScroller';
 import Paypal from '../../assets/paypal.svg';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { fromEvent, ReplaySubject, Subject } from 'rxjs';
@@ -33,6 +33,7 @@ class Home extends React.Component {
     }
 
     async componentDidMount() {
+        window.scrollTo(0, 0);
         // this.latestSub = fromFetch(globals.API_URL + 'anime/latest')
         //     .pipe(
         //         switchMap(res => res.json())
@@ -175,7 +176,6 @@ class Home extends React.Component {
                                 <AnimeThumb
                                     series={anime._id.series}
                                     pic={anime.pic}
-                                    thumb={anime.thumb}
                                     title={anime.pretty}
                                     ep={anime.count}
                                     key={anime._id.series}>

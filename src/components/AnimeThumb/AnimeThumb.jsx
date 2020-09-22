@@ -1,13 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import { UserContext } from '../Contexts/UserContext';
+import { BehaviorSubject } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { fromFetch } from 'rxjs/fetch';
+import { Link } from 'react-router-dom';
 import Figure from 'react-bootstrap/Figure';
 import Badge from 'react-bootstrap/Badge';
 import { HeartFill } from 'react-bootstrap-icons';
 import globals from '../../globals/variables';
-import { Link } from 'react-router-dom';
+import cookie from 'js-cookie';
 import './AnimeThumb.scss';
 
 const AnimeThumb = (props) => {
     const [loved, setLoved] = useState(false);
+    const [userData, setUserData] = useContext(UserContext);
+
+    const addLoved = (loved) => {
+        let subscription = new BehaviorSubject({});
+
+        subscription = fromFetch(`${globals.AUTH_API_URL}/user/loved`, {
+            method: 'POST',
+            headers: {
+                'x-auth-token': cookie.get('auth-token'),
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                loved: loved
+            })
+        })
+            .pipe(
+                switchMap(res => res.json())
+            )
+            .subscribe(
+                () => {
+                    setLoved(true);
+                    const prevState = { ...userData };
+                    const nextState = { loved: prevState.loved.concat(loved) };
+                    setUserData({ ...prevState, ...nextState });
+                },
+            );
+        return () => subscription.unsubscribe();
+    }
+
+    useEffect(() => {
+        const loved = userData?.loved;
+        const test = loved?.filter(x => x?.series === props.series);
+        if (test?.length > 0) {
+            setLoved(true)
+        }
+    }, [props.series, userData]);
 
     return (
         <div className='flyer-container'>
@@ -26,7 +67,12 @@ const AnimeThumb = (props) => {
                     <Badge
                         variant={loved ? 'danger' : 'secondary'}
                         className={props.small ? 'badge-love' : 'badge-ep'}
-                        onClick={() => setLoved(!loved)}>
+                        onClick={() => addLoved({
+                            series: props.series,
+                            title: props.title,
+                            pic: props.pic,
+                            premiere: props.premiere,
+                        })}>
                         <HeartFill color='white' />
                     </Badge>
                     : null}

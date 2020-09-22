@@ -24,15 +24,15 @@ const truncateIfMobile = (prop) => {
 
 const AnimeBanner = (props) => {
     return (
-        <div>
-            <div className='banner' style={{ backgroundImage: `url(${props.pic})` }}>
-            </div>
+        <header>
+            <div className='banner' style={{ backgroundImage: `url(${props.pic})` }}></div>
             <Container>
                 {props.subtitle ? <h6 className='banner-subtitle'>{props.subtitle}</h6> : null}
                 {props.title ? <h1 className='banner-title'>{truncateIfMobile(props.title)}</h1> : null}
                 {props.text ? <h1 className='banner-text'>{truncateIfMobile(props.text)}</h1> : null}
+                {props.child ? <span className='child'>{{ ...props.child }}</span> : null}
             </Container>
-        </div>
+        </header >
     );
 }
 
