@@ -12,6 +12,7 @@ import './App.scss';
 
 const AnimeDetails = React.lazy(() => import('./components/AnimeDetails/AnimeDetails'));
 const AnimeView = React.lazy(() => import('./components/AnimeView/AnimeView'));
+const TopAnime = React.lazy(() => import('./components/AnimeTop/TopAnime'));
 const Calendar = React.lazy(() => import('./components/AnimeCalendar/Calendar'));
 const Archive = React.lazy(() => import('./components/AnimeArchive/Archive'));
 const Profile = React.lazy(() => import('./components/Profile/Profile'));
@@ -98,6 +99,7 @@ class App extends React.Component {
                 <Route exact path='/archivio/:genere' key='pre' component={this.lazyLoadCompoment(Archive)}></Route>
                 <Route exact path='/about' component={this.lazyLoadCompoment(About)}></Route>
                 <Route exact path='/login' component={this.lazyLoadCompoment(Login)}></Route>
+                <Route exact path='/top' component={this.lazyLoadCompoment(TopAnime)}></Route>
               </Switch>
             </div>
           </UserProvider>

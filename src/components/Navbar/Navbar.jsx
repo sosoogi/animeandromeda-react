@@ -29,6 +29,7 @@ const AnimeNavbar = () => {
                         <Nav className="mr-auto">
                             <Nav.Link onClick={() => { setExpanded(false) }} as={Link} to='/archivio'>Archivio</Nav.Link>
                             <Nav.Link onClick={() => { setExpanded(false) }} as={Link} to='/calendario'>Calendario</Nav.Link>
+                            <Nav.Link onClick={() => { setExpanded(false) }} as={Link} to='/top'>Top Anime</Nav.Link>
                         </Nav>
                         <Nav>
                             <Nav.Link onClick={() => { setExpanded(false) }} as={Link} to='/about'>Altro</Nav.Link>

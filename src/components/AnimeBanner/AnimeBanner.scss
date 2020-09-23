@@ -16,38 +16,33 @@
 }
 
 .banner-text{
-  position: absolute;
   color:white;
-  top:19%;
   text-align: left;
   z-index: 2;
-  transform: translateY(50%);
+  transform: translateY(-130%);
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.575);
 }
 
 .banner-title{
-  position: absolute;
   @include themed() {
     color: t($color);
   }
-  top:19%;
+  position: absolute;
   text-align: left;
   z-index: 2;
-  transform: translateY(50%);
+  transform: translateY(-130%);
   text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.575);
-  cursor: pointer;
 }
 
 .banner-subtitle{
-  position: absolute;
   @include themed() {
     color: t($color);
   }
+  position: absolute;
   padding-left: 2px;
-  top:19%;
   text-align: left;
   z-index: 2;
-  transform: translateY(50%);
+  transform: translateY(-130%);
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.575);
 }
 

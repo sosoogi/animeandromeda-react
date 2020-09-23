@@ -15,7 +15,7 @@ const AnimeThumb = (props) => {
     const [loved, setLoved] = useState(false);
     const [userData, setUserData] = useContext(UserContext);
 
-    const addLoved = (loved) => {
+    const toggleLoved = ($loved) => {
         let subscription = new BehaviorSubject({});
 
         subscription = fromFetch(`${globals.AUTH_API_URL}/user/loved`, {
@@ -25,7 +25,7 @@ const AnimeThumb = (props) => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                loved: loved
+                loved: $loved
             })
         })
             .pipe(
@@ -33,9 +33,9 @@ const AnimeThumb = (props) => {
             )
             .subscribe(
                 () => {
-                    setLoved(true);
+                    setLoved(!loved);
                     const prevState = { ...userData };
-                    const nextState = { loved: prevState.loved.concat(loved) };
+                    const nextState = { loved: prevState.loved.concat($loved) };
                     setUserData({ ...prevState, ...nextState });
                 },
             );
@@ -67,7 +67,7 @@ const AnimeThumb = (props) => {
                     <Badge
                         variant={loved ? 'danger' : 'secondary'}
                         className={props.small ? 'badge-love' : 'badge-ep'}
-                        onClick={() => addLoved({
+                        onClick={() => toggleLoved({
                             series: props.series,
                             title: props.title,
                             pic: props.pic,
