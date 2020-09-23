@@ -16,9 +16,12 @@ import './Login.scss';
 
 const Login = (props) => {
     const [error, setError] = useState(false);
+    const [errorSignUp, setErrorSignUp] = useState(false);
+    const [errorMismatch, setErrorMismatch] = useState(false);
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [rePassword, setRePassword] = useState('');
 
     let subscription = new Observable();
 
@@ -46,26 +49,33 @@ const Login = (props) => {
     }
 
     const performSignup = () => {
-        subscription = fromFetch(`${globals.AUTH_API_URL}/user`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                email: email,
-                username: username,
-                password: password,
+        if (password === rePassword) {
+            subscription = fromFetch(`${globals.AUTH_API_URL}/user`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: email,
+                    username: username,
+                    password: password,
+                })
             })
-        })
-            .pipe(
-                switchMap(res => res.json())
-            )
-            .subscribe(() => {
-                props.history.push('/')
+                .pipe(
+                    switchMap(res => res.json())
+                )
+                .subscribe(data => {
+                    if (typeof data === 'string') {
+                        cookie.set('auth-token', data);
+                        props.history.push('/profile');
+                    } else {
+                        setErrorSignUp(true)
+                    }
+                }, () => { setErrorSignUp(true) });
 
-            }, () => { setError(true) });
-
-        return () => subscription.unsubscribe();
+            return () => subscription.unsubscribe();
+        }
+        setErrorMismatch(true)
     }
 
     return (
@@ -147,12 +157,21 @@ const Login = (props) => {
                             <FormControl
                                 placeholder='Password'
                                 aria-label='Password'
-                                name='rpassword'
+                                name='password'
                                 type='password'
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                         </InputGroup>
-                        <Button className='login-button' onClick={() => performSignup()}>Login</Button>
+                        <InputGroup className='mb-3'>
+                            <FormControl
+                                placeholder='Reinserisci la password'
+                                aria-label='Reinserisci la password'
+                                name='repassword'
+                                type='password'
+                                onChange={(e) => setRePassword(e.target.value)}
+                            />
+                        </InputGroup>
+                        <Button className='login-button' onClick={() => performSignup()}>Registrati</Button>
                     </Col>
                     <Col md={6} className='text-left p-0'>
                         <ul style={{ listStyleType: 'none' }}>
@@ -163,6 +182,30 @@ const Login = (props) => {
                         </ul>
                     </Col>
                 </Row>
+                {errorSignUp ?
+                    <React.Fragment>
+                        <div className='mt-3'></div>
+                        <Row>
+                            <Col>
+                                <Alert variant={'danger'}>
+                                    Username o password incorretti o utente già esistente
+                            </Alert>
+                            </Col>
+                        </Row>
+                    </React.Fragment> : null
+                }
+                {errorMismatch ?
+                    <React.Fragment>
+                        <div className='mt-3'></div>
+                        <Row>
+                            <Col>
+                                <Alert variant={'danger'}>
+                                    Le due password inserite differiscono
+                            </Alert>
+                            </Col>
+                        </Row>
+                    </React.Fragment> : null
+                }
             </Container>
         </main >
     );

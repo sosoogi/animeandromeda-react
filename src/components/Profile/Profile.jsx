@@ -125,6 +125,7 @@ const Profile = () => {
                             <Row>
                                 <Col>
                                     <ListGroup>
+                                        {userData.loved?.length === 0 ? 'nessuna serie salvata' : null}
                                         {userData.loved?.map((x, idx) => (
                                             <ListGroup.Item className='list-group-profile' key={x.series + idx}>
                                                 <Link to={`/anime/details/${x.series}`} className='profile-links'>
