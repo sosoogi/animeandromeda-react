@@ -60,8 +60,7 @@ const Login = (props) => {
             .pipe(
                 switchMap(res => res.json())
             )
-            .subscribe(data => {
-                cookie.set('auth-token', data);
+            .subscribe(() => {
                 props.history.push('/')
 
             }, () => { setError(true) });

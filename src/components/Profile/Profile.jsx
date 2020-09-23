@@ -19,7 +19,7 @@ import { CameraFill, Back, X } from 'react-bootstrap-icons';
 import globals from '../../globals/variables';
 import './Profile.scss';
 
-const Profile = (props) => {
+const Profile = () => {
     const [userData, setUserData] = useContext(UserContext);
     const [uploaded, setUploaded] = useState(false);
 
