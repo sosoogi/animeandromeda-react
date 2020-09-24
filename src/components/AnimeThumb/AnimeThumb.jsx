@@ -18,8 +18,43 @@ const AnimeThumb = (props) => {
     const toggleLoved = ($loved) => {
         let subscription = new BehaviorSubject({});
 
+        if (!loved) {
+            subscription = fromFetch(`${globals.AUTH_API_URL}/user/loved`, {
+                method: 'POST',
+                headers: {
+                    'x-auth-token': cookie.get('auth-token'),
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    loved: $loved
+                })
+            })
+                .pipe(
+                    switchMap(res => res.json())
+                )
+                .subscribe(
+                    () => {
+                        if (userData !== 'expired token') {
+                            setLoved(true);
+                            const prevState = { ...userData };
+                            const nextState = { loved: prevState.loved.concat($loved) };
+                            setUserData({ ...prevState, ...nextState });
+                        } else {
+                            window.location.href = '/login'
+                        }
+                    },
+                );
+        } else {
+            deleteLoved($loved)
+        }
+        return () => subscription.unsubscribe();
+    }
+
+    const deleteLoved = ($loved) => {
+        let subscription = new BehaviorSubject({});
+
         subscription = fromFetch(`${globals.AUTH_API_URL}/user/loved`, {
-            method: 'POST',
+            method: 'DELETE',
             headers: {
                 'x-auth-token': cookie.get('auth-token'),
                 'Content-Type': 'application/json',
@@ -31,14 +66,17 @@ const AnimeThumb = (props) => {
             .pipe(
                 switchMap(res => res.json())
             )
-            .subscribe(
-                () => {
-                    setLoved(!loved);
-                    const prevState = { ...userData };
-                    const nextState = { loved: prevState.loved.concat($loved) };
-                    setUserData({ ...prevState, ...nextState });
-                },
-            );
+            .subscribe(() => {
+                setLoved(false);
+                const prevState = { ...userData };
+                const nextState = {
+                    loved: prevState.loved.filter(el => {
+                        return el.series !== $loved.series
+                    })
+                };
+                setUserData({ ...prevState, ...nextState });
+            });
+
         return () => subscription.unsubscribe();
     }
 
