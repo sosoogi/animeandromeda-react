@@ -89,7 +89,7 @@ class Home extends React.Component {
                 <AnimeSearchField className='container shadow rounded bg-dark-as-box mb-3 p-3 w-100'></AnimeSearchField>
                 <Container className='home-anime-container shadow rounded mobile-responsive'>
                     {this.state.airing?.length > 0 ?
-                        <AnimeCarousel apiResponse={this.state.upcoming} /> :
+                        <AnimeCarousel apiResponse={this.state.upcoming.concat(this.state.airing)} /> :
                         <React.Fragment>
                             <Spinner animation="grow" className='loader-themed mt-5' />
                         </React.Fragment>
