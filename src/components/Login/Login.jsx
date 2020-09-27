@@ -40,7 +40,7 @@ const Login = (props) => {
                 switchMap(res => res.json())
             )
             .subscribe(data => {
-                cookie.set('auth-token', data);
+                cookie.set('auth-token', data, { expires: 30 });
                 props.history.push('/profile')
 
             }, () => { setError(true) });
@@ -66,7 +66,7 @@ const Login = (props) => {
                 )
                 .subscribe(data => {
                     if (typeof data === 'string') {
-                        cookie.set('auth-token', data);
+                        cookie.set('auth-token', data, { expires: 30 });
                         props.history.push('/profile');
                     } else {
                         setErrorSignUp(true)
