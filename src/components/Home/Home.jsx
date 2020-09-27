@@ -11,7 +11,7 @@ import AnimeSearchField from '../AnimeSearchField/AnimeSearchField';
 import AnimeScroller from '../HScroller/SimpleScroller';
 import Paypal from '../../assets/paypal.svg';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { fromEvent, ReplaySubject, BehaviorSubject } from 'rxjs';
+import { fromEvent, ReplaySubject } from 'rxjs';
 import { switchMap, debounceTime } from 'rxjs/operators';
 import { fromFetch } from 'rxjs/fetch';
 import globals from '../../globals/variables';
@@ -21,7 +21,7 @@ class Home extends React.Component {
     constructor() {
         super();
         this.state = {
-            latest: [],
+            // latest: [],
             airing: [],
             random: [],
             upcoming: [],
@@ -29,7 +29,7 @@ class Home extends React.Component {
 
         this.$airingAnimes = new BehaviorSubject([]);
         this.$upcomingAnimes = new BehaviorSubject([]);
-        this.$randomAnimes = new ReplaySubject();
+        this.$randomAnimes = new BehaviorSubject();
         this.randomButton = new React.createRef()
     }
 
@@ -42,11 +42,6 @@ class Home extends React.Component {
             )
             .subscribe(data => this.setState({ upcoming: data }), e => console.error(e));
 
-        this.$airingAnimes = fromFetch(`${globals.API_URL}anime/latest/airing`)
-            .pipe(
-                switchMap(res => res.json())
-            )
-            .subscribe(data => this.setState({ airing: data }), e => console.error(e));
 
         this.$randomAnimes = fromFetch(`${globals.API_URL}anime/random`)
             .pipe(
