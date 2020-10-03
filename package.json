@@ -33,17 +33,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "reactSnap": {
-    "concurrency": 1,
-    "exclude": [
-      "/anime/view",
-      "/archivio/*"
-    ],
-    "puppeteerArgs": [
-      "--no-sandbox",
-      "--disable-setuid-sandbox"
-    ]
-  },
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -58,8 +47,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@mastermonar/react-snap": "^1.25.0"
   }
 }

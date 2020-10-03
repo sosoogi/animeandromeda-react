@@ -65,7 +65,7 @@ const AnimeScroller = (props) => {
                 .pipe(
                     switchMap(res => res.json()),
                     takeUntil($random),
-                    delay(500)
+                    delay(125)
                 )
                 .subscribe($data => {
                     setData((Array.prototype.concat(data, Menu($data))
