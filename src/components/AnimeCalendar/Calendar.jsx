@@ -51,80 +51,101 @@ const Calendar = () => {
                                 <tbody>
                                     <tr>
                                         <th>Lunedì</th>
-                                        {calendar?.mon?.map((day, idx) => (
+                                        {   calendar?.mon.length > 0 ?
+                                            calendar?.mon?.map((day, idx) => (
                                             <td key={idx}>
                                                 <Link className='link-calendar' to={`/anime/details/${day.series}`}>
                                                     <p>{day.title}</p>
                                                 </Link>
                                                 <p>{day.hours.slice(0, -3)}*</p>
                                             </td>
-                                        ))}
+                                        ))
+                                            : null
+                                        }
                                     </tr>
                                     <tr>
                                         <th>Martedì</th>
-                                        {calendar?.tue?.map((day, idx) => (
-                                            <td key={idx}>
-                                                <Link className='link-calendar' to={`/anime/details/${day.series}`}>
-                                                    <p>{day.title}</p>
-                                                </Link>
-                                                <p>{day.hours.slice(0, -3)}*</p>
-                                            </td>
-                                        ))}
+                                        {   calendar?.tue.length > 0 ?
+                                            calendar?.tue?.map((day, idx) => (
+                                                <td key={idx}>
+                                                    <Link className='link-calendar' to={`/anime/details/${day.series}`}>
+                                                        <p>{day.title}</p>
+                                                    </Link>
+                                                    <p>{day.hours.slice(0, -3)}*</p>
+                                                </td>
+                                            ))
+                                            : null
+                                        }
                                     </tr>
                                     <tr>
                                         <th>Mercoledì</th>
-                                        {calendar?.wed?.map((day, idx) => (
-                                            <td key={idx}>
-                                                <Link className='link-calendar' to={`/anime/details/${day.series}`}>
-                                                    <p>{day.title}</p>
-                                                </Link>
-                                                <p>{day.hours.slice(0, -3)}*</p>
-                                            </td>
-                                        ))}
+                                        {   calendar?.wed.length > 0 ?
+                                            calendar?.wed?.map((day, idx) => (
+                                                <td key={idx}>
+                                                    <Link className='link-calendar' to={`/anime/details/${day.series}`}>
+                                                        <p>{day.title}</p>
+                                                    </Link>
+                                                    <p>{day.hours.slice(0, -3)}*</p>
+                                                </td>
+                                            ))
+                                            : null
+                                        }
                                     </tr>
                                     <tr>
                                         <th>Giovedì</th>
-                                        {calendar?.thu?.map((day, idx) => (
-                                            <td key={idx}>
-                                                <Link className='link-calendar' to={`/anime/details/${day.series}`}>
-                                                    <p>{day.title}</p>
-                                                </Link>
-                                                <p>{day.hours.slice(0, -3)}*</p>
-                                            </td>
-                                        ))}
+                                        {   calendar?.thu.length > 0 ?
+                                            calendar?.thu?.map((day, idx) => (
+                                                <td key={idx}>
+                                                    <Link className='link-calendar' to={`/anime/details/${day.series}`}>
+                                                        <p>{day.title}</p>
+                                                    </Link>
+                                                    <p>{day.hours.slice(0, -3)}*</p>
+                                                </td>
+                                            ))
+                                            : null
+                                        }
                                     </tr>
                                     <tr>
                                         <th>Venerdì</th>
-                                        {calendar?.fri?.map((day, idx) => (
-                                            <td key={idx}>
-                                                <Link className='link-calendar' to={`/anime/details/${day.series}`}>
-                                                    <p>{day.title}</p>
-                                                </Link>
-                                                <p>{day.hours.slice(0, -3)}*</p>
-                                            </td>
-                                        ))}
+                                        {   calendar?.fri.length > 0 ?
+                                            calendar?.fri?.map((day, idx) => (
+                                                <td key={idx}>
+                                                    <Link className='link-calendar' to={`/anime/details/${day.series}`}>
+                                                        <p>{day.title}</p>
+                                                    </Link>
+                                                    <p>{day.hours.slice(0, -3)}*</p>
+                                                </td>
+                                            ))
+                                            : null
+                                        }
                                     </tr>
                                     <tr>
                                         <th>Sabato</th>
-                                        {calendar?.sat?.map((day, idx) => (
-                                            <td key={idx}>
-                                                <Link className='link-calendar' to={`/anime/details/${day.series}`}>
-                                                    <p>{day.title}</p>
-                                                </Link>
-                                                <p>{day.hours.slice(0, -3)}*</p>
-                                            </td>
-                                        ))}
+                                        {   calendar?.sat.length > 0 ?
+                                            calendar?.sat?.map((day, idx) => (
+                                                <td key={idx}>
+                                                    <Link className='link-calendar' to={`/anime/details/${day.series}`}>
+                                                        <p>{day.title}</p>
+                                                    </Link>
+                                                    <p>{day.hours.slice(0, -3)}*</p>
+                                                </td>
+                                            ))
+                                            : null
+                                        }
                                     </tr>
                                     <tr>
                                         <th>Domenica</th>
-                                        {calendar?.sun?.map((day, idx) => (
-                                            <td key={idx}>
-                                                <Link className='link-calendar' to={`/anime/details/${day.series}`}>
-                                                    <p>{day.title}</p>
-                                                </Link>
-                                                <p>{day.hours.slice(0, -3)}*</p>
-                                            </td>
-                                        ))}
+                                        {   calendar?.sun.length > 0 ?
+                                            calendar?.sun?.map((day, idx) => (
+                                                <td key={idx}>
+                                                    <Link className='link-calendar' to={`/anime/details/${day.series}`}>
+                                                        <p>{day.title}</p>
+                                                    </Link>
+                                                    <p>{day.hours.slice(0, -3)}*</p>
+                                                </td>
+                                            ))
+                                            : null
+                                        }
                                     </tr>
                                 </tbody>
                             </Table> :
