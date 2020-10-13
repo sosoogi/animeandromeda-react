@@ -55,7 +55,7 @@ const AnimeScroller = (props) => {
     }, [props.data])
 
     useEffect(() => {
-        if (data?.length > 50) {
+        if (data?.length > 60) {
             setStop(true)
             return;
         }
