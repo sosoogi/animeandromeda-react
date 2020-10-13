@@ -46,12 +46,12 @@ const Calendar = () => {
                 </div>
                 <div className='row'>
                     <div className='col'>
-                        {calendar.mon?.length > 0 ?
+                        {calendar ?
                             <Table responsive borderless className='anime-calendar'>
                                 <tbody>
                                     <tr>
                                         <th>Lunedì</th>
-                                        {   calendar?.mon.length > 0 ?
+                                        {   calendar?.mon?.length > 0 ?
                                             calendar?.mon?.map((day, idx) => (
                                             <td key={idx}>
                                                 <Link className='link-calendar' to={`/anime/details/${day.series}`}>
@@ -65,7 +65,7 @@ const Calendar = () => {
                                     </tr>
                                     <tr>
                                         <th>Martedì</th>
-                                        {   calendar?.tue.length > 0 ?
+                                        {   calendar?.tue?.length > 0 ?
                                             calendar?.tue?.map((day, idx) => (
                                                 <td key={idx}>
                                                     <Link className='link-calendar' to={`/anime/details/${day.series}`}>
@@ -79,7 +79,7 @@ const Calendar = () => {
                                     </tr>
                                     <tr>
                                         <th>Mercoledì</th>
-                                        {   calendar?.wed.length > 0 ?
+                                        {   calendar?.wed?.length > 0 ?
                                             calendar?.wed?.map((day, idx) => (
                                                 <td key={idx}>
                                                     <Link className='link-calendar' to={`/anime/details/${day.series}`}>
@@ -93,7 +93,7 @@ const Calendar = () => {
                                     </tr>
                                     <tr>
                                         <th>Giovedì</th>
-                                        {   calendar?.thu.length > 0 ?
+                                        {   calendar?.thu?.length > 0 ?
                                             calendar?.thu?.map((day, idx) => (
                                                 <td key={idx}>
                                                     <Link className='link-calendar' to={`/anime/details/${day.series}`}>
@@ -107,7 +107,7 @@ const Calendar = () => {
                                     </tr>
                                     <tr>
                                         <th>Venerdì</th>
-                                        {   calendar?.fri.length > 0 ?
+                                        {   calendar?.fri?.length > 0 ?
                                             calendar?.fri?.map((day, idx) => (
                                                 <td key={idx}>
                                                     <Link className='link-calendar' to={`/anime/details/${day.series}`}>
@@ -121,7 +121,7 @@ const Calendar = () => {
                                     </tr>
                                     <tr>
                                         <th>Sabato</th>
-                                        {   calendar?.sat.length > 0 ?
+                                        {   calendar?.sat?.length > 0 ?
                                             calendar?.sat?.map((day, idx) => (
                                                 <td key={idx}>
                                                     <Link className='link-calendar' to={`/anime/details/${day.series}`}>
@@ -135,7 +135,7 @@ const Calendar = () => {
                                     </tr>
                                     <tr>
                                         <th>Domenica</th>
-                                        {   calendar?.sun.length > 0 ?
+                                        {   calendar?.sun?.length > 0 ?
                                             calendar?.sun?.map((day, idx) => (
                                                 <td key={idx}>
                                                     <Link className='link-calendar' to={`/anime/details/${day.series}`}>
