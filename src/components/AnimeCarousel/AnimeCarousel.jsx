@@ -37,7 +37,7 @@ const AnimeCarousel = (props) => {
                             />
                             <Link to={'/anime/details/' + x._id.series}>
                                 <Carousel.Caption className='carousel-text'>
-                                    <h3>{x.title}</h3>
+                                    <h3>{x.title || x.pretty}</h3>
                                     <p>{x.count ? `Episodio ${x.count}` : `(${x.aired.split(' to')[0]})`}</p>
                                 </Carousel.Caption>
                             </Link>

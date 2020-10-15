@@ -27,7 +27,7 @@ class App extends React.Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     // prevent white bar in dark theme
     this.state.theme === 'dark' ? document.body.style.backgroundColor = '#0A1621' : document.body.style.backgroundColor = '#eaf4fd'
     // google analytics
@@ -42,7 +42,7 @@ class App extends React.Component {
     getCLS(this.sendToGoogleAnalytics);
     getFID(this.sendToGoogleAnalytics);
 
-    shrinkLocalStorage();
+    await shrinkLocalStorage();
   }
 
   componentDidUpdate() {
@@ -60,7 +60,7 @@ class App extends React.Component {
     }
   }
 
-  lazyLoadCompoment(C) {
+  lazyLoadComponent(C) {
     return (props) => (
       <Suspense fallback={<><br></br><div>Caricamento...</div></>}>
         <C {...props} />
@@ -91,15 +91,15 @@ class App extends React.Component {
               <Navbar></Navbar>
               <Switch>
                 <Route exact path='/' render={(props) => <Home {...props}></Home>}></Route>
-                <Route exact path='/anime/details/:anime' component={this.lazyLoadCompoment(AnimeDetails)}></Route>
-                <Route exact path='/anime/view' component={this.lazyLoadCompoment(AnimeView)}></Route>
-                <Route exact path='/calendario' component={this.lazyLoadCompoment(Calendar)}></Route>
-                <Route exact path='/archivio' key='def' component={this.lazyLoadCompoment(Archive)}></Route>
-                <PrivateRoute exact path='/profile' component={this.lazyLoadCompoment(Profile)} />
-                <Route exact path='/archivio/:genere' key='pre' component={this.lazyLoadCompoment(Archive)}></Route>
-                <Route exact path='/about' component={this.lazyLoadCompoment(About)}></Route>
-                <Route exact path='/login' component={this.lazyLoadCompoment(Login)}></Route>
-                <Route exact path='/top' component={this.lazyLoadCompoment(TopAnime)}></Route>
+                <Route exact path='/anime/details/:anime' component={this.lazyLoadComponent(AnimeDetails)}></Route>
+                <Route exact path='/anime/view' component={this.lazyLoadComponent(AnimeView)}></Route>
+                <Route exact path='/calendario' component={this.lazyLoadComponent(Calendar)}></Route>
+                <Route exact path='/archivio' key='def' component={this.lazyLoadComponent(Archive)}></Route>
+                <PrivateRoute exact path='/profile' component={this.lazyLoadComponent(Profile)} />
+                <Route exact path='/archivio/:genere' key='pre' component={this.lazyLoadComponent(Archive)}></Route>
+                <Route exact path='/about' component={this.lazyLoadComponent(About)}></Route>
+                <Route exact path='/login' component={this.lazyLoadComponent(Login)}></Route>
+                <Route exact path='/top' component={this.lazyLoadComponent(TopAnime)}></Route>
               </Switch>
             </div>
           </UserProvider>
