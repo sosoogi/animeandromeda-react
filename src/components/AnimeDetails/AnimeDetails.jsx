@@ -27,7 +27,7 @@ const AnimeDetails = (props) => {
 
     const [animes, setAnimes] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [episodesPerPage] = useState(50);
+    const [episodesPerPage] = useState(48);
     const [userData, setUserData] = useContext(UserContext);
     const [loved, setLoved] = useState(false);
 

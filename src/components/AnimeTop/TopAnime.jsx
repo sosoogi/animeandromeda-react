@@ -39,7 +39,7 @@ const TopAnime = () => {
             <div className='container home-anime-container p-3 shadow rounded'>
                 <div className='row'>
                     <div className='col'>
-                        <h3 className='home-section-title'>{'Top Anime'}</h3>
+                        <h3 className='home-section-title'>Top Anime</h3>
                     </div>
                 </div>
                 {topAnime?.length > 0 ?
