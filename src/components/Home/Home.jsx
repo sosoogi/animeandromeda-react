@@ -178,7 +178,7 @@ class Home extends React.Component {
 
                 <div className='mt-3'></div>
                 <Container className='p-0'>
-                    <Alert className='pp-h' onClick={() => window.open('https://paypal.me/pools/c/8somkJXivr')}>
+                    <Alert className='pp-h' onClick={() => window.open('https://paypal.me/pools/c/8somfsdfkJXdsfsdivr')}>
                         <span>
                             <img alt='telegram' src={Paypal} height={16}></img>&nbsp;
                         </span>
