@@ -25,6 +25,7 @@ class Home extends React.Component {
             airing: [],
             random: [],
             upcoming: [],
+            showSupport: true,
         }
 
         this.$airingAnimes = new BehaviorSubject([]);
@@ -67,6 +68,10 @@ class Home extends React.Component {
             });
     }
 
+    toggleSupport = () => {
+        this.setState(state => ({showSupport: !state.showSupport}));
+    }
+
     componentWillUnmount() {
         this.$upcomingAnimes.unsubscribe();
         this.$airingAnimes.unsubscribe();
@@ -87,6 +92,18 @@ class Home extends React.Component {
                     </Helmet>
                 </HelmetProvider>
                 <AnimeSearchField className='container shadow rounded bg-dark-as-box mb-3 p-3 w-100'></AnimeSearchField>
+                {this.state.showSupport ?
+                    <Container className='p-0'>
+                        <Alert variant='primary' onClose={() => this.toggleSupport()} dismissible>
+                            <strong>Abbiamo bisogno del tuo aiuto! Puoi supportare il progetto partecipando allo
+                                sviluppo!</strong>
+                            <hr/>
+                            <span>{'Se hai qualche dubbio, domanda, qualisasi cosa, contattaci su '}
+                                <Alert.Link href={'https://www.instagram.com/animeandromeda/'}>Instagram</Alert.Link>
+                            </span>
+                        </Alert>
+                    </Container> : null
+                }
                 <Container className='home-anime-container shadow rounded mobile-responsive'>
                     {this.state.airing?.length > 0 ?
                         <AnimeCarousel apiResponse={this.state.upcoming.concat(this.state.airing)} /> :
