@@ -21,6 +21,7 @@ const Calendar = () => {
                         <p> L'obbiettivo era di realizzare un sito di streaming anime
                         veloce e soprattutto senza pubblicità (proprio senza).</p>
                         <p>Il codice è completamente opensource</p>
+                        <small>Fantastic Vectorized Padoru by <a href='https://www.deviantart.com/manaalchemist'>ManaAlchemist</a></small>
                     </div>
                 </div>
             </div>
