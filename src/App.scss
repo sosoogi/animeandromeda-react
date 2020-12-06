@@ -3,10 +3,12 @@
 .App {
   min-height: 100vh;
   text-align: center;
-  background-image: url("assets/xmas/padoru.png");
-  background-repeat: no-repeat;
-  background-position: bottom right;
-  background-size: 400px;
+  @media screen and (min-width: 450px){
+    background-image: url("assets/xmas/padoru.png");
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: 400px;
+  }
   @include themed() {
     background-color: t($body-bg);
     color: t($color);

@@ -3,7 +3,7 @@ import { shrinkLocalStorage } from './globals/functions';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import TelegramIco from './assets/telegram.svg';
 import ReactGA from 'react-ga';
-import { getCLS, getFID, getLCP } from 'web-vitals';
+// import { getCLS, getFID, getLCP } from 'web-vitals';
 import Home from './components/Home/Home';
 import Navbar from './components/Navbar/Navbar';
 import PrivateRoute from './components/Routes/PrivateRoute';
@@ -38,9 +38,9 @@ class App extends React.Component {
       action: 'User landed on the site'
     });
     // web vitals
-    getLCP(this.sendToGoogleAnalytics);
-    getCLS(this.sendToGoogleAnalytics);
-    getFID(this.sendToGoogleAnalytics);
+    // getLCP(this.sendToGoogleAnalytics);
+    // getCLS(this.sendToGoogleAnalytics);
+    // getFID(this.sendToGoogleAnalytics);
 
     await shrinkLocalStorage();
   }
