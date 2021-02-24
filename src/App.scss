@@ -90,3 +90,19 @@
     color: t($loader);
   }
 }
+
+.maintenance-container{
+  display:table;
+  height:300px; 
+  width:300px; 
+  position:relative;
+  float:left;
+  margin-left:20px;
+ }
+
+ .maintenance-content {
+  display:table-cell;
+  text-align:center;
+  width:100%;
+  vertical-align: middle;
+}
