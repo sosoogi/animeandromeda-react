@@ -9,7 +9,7 @@ import AnimeThumb from '../AnimeThumb/AnimeThumb';
 import AnimeCarousel from '../AnimeCarousel/AnimeCarousel';
 import AnimeSearchField from '../AnimeSearchField/AnimeSearchField';
 import AnimeScroller from '../HScroller/SimpleScroller';
-import Paypal from '../../assets/paypal.svg';
+// import Instagram from '../../assets/instagram.svg';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { fromEvent, BehaviorSubject } from 'rxjs';
 import { switchMap, debounceTime } from 'rxjs/operators';
@@ -25,7 +25,7 @@ class Home extends React.Component {
             airing: [],
             random: [],
             upcoming: [],
-            showSupport: true,
+            showSupport: false,
         }
 
         this.$airingAnimes = new BehaviorSubject([]);
@@ -69,7 +69,7 @@ class Home extends React.Component {
     }
 
     toggleSupport = () => {
-        this.setState(state => ({showSupport: !state.showSupport}));
+        this.setState(state => ({ showSupport: !state.showSupport }));
     }
 
     componentWillUnmount() {
@@ -97,7 +97,7 @@ class Home extends React.Component {
                         <Alert variant='primary' onClose={() => this.toggleSupport()} dismissible>
                             <strong>Abbiamo bisogno del tuo aiuto! Puoi supportare il progetto partecipando allo
                                 sviluppo!</strong>
-                            <hr/>
+                            <hr />
                             <span>{'Se hai qualche dubbio, domanda, qualisasi cosa, contattaci su '}
                                 <Alert.Link href={'https://www.instagram.com/animeandromeda/'}>Instagram</Alert.Link>
                             </span>
@@ -193,15 +193,15 @@ class Home extends React.Component {
                     </Row>
                 </Container>
 
-                <div className='mt-3'></div>
+                {/* <div className='mt-3'></div>
                 <Container className='p-0'>
-                    <Alert className='pp-h' onClick={() => window.open('https://paypal.me/pools/c/8somfsdfkJXdsfsdivr')}>
+                    <Alert className='pp-i' onClick={() => window.open('https://www.instagram.com/animeandromeda/')}>
+                        Contattaci su Instagram
                         <span>
-                            <img alt='telegram' src={Paypal} height={16}></img>&nbsp;
+                            <img alt='instagram' src={Instagram} height={18}></img>&nbsp;
                         </span>
-                         Aiuta lo sviluppo con una piccola donazione
                     </Alert>
-                </Container>
+                </Container> */}
 
             </main>
         );
