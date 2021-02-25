@@ -91,18 +91,21 @@
   }
 }
 
-.maintenance-container{
-  display:table;
-  height:300px; 
-  width:300px; 
-  position:relative;
-  float:left;
-  margin-left:20px;
- }
+.maintenance-logo {
+	transform: scale(1);
+	animation: pulse 3s infinite;
+}
 
- .maintenance-content {
-  display:table-cell;
-  text-align:center;
-  width:100%;
-  vertical-align: middle;
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+	}
+
+	60% {
+		transform: scale(1);
+	}
+
+	100% {
+		transform: scale(0.95);
+	}
 }

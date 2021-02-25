@@ -89,10 +89,10 @@ class App extends React.Component {
         <div className='theme theme--dark'>
           <div className='App'>
             <div className='container pt-5'>
-              <img src={Logo} alt="logo" className='img-fluid' />
-              <h2 className='mt-3'>
+              <img src={Logo} alt="logo" className='img-fluid maintenance-logo' />
+              <h3 className='mt-3'>
                 Manutenzione in corso <span role='img' aria-label='mogu'>🍙</span>
-              </h2>
+              </h3>
             </div>
           </div >
         </div >
