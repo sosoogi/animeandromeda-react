@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import TelegramIco from './assets/telegram.svg';
 import ReactGA from 'react-ga';
 // import { getCLS, getFID, getLCP } from 'web-vitals';
-import Logo from './assets/Illustration.png'
+import Logo from './assets/Illustration4.svg'
 import Home from './components/Home/Home';
 import Navbar from './components/Navbar/Navbar';
 import PrivateRoute from './components/Routes/PrivateRoute';
@@ -90,9 +90,9 @@ class App extends React.Component {
           <div className='App'>
             <div className='container pt-5'>
               <img src={Logo} alt="logo" className='img-fluid' />
-              <h3>
+              <h2 className='mt-3'>
                 Manutenzione in corso <span role='img' aria-label='mogu'>🍙</span>
-              </h3>
+              </h2>
             </div>
           </div >
         </div >
