@@ -30,5 +30,5 @@ The app has currently been tested with node.js 12 and React 16.14.0
 In order to connect to the api create a **.env** file with this 3 variables:
 
 `REACT_APP_API_URL = <url of the api>`  
-`REACT_APP_AUTH_API_URL = <url of the auth api that will be avaible soon>`  
+`REACT_APP_AUTH_API_URL = chek out https://github.com/oppaoppai/animeandromeda-auth`  
 `REACT_APP_MAINTENANCE = y | n <y in order to set the app in manteniance mode>`
