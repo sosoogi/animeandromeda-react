@@ -24,7 +24,7 @@ https://github.com/oppaoppai/animeandromeda-python
 ### TODO
 I18n, the interface is currently only in italian.
 
-### Enviroment
+### Environment
 
 The app has currently been tested with node.js 12 and React 16.14.0
 In order to connect to the api create a **.env** file with this 3 variables:
